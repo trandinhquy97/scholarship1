@@ -1,0 +1,86 @@
+*{margin: 0; padding: 0;} 
+body{
+	background: url('pictures/loginbackground.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100ch; 
+}
+.box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	height: 450px;
+	background: rgba(0,0,0,.4);
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+	border-radius: 20px;
+	padding: 20px;
+}
+.box h2{
+	margin-top: 30px;
+	text-align: center;
+	color: #fff;
+}
+.box .inputBox{
+	position: relative;
+}
+.box .inputBox input{
+	width: 100%;
+	padding: 10px 0px;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid white;
+}
+.box .inputBox label{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: #fff;
+	padding: 10px 0px;
+	transition: 0.5s;
+	font-size: 16px;
+	z-index: -1;
+}
+
+
+.box .inputBox input:valid ~ label,
+.box .inputBox input:focus ~ label
+{
+	top:-18px;
+	left: 0px;
+	padding: 10px 0px;
+	font-size: 12px;
+}
+.box .btn{
+	text-align: center;
+	width: 100%;
+	background: #e94e38; 
+	border: solid 1px white;
+}
+.box .btn:hover{
+	background: #e94e38;
+	box-shadow: 0px 0px 10px;
+}
+a:nth-child(1n){
+	display: block;
+	text-decoration: none;
+	margin-top: 20px;
+	text-align: right;
+	color: white;
+}
+a:nth-child(2n){
+	display: block;
+	text-decoration: none;
+	margin-top: 10px;
+	text-align: right;
+	color: white;
+}
+a:hover{
+	color: #e94e38;
+}
