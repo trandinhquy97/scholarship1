@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', ['as'=>'getLogin','uses'=>'CustomLoginController@getLogin']);
+Route::post('/login', ['as'=>'postLogin','uses'=>'CustomLoginController@postLogin']);
 Route::get('/signup', function () {
     return view('signup');
 });

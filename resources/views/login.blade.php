@@ -13,13 +13,14 @@
 <body >
 <div class="box">
     <h2 class="head">Đăng nhập</h2>
-    <form action="" class="form" method="post">
+    <form action="{{url('/login')}}" class="form" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="inputBox">
-            <input type="text" name="" required="">
+            <input type="text" name="email" required="">
             <label class="label">Email</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="">
             <label class="label">Password</label>
         </div>
 
