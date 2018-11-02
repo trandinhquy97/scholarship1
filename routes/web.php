@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 Route::get('/login', ['as'=>'getLogin','uses'=>'CustomLoginController@getLogin']);
 Route::post('/login', ['as'=>'postLogin','uses'=>'CustomLoginController@postLogin']);
+Route::get('/logout', ['as'=>'getLogout','uses'=>'LogoutController@getLogout']);
+
+Route::get('/signup', ['as'=>'getSignup','uses'=>'SignupController@getSignup']);
+Route::post('/signup', ['as'=>'postSignup','uses'=>'SignupController@postSignup']);
 Route::get('/signup', function () {
     return view('signup');
 });

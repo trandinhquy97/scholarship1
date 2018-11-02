@@ -19,6 +19,7 @@ class CreateTaiKhoanTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->integer('kt_Quyen');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
