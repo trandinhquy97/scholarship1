@@ -43,4 +43,11 @@ Route::get('/post', function () {
     return view('post');
 });
 
+Route::get('/scholarship/{id}', function () {
+    return view('detailscholarship');
+});
+
+
+
+
 
