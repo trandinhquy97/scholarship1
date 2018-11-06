@@ -30,7 +30,6 @@ class CreateHocBongTable extends Migration
 			$table->string('ThuTucNop');
 			$table->string('LinkDangKy');
 			$table->string('NguonThongTin');
-			$table->integer('id_MucBinhLuan');
 			$table->integer('SoLuotQuanTam');
 			$table->integer('id_TrangThaiHb');
         });
