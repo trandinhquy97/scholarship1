@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/css/fontawesome-all.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/index.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/scholarship.css')}}">
     <script type="text/javascript">
         $(document).ready(function() {
             $(".btnsearch").hover(function(){
@@ -91,100 +91,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-5 head">
-                <p>học bổng</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5 head">
-                <p>cuộc thi</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5 head">
-                <p>Workshop</p>
+                <p>workshop</p>
             </div>
         </div>
         <div class="row">

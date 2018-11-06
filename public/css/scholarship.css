@@ -1,0 +1,340 @@
+*{margin: 0; padding: 0;}
+body {
+    padding-top: 75px;
+    background: #f3f1f2;
+}
+
+.delete-margin{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar{
+    height: 75px;
+}
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-link {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+}
+
+/* Fixes dropdown menus placed on the right side */
+.ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+}
+ul{
+    height: 100%;
+}
+li.nav-item{
+    display: flex;
+    align-items: center;
+}
+li.btnlogin{
+    height: 100%;
+    width: 200px;
+    margin-left: 0px !important;
+    background: #e94e38;
+    display: flex;
+    justify-content: center;
+}
+.leftitemsinnav{
+    position: relative;
+}
+.searchbar{
+    position: absolute;
+    top: 23px;
+    right: 295px;
+    border-radius: 15px;
+    border: solid 1px #e94e38;
+    transition: 0.3s;
+    opacity: 0;
+    height: 30px;
+    padding-left: 10px;
+    outline: none;
+}
+li.btnsearch{
+    height: 100%;
+    width: 75px;
+    background: #e2dee0;
+    display: flex;
+    justify-content: center;
+}
+li.btnsearch button{
+    outline: none;
+}
+.white{
+    color: white !important;
+}
+li.nav-item button{
+    background: transparent;
+    border: none;
+}
+
+/*END MENU*/
+
+.mainhead{
+    width: 100%;
+    height: 375px;
+    background: url("pictures/mainbackground.png");
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    text-align: center;
+}
+form.form {
+    margin-top: 50px;
+}
+
+.box h2{
+    margin-top: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+
+.box .inputBox{
+    text-align: center;
+    margin-top: 10px;
+}
+.box .inputBox input{
+    width: 600px;
+    height: 50px;
+    border: solid 1px #5e6b70;
+    background: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    padding: 0px 20px;
+    color: white;
+    outline: none;
+}
+
+.box button{
+    width: 150px;
+    height: 60px;
+    margin-top: 20px;
+    background: #e94e38;
+    border-radius: 30px ;
+    color: white;
+    border: none;
+    outline: none;
+    transition: .5s;
+}
+.box button:hover {
+    background: #e94e38;
+    box-shadow: 0px 0px 10px;
+}
+.box button:active {
+    background: #e94e50;
+    box-shadow: 0px 0px 5px;
+}
+
+@media only screen and (max-width: 980px) {
+    .itemsinnav{
+        display: none;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .leftitemsinnav{
+        display: none;
+    }
+    .box h2{
+        display: none;
+    }
+    .box .inputBox input{
+        width: 285px;
+    }
+
+}
+
+
+/*Thông tin học bổng*/
+.scholarshipbox .row{
+    margin-top: 10px;
+}
+.scholarshipbox .head{
+    text-transform: uppercase;
+    color: #6c6c6c;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: arial;
+}
+.scholarshipbox .head p{
+    margin-bottom: 0px;
+    border-bottom: solid 1px black;
+}
+.scholarshipbox .card{
+    position: relative;
+    border: none;
+}
+.scholarshipbox .card:hover{
+    box-shadow: 0px 0px 5px;
+}
+.scholarshipbox .card .textboxh4{
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.scholarshipbox .card .textboxp{
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+.scholarshipbox .card .card-block{
+    height: 120px;
+    overflow: hidden;
+    padding: 0px 10px;
+}
+.scholarshipbox .card .bg{
+    height: 120px;
+    /*display: hidden;*/
+}
+.scholarshipbox .card .blur{
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0));
+    height: 100px;
+    border-bottom: solid 3px #1baf5d;
+}
+.scholarshipbox .card .country{
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+.scholarshipbox .card .money{
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 60px;
+    right: 100px;
+    background: #e94e38;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    z-index: 1;
+}
+.scholarshipbox .card .date{
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #f19e1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    z-index: 1;
+}
+.scholarshipbox .card .card-block h4{
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+}
+.scholarshipbox .card .card-block p{
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.scholarshipbox .card a{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+.scholarshipbox .card a:after{
+    content: '>>';
+}
+
+
+/*footer*/
+.footer{
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+.footer .bg{
+    width: 100%;
+    height: 250px;
+    background:  url("pictures/footerbackground.png");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.footer .blur{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.5);
+}
+.footer .row{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+.footer h2{
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    text-decoration: underline;
+}
+.footer .lower{
+    margin-top: 30px;
+}
+.footer .outside{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    color: white;
+    font-size: 32px;
+}
+.footer .reflink{
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 1px;
+    margin: 2.5px;
+    background: black;
+    border-radius: 15px;
+    font-size: 12px;
+}
+.footer .r{
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 10px;
+}
+
