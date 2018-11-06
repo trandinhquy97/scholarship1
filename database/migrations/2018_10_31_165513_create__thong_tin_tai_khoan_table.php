@@ -19,8 +19,8 @@ class CreateThongTinTaiKhoanTable extends Migration
 			$table->date('NgaySinh');
 			$table->string('SDT');
 			$table->boolean('GioiTinh');
-			$table->string('QueQuan');
-			$table->string('DiaChi');
+			$table->text('QueQuan');
+			$table->text('DiaChi');
         });
     }
 

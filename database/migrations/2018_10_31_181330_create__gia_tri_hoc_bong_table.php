@@ -19,7 +19,7 @@ class CreateGiaTriHocBongTable extends Migration
 			$table->integer('SoTienMin');
 			$table->integer('SoTienMax');
 			$table->integer('id_DonViTien');
-			$table->string('MoTa');
+			$table->text('MoTa');
         });
     }
 

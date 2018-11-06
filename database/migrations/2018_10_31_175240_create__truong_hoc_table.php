@@ -15,9 +15,9 @@ class CreateTruongHocTable extends Migration
     {
         Schema::create('TruongHoc', function (Blueprint $table) {
             $table->increments('id_TruongHoc');
-			$table->string('TenTruongHoc');
-			$table->string('logo');
-			$table->string('ThongTin');
+			$table->text('TenTruongHoc');
+			$table->text('logo');
+			$table->text('ThongTin');
 			$table->integer('id_ThanhPho');
         });
     }
