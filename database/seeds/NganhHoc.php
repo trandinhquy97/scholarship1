@@ -11,7 +11,7 @@ class NganhHoc extends Seeder
      */
     public function run()
     {
-		DB::table('nganhhoc')->delete();
+		DB::table('nganhhoc')->truncate();
 		DB::table('nganhhoc')->insert(['TenNganhHoc' => "All"]);
 		DB::table('nganhhoc')->insert(['TenNganhHoc' => "Program"]);
 		DB::table('nganhhoc')->insert(['TenNganhHoc' => "Accounting"]);

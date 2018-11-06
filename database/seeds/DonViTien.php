@@ -11,7 +11,7 @@ class DonViTien extends Seeder
      */
     public function run()
     {
-		DB::table('donvitien')->delete();
+		DB::table('donvitien')->truncate();
         DB::table('donvitien')->insert(['TenDonVi' => "$", 'id_QuocGia' =>477]);
 		DB::table('donvitien')->insert(['TenDonVi' => "£", 'id_QuocGia' =>477]);
 		DB::table('donvitien')->insert(['TenDonVi' => "¥", 'id_QuocGia' =>109]);

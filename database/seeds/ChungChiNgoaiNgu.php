@@ -11,7 +11,7 @@ class ChungChiNgoaiNgu extends Seeder
      */
     public function run()
     {
-		DB::table('chungchingoaingu')->delete();
+		DB::table('chungchingoaingu')->truncate();
         DB::table('chungchingoaingu')->insert(['TenChungChi' => "C1", 'id_NgonNgu' =>20]);
 		DB::table('chungchingoaingu')->insert(['TenChungChi' => "B2", 'id_NgonNgu' =>20]);
 		DB::table('chungchingoaingu')->insert(['TenChungChi' => "A2", 'id_NgonNgu' =>20]);

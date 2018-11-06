@@ -11,7 +11,7 @@ class QuocGia extends Seeder
      */
     public function run()
     {
-		DB::table('quocgia')->delete();
+		DB::table('quocgia')->truncate();
         DB::table('quocgia')->insert(['TenQuocGia' => "Afghanistan", 'AnhQuocKy' => "pic/flags/flag-of-Afghanistan.jpg",'id_KhuVuc' => 1]);
 		DB::table('quocgia')->insert(['TenQuocGia' => "Albania", 'AnhQuocKy' => "pic/flags/flag-of-Albania.jpg",'id_KhuVuc' => 1]);
 		DB::table('quocgia')->insert(['TenQuocGia' => "Algeria", 'AnhQuocKy' => "pic/flags/flag-of-Algeria.jpg",'id_KhuVuc' => 1]);
