@@ -11,7 +11,7 @@ class BacHoc extends Seeder
      */
     public function run()
     {
-        DB::table('bachoc')->delete();
+        DB::table('bachoc')->truncate();
 		DB::table('bachoc')->insert(['TenBacHoc' => "Đại học"]);
         DB::table('bachoc')->insert(['TenBacHoc' => "Sau đại học"]);
         DB::table('bachoc')->insert(['TenBacHoc' => "Tiến sĩ"]);

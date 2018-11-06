@@ -11,7 +11,7 @@ class LoaiSuKien extends Seeder
      */
     public function run()
     {
-		DB::table('loaisukien')->delete();
+		DB::table('loaisukien')->truncate();
         DB::table('loaisukien')->insert(['TenLoaiSuKien' => "Workshop"]);
 		DB::table('loaisukien')->insert(['TenLoaiSuKien' => "Hackathon"]);
 		DB::table('loaisukien')->insert(['TenLoaiSuKien' => "Seminar"]);
