@@ -11,6 +11,7 @@ class KhuVuc extends Seeder
      */
     public function run()
     {
+		DB::table('khuvuc')->delete();
         DB::table('khuvuc')->insert(['TenKhuVuc' => "Châu Á"]);
 		DB::table('khuvuc')->insert(['TenKhuVuc' => "Châu Mỹ"]);
 		DB::table('khuvuc')->insert(['TenKhuVuc' => "Châu Âu"]);

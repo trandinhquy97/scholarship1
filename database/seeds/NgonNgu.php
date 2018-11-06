@@ -11,6 +11,7 @@ class NgonNgu extends Seeder
      */
     public function run()
     {
+		DB::table('ngonngu')->delete();
 		DB::table('ngonngu')->insert(['TenNgonNgu' => "Akan"]);
 		DB::table('ngonngu')->insert(['TenNgonNgu' => "Amharic"]);
 		DB::table('ngonngu')->insert(['TenNgonNgu' => "Arabic"]);

@@ -17,8 +17,8 @@ class CreateHocBongTable extends Migration
             $table->increments('id_HocBong');
 			$table->integer('id_NguoiDang');
 			$table->dateTime('NgayTao');
-			$table->string('AnhBia');
-			$table->string('TenHocBong');
+			$table->text('AnhBia');
+			$table->text('TenHocBong');
 			$table->integer('id_LoaiHb');
 			$table->date('deadline');
 			$table->integer('id_TruongHoc');
@@ -26,10 +26,10 @@ class CreateHocBongTable extends Migration
 			$table->integer('id_NganhHoc');
 			$table->integer('id_GiaTriHb');
 			$table->integer('SoLuong');
-			$table->string('YeuCau');
-			$table->string('ThuTucNop');
-			$table->string('LinkDangKy');
-			$table->string('NguonThongTin');
+			$table->text('YeuCau');
+			$table->text('ThuTucNop');
+			$table->text('LinkDangKy');
+			$table->text('NguonThongTin');
 			$table->integer('SoLuotQuanTam');
 			$table->integer('id_TrangThaiHb');
         });
