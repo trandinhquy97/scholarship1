@@ -18,7 +18,7 @@ class CreateBinhLuanTable extends Migration
 			$table->integer('id_DanhMucBinhLuan');
 			$table->integer('id_TaiKhoan');
 			$table->dateTime('ThoiGian');
-			$table->string('NoiDung');
+			$table->text('NoiDung');
 			$table->boolean('DaChinhSua');
 			$table->integer('id_BinhLuanGoc');
         });

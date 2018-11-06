@@ -15,7 +15,7 @@ class CreateThongTinCVTable extends Migration
     {
         Schema::create('ThongTinCV', function (Blueprint $table) {
             $table->integer('id_TaiKhoan');
-			$table->string('LinkCV');
+			$table->text('LinkCV');
         });
     }
 
