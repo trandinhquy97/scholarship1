@@ -77,7 +77,7 @@
         <h2 class="head">Khám phá những cơ hội mới</h2>
         <form action="" class="form">
             <div class="inputBox">
-                <input type="password" name="password" placeholder="Tìm kiếm">
+                <input type="text" name="search" placeholder="Tìm kiếm">
             </div>
 
             <button type="submit" class="">Submit</button>

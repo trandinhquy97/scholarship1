@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', ['as'=>'getIndex','uses'=>'GetDataToViewController@getIndex']);
 Route::get('/login', ['as'=>'getLogin','uses'=>'CustomLoginController@getLogin']);
 Route::post('/login', ['as'=>'postLogin','uses'=>'CustomLoginController@postLogin']);
 Route::get('/logout', ['as'=>'getLogout','uses'=>'LogoutController@getLogout']);
