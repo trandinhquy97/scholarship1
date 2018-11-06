@@ -33,7 +33,7 @@
 <nav class="navbar navbar-light bg-faded navbar-fixed-top delete-margin" role="navigation">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">
-            <img src="pictures/icon.png" alt="">
+            <img src="{{URL::asset('css/pictures/icon.png')}}" alt="">
         </a>
     </div>
 
