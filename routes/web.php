@@ -28,3 +28,18 @@ Route::get('/searchinfo', function () {
 });
 
 
+//Thanh menu
+Route::get('/scholarship', function () {
+    return view('scholarship');
+});
+Route::get('/contest', function () {
+    return view('contest');
+});
+Route::get('/workshop', function () {
+    return view('workshop');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+

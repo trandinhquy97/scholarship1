@@ -90,27 +90,15 @@ li.nav-item button{
 	background: rgba(0,0,0,.4);
 	text-align: center;
 }
+form.form {
+	margin-top: 50px;
+}
+
 .box h2{
 	margin-top: 50px;
 	text-align: center;
 	text-transform: uppercase;
 	color: #fff;
-}
-.box .topBox{
-	text-align: center;
-	margin-top: 30px;
-}
-.box .topBox select{
-	display: inline;
-	width: 285px;
-	height: 50px;
-	margin: 10px; 
-	border: solid 1px #5e6b70;
-	background: rgba(0,0,0,0.5);
-	border-radius: 25px;
-	padding: 0px 20px;
-	outline: none;
-	color: rgba(255,255,255,0.5);
 }
 
 
@@ -167,61 +155,6 @@ li.nav-item button{
 
 }
 
-/*Thanh filter*/
-.filter-contain{
-	padding: 10px;
-	background: white;
-	border-top: solid 1px #e2dee0;
-	border-bottom: solid 1px #e2dee0;
-	display: flex;
-	align-items: center;
-}
-.filter-contain .container{
-	position: relative;
-}
-/*.filter-contain .container .left{
-	display: inline;
-	position: absolute;
-	top: 50%;
-	left: 0%;
-	transform: translate(0%, -50%);
-}*/
-.filter-contain .container .left button{
-	/* display: inline; */
-	background: transparent;
-	border: none;
-	outline: none;
-	width: 100px;
-	height: 40px;
-	cursor: pointer;
-}
-
-.filter-contain .container .mid{
-	text-align: center;
-}
-.filter-contain .container .mid select{
-	width: 100px;
-	height: 40px;
-	border: solid 1px #cad2d3;
-	border-radius: 20px;
-	padding: 5px;
-	outline: none;
-}
-.filter-contain .container .right{
-	text-align: right;
-}
-
-@media only screen and (max-width: 750px) {
-	.filter-contain .container .right{
-		text-align: center;
-	}
-	.filter-contain .container .left{
-		text-align: center;
-	}
-	.filter-contain .container .mid{
-		text-align: center;
-	}
-}
 
 /*Thông tin học bổng*/
 .scholarshipbox .row{
@@ -263,7 +196,7 @@ li.nav-item button{
 }
 .scholarshipbox .card .bg{
 	height: 120px;
-	display:hidden;
+	/*display: hidden;*/
 }
 .scholarshipbox .card .blur{
     width: 100%;
