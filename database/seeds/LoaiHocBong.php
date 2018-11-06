@@ -11,6 +11,9 @@ class LoaiHocBong extends Seeder
      */
     public function run()
     {
-        //DB::table('loaihocbong')->insert(['TenLoaiHb' => "Toàn phần"]);
+		DB::table('loaihocbong')->delete();
+        DB::table('loaihocbong')->insert(['TenLoaiHb' => "Học bổng toàn phần"]);
+		DB::table('loaihocbong')->insert(['TenLoaiHb' => "Học bổng bán phần"]);
+		DB::table('loaihocbong')->insert(['TenLoaiHb' => "Định kỳ"]);
     }
 }
