@@ -1,7 +1,7 @@
-*{margin: 0; padding: 0;} 
+*{margin: 0; padding: 0;}
 body {
-    padding-top: 75px;
-    background: #f3f1f2;
+	padding-top: 75px;
+	background: #f3f1f2;
 }
 
 .delete-margin{
@@ -12,15 +12,15 @@ body {
 	height: 75px;
 }
 .navbar-nav {
-    flex-direction: row;
+	flex-direction: row;
 }
-    
+
 .nav-link {
 	padding-right: .5rem !important;
 	padding-left: .5rem !important;
 }
-    
-    /* Fixes dropdown menus placed on the right side */
+
+/* Fixes dropdown menus placed on the right side */
 .ml-auto .dropdown-menu {
 	left: auto !important;
 	right: 0px;
@@ -29,8 +29,8 @@ ul{
 	height: 100%;
 }
 li.nav-item{
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 li.btnlogin{
 	height: 100%;
@@ -87,7 +87,7 @@ li.nav-item button{
 	display: inline;
 	width: 285px;
 	height: 50px;
-	margin: 10px; 
+	margin: 10px;
 	border: solid 1px #5e6b70;
 	background: rgba(0,0,0,0.5);
 	border-radius: 25px;
@@ -133,15 +133,15 @@ li.nav-item button{
 }
 
 @media only screen and (max-width: 980px) {
-   .itemsinnav{
-   		display: none;
-   }
+	.itemsinnav{
+		display: none;
+	}
 }
 @media only screen and (max-width: 631px) {
-   .leftitemsinnav{
-   		display: none;
-   }
-   .box h2{
+	.leftitemsinnav{
+		display: none;
+	}
+	.box h2{
 		display: none;
 	}
 	.box .inputBox input{
@@ -158,7 +158,7 @@ li.nav-item button{
 
 }
 .post .container .tilte {
-	font-size: 30px; 
+	font-size: 30px;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #6c6c6c;
@@ -171,16 +171,13 @@ li.nav-item button{
 }
 .post .card{
 	border: none;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-left: 3%;
+	padding-right: 3%;
 
-}
-.post .card .bg{
-	display:hidden;
 }
 .post .card .bg .infor{
 	position: relative;
-	
+
 }
 .post .card .spacing{
 	margin-top: 40px;
@@ -190,16 +187,15 @@ li.nav-item button{
 	width: auto;
 }
 .post .card .bg .infor  input {
-	width: 60%;
-	margin-left: 5%;
+	width: 30%;
 	padding-top: 10px;
+	margin-left: 10px;
 	margin-top: 10px;
-	font-size: 20px;
+	font-size: 16px;
 	position: relative;
-	padding-left: 20px;
 	border: none;
 	border-bottom: 1px solid orange;
-    background-color: white;
+	background-color: white;
 }
 .post .card .bg .infor  input:focus {
 	outline: none;
@@ -207,57 +203,72 @@ li.nav-item button{
 .post .card .bg .infor  select {
 	margin-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 20px;
-	font-size: 20px;
-	width: 60%;
-	margin-left: 5%;
+	margin-left: 10px;
+	font-size: 16px;
+	width: auto;
 	display: inline-block;
 	border: none;
 	border-bottom: 1px solid orange;
- 	background-color: white;
+	background-color: white;
 	display: inline-block;
 }
 .post .card .bg .infor  select:hover {
 	outline: none;
 }
 .post .card .bg .infor .deadline input {
-	width: 60%;
+	width: 30%;
 	margin-top: 10px;
-	margin-left: 5%;
-	font-size: 20px;
-	padding-left: 20px;
+	font-size: 16px;
 	position: relative;
 	display: inline-block;
 	border: none;
 	border-bottom: 1px solid orange;
-    background-color: white;
-	
+	background-color: white;
+
 }
 .post .card .bg .infor .coverimages input {
-	width: 60%;
+	width: 35%;
 	margin-top: 10px;
-	font-size: 20px;
+	font-size: 14px;
 	padding-left: 0px;
 	position: relative;
 	display: inline-block;
 	border: none;
 	border-bottom: 0px solid orange;
-    background-color: white;
-	
+	background-color: white;
+
+}
+
+.green-border-focus
+{
+	display: flex;
+}
+.green-border-focus textarea {
+	border: 1px solid orange;
+	width: 80%;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+.green-border-focus .form-control:focus {
+	border: 1px solid orange;
+	box-shadow: 0 0 0 0.2rem rgba(255,127,80, .25);
 }
 .post .card .bg .buttonbot {
-    border: none;
-    color: white;
-    width: 70%;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    cursor: pointer;
+	border: none;
+	color: white;
+	width: 60%;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
 .post .card .bg .infor .buttonbot button {
 	position: relative;
@@ -266,21 +277,27 @@ li.nav-item button{
 	margin-right: 30px;
 	width: 25%;
 	height: 40px;
-	background-color: white; 
-    color: black; 
-    border: 1px solid #f44336;
+	background-color: white;
+	color: black;
+	border: 1px solid #f44336;
 }
 .post .card .bg .buttonbot  button:hover {
- 	background-color: #f44336;
-    color: white;
+	background-color: #f44336;
+	color: white;
 }
 .post .card .bg .infor label{
-	color: black;
-	width: 20%;
+	color: #818a91;
+	width: auto;
+	margin-left: 10px;
+	margin-left: 20px;
 	padding-top: 20px;
-	font-size: 20px;
+	font-size: 18px;
 	text-align: left;
+	font-weight: bold;
+
+
 }
+
 /*footer*/
 .footer{
 	width: 100%;
@@ -336,7 +353,7 @@ li.nav-item button{
 	color: white;
 	display: inline-block;
 	padding: 1px;
-	margin: 2.5px; 
+	margin: 2.5px;
 	background: black;
 	border-radius: 15px;
 	font-size: 12px;

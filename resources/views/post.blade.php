@@ -105,11 +105,7 @@
                                 <div class="spacing">
                                     <div class="scholarshipname">
                                         <label>Tên học bổng:</label>
-                                        <input type="text" name="tenhb"><br>
-                                    </div>
-                                </div>
-                                <div class="spacing">
-                                    <div class="type">
+                                        <input type="text" name="tenhb">
                                         <label>Loại học bổng *</label>
                                         <select>
                                             <option value="nganhan">Ngắn hạn</option>
@@ -120,9 +116,12 @@
                                     </div>
                                 </div>
                                 <div class="spacing">
+
+                                </div>
+                                <div class="spacing">
                                     <div class="subject">
                                         <label>Ngành học:</label>
-                                        <select multiple  >
+                                        <select  >
                                             <option value="cntt">Công nghệ thông tin</option>
                                             <option value="hoahoc">Hóa học</option>
                                             <option value="kinhte">Kinh tế</option>
@@ -130,17 +129,7 @@
                                             <option value="cauduong">Xây dựng cầu đường</option>
                                             <option value="sinhhoc">Sinh học</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="spacing">
-                                    <div class="university">
-                                        <label>Trường học:</label>
-                                        <input type="text" name="tentruong"><br>
-                                    </div>
-                                </div>
-                                <div class="spacing">
-                                    <div class="level">
-                                        <label>Loại học bổng:</label>
+                                        <label>Bậc học</label>
                                         <select>
                                             <option value="daihoc">Đại học</option>
                                             <option value="thacsy">Thạc sỹ</option>
@@ -150,25 +139,53 @@
                                     </div>
                                 </div>
                                 <div class="spacing">
-                                    <div class="deadline">
-                                        <label>Hạn chót nộp đơn:</label>
-                                        <input type="date" name="deadline"><br>
+                                    <div class="university">
+                                        <label>Trường học:</label>
+                                        <input type="text" name="tentruong">
+                                        <label>Quốc gia:</label>
+                                        <input type="text" name="quocgia"><br>
                                     </div>
                                 </div>
                                 <div class="spacing">
-                                    <div class="link">
-                                        <label>Link đăng ký:</label>
-                                        <input type="link" name="link"><br>
+                                    <div class="level">
+
                                     </div>
                                 </div>
-                                <div class="soluong">
-                                    <label>Số lượng</label>
-                                    <input type="text" name="soluong"><br>
+                                <div class="spacing">
+                                    <div class="deadline">
+                                        <label>Hạn chót nộp đơn:</label>
+                                        <input type="date" name="deadline"><br>
+
+
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $('#datetimepicker1').datetimepicker();
+                                        });
+                                    </script>
                                 </div>
+
+                                <div class="spacing">
+                                    <div class="link">
+                                        <label>Link đăng ký:</label>
+                                        <input type="link" name="link">
+                                        <label>Số lượng</label>
+                                        <input type="number" name="soluong"><br>
+                                    </div>
+                                </div>
+
                                 <div class="spacing">
                                     <div class="coverimages">
                                         <label>Ảnh bìa:</label>
                                         <input type="file" name="coverimage" ><br>
+                                    </div>
+                                </div>
+                                <div class="spacing">
+                                    <div class="request">
+                                        <div class="form-group green-border-focus">
+                                            <label>Yêu cầu:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="cen">
@@ -176,10 +193,10 @@
                                         <button type="button" onclick="alert('Submited')">Submit</button>
                                         <button type="button" onclick="alert('Canceled!')">Cancel</button>
                                     </div>
+
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -215,6 +232,7 @@
         </div>
     </div>
     <p class="r">Copyright © All Rights reserved</p>
+</div>
 </div>
 <!-- Xong phần footer -->
 
