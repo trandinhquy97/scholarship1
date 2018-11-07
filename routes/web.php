@@ -39,5 +39,15 @@ Route::get('/workshop', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/post', function () {
+    return view('post');
+});
+
+Route::get('/scholarship/{id}', function () {
+    return view('detailscholarship');
+});
+
+
+
 
 
