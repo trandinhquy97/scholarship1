@@ -57,42 +57,26 @@
             </div>
         </div>
         <div class="row">
+            @foreach($scholarships as $scholarship)
             <div class="col-sm-6">
                 <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
+                    <img class="card-img-top bg" src="{{URL::asset($scholarship->AnhBia)}}" alt="Card image cap">
+                    <img class="country" src="{{URL::asset($scholarship->AnhQuocKy)}}" alt="">
                     <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
+                    <p class="money">{{$scholarship->SoTienMax.$scholarship->TenDonVi}}</p>
+                    <p class="date">{{date('d/m/Y', strtotime($scholarship->deadline))}}</p>
                     <div class="card-block">
                         <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
+                            <h4 class="card-title">{{$scholarship->TenHocBong}}</h4>
                         </div>
                         <div class="textboxp">
                             <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
                         </div>
-                        <a href="#" class="">Xem thêm</a>
+                        <a href="{{'/scholarship/'.$scholarship->id_HocBong}}" class="">Xem thêm</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
