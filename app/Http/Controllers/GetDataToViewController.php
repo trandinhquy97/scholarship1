@@ -53,4 +53,23 @@ class GetDataToViewController extends Controller
             ->take(10)->get();
         return view('workshop', ['workshops' => $workshops]);
     }
+    function getScholarshipDetail($id){
+        $thisScholarship = DB::table('hocbong')->where("hocbong.id_HocBong",$id)
+            ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
+            ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
+            ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
+            ->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')
+            ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
+            ->leftjoin('taikhoan','taikhoan.id','=','hocbong.id_NguoiDang')
+            ->leftjoin('bachoc','bachoc.id_BacHoc','=','hocbong.id_BacHoc')
+            ->leftjoin('nganhhoc','nganhhoc.id_Nganhhoc','=','hocbong.id_NganhHoc')
+            ->leftjoin('dieukienngoaingu','dieukienngoaingu.id_HocBong','=','hocbong.id_HocBong')
+            ->leftjoin('chungchingoaingu','dieukienngoaingu.id_ChungChi','=','chungchingoaingu.id_ChungChi')
+            ->take(1)->get();
+//        $thisForeignCirtifications;
+//        $thisComment = DB::table('hocbong')->where("hocbong.id_HocBong",$id)
+//            ->rightjoin('id_mucbinhluan','binhluan.id_DanhMucBinhLuan','=','hocbong.id_mucbinhluan');
+
+        return view('detailscholarship',['scholarship'=>$thisScholarship[0], 'id'=>$id]);
+    }
 }

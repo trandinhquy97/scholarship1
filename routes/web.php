@@ -40,9 +40,7 @@ Route::get('/post', function () {
     return view('post');
 });
 
-Route::get('/scholarship/{id}', function () {
-    return view('detailscholarship');
-});
+Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
 
 
 
