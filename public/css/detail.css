@@ -244,6 +244,15 @@
 	border-radius: 3px;
 	padding: 3px 5px;
 }
+.bg-tit span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 20px;     /* fallback */
+	max-height: 40px;      /* fallback */
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 
 .item-post{
 	position: relative;
@@ -258,7 +267,7 @@
 .feed-post{
 	margin-top: 20px;
 	position: relative;
-	overflow: all;
+	/*overflow: all;*/
 	display: block;
 	color: #FFFFFF;
 	font-size: 14px;
@@ -338,7 +347,7 @@ textarea {
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
-  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  /*border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;*/
   border-image: none;
   border-radius: 6px 6px 6px 6px;
   border-style: none solid solid none;

@@ -66,7 +66,11 @@
                         <div class="highlight-tit"><i class="fas fa-scroll"></i> NGOẠI NGỮ</div>
                     </td>
                     <td>
-                        <a class="content-data" align="left"> {{$scholarship->Diem}}{{$scholarship->TenChungChi}}</a><br>
+                        <a class="content-data" align="left">
+							@foreach($ForeignCirtifications as $ForeignCirtification)
+								{{$ForeignCirtification->Diem}} {{$ForeignCirtification->TenChungChi}}
+							@endforeach
+						</a><br>
                     </td>
                 </tr>
             </table>
@@ -94,81 +98,23 @@
 	            <button type="button" class="btn btn-info align-middle" style="position: absolute;right: 0px;margin-top:6px;vertical-align: middle;text-align: center;"><i class="far fa-thumbs-up" style="margin-right: 10px;vertical-align: middle;"></i>Quan tâm</button>
             </div>
         </div>
+
+
+
+		{{--Right Bar--}}
         <div class="rightside">
             <div class="right-tit">Vừa mới đăng</div>
-            <div href="#" class="feed-post">
+			@foreach($rightBarScholarships as $rightBarScholarship)
+            <a href="{{'../scholarship/'.$rightBarScholarship->id_HocBong}}" class="feed-post">
             	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
+            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset($rightBarScholarship->AnhQuocKy)}}">
+            		<img class="img-feed" src="{{URL::asset($rightBarScholarship->AnhBia)}}">
             		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
+            			<span>{{$rightBarScholarship->TenHocBong}}<br>{{$rightBarScholarship->TenNganhHoc}}</span>
             		</div>
             	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            <div href="#" class="feed-post">
-            	<div class="item-feed">
-            		<img style="position: absolute;width: 40px;height: 40px;top:3px;left: 5px;" src="{{URL::asset('css/pictures/usa.png')}}">
-            		<img class="img-feed" src="{{URL::asset('css/pictures/mainbackground.png')}}">
-            		<div class="bg-tit">
-            			<span>Học bổng toàn phần chính phủ Đức ngành CNTT<br>Công nghệ thông tin</span>
-            		</div>
-            	</div>
-            </div>
-            
+            </a>
+			@endforeach
         </div>
 
     </div>
