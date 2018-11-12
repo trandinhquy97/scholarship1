@@ -95,42 +95,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
+            @foreach($workshops as $workshop)
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top bg" src="{{URL::asset($workshop->AnhBia)}}" alt="Card image cap">
+                        <img class="country" src="{{URL::asset($workshop->AnhQuocKy)}}" alt="">
+                        <div class="blur"></div>
+                        <p class="money">{{$workshop->GiaiThuong}}</p>
+                        <p class="date">{{date('d/m/Y', strtotime($workshop->ThoiGianKetThucDangKy))}}</p>
+                        <div class="card-block">
+                            <div class="textboxh4">
+                                <h4 class="card-title">{{$workshop->TieuDeBaiDang}}</h4>
+                            </div>
+                            <div class="textboxp">
+                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                            </div>
+                            <a href="{{'/contests/'.$workshop->id_SuKien}}" class="">Xem thêm</a>
                         </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
