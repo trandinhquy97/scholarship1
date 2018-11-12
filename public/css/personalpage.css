@@ -1,0 +1,117 @@
+*{margin: 0; padding: 0;}
+body {
+	padding-top: 0px;
+	color: #d49e96;
+}
+.compact
+{
+	font-size: 1.2rem;
+}
+.delete-margin{
+	margin: 0px;
+	padding: 0px;
+}
+.navbar{
+	height: 75px;
+}
+.navbar-nav {
+	flex-direction: row;
+}
+.navbar-nav c{
+	position: relative;
+	padding: 0;
+	width: 100px;
+	text-align: center;
+	line-height: 80px;
+	font-size: 110%;
+
+
+}
+
+.nav-link {
+	padding-right: .5rem !important;
+	padding-left: .5rem !important;
+}
+
+/* Fixes dropdown menus placed on the right side */
+.ml-auto .dropdown-menu {
+	left: auto !important;
+	right: 0px;
+}
+li.nav-item{
+	display: flex;
+	align-items: center;
+}
+
+.leftitemsinnav li.btnsearch{
+	height: 100%;
+	width: 75px;
+	background: #e2dee0;
+	display: flex;
+	justify-content: center;
+}
+.white{
+	color: white !important;
+}
+.leftitemsinnav li.nav-item button{
+	background: transparent;
+	border: none;
+}
+
+/*END MENU*/
+
+@media only screen and (max-width: 980px) {
+	.itemsinnav{
+		display: none;
+	}
+}
+@media only screen and (max-width: 631px) {
+	.leftitemsinnav{
+		display: none;
+	}
+	.box h2{
+		display: none;
+	}
+	.box .inputBox input{
+		width: 285px;
+	}
+
+}
+.db-social .image-default img {
+	margin: unset;
+}
+.db-social .justify-content-center
+{
+	text-align: left;
+	color: #775952;
+	margin-bottom: 2rem;
+}
+.about-title
+{
+	color: #538186
+}
+
+.db-social .justify-content-center .infos {
+
+	margin-top: 4rem; !important
+margin-bottom: 2rem;
+}
+.container-fluid h1, h2, h3, h4, h5, h6 {
+	color: #e94e38;
+}
+.container-fluid h1 {
+	font-size: 50px;
+}
+
+.justify-content-center .image-default .rounded-circle {
+	border-radius: 30%!important;
+}
+.db-social .justify-content-center .image-default img {
+	width: 150px;
+	top : -110px;
+
+}
+.db-social .justify-content-center .infos {
+	margin-top: 70px;
+
+}
