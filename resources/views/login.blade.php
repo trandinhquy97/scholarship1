@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/login.css')}}">
+
+
 </head>
 <body >
 <div class="box">

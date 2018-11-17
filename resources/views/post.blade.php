@@ -6,10 +6,13 @@
     <script type="text/javascript" src="vendor/bootstrap.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <!-- <link rel="stylesheet" href="vendor/bootstrap.css"> -->
-    <link rel="stylesheet" href="{{URL::asset('css/css/fontawesome-all.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/post.css')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/img/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/img/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/img/favicon-16x16.png')}}">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{URL::asset('personalpage.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/elisyam-1.5.min.css')}}">
     <script type="text/javascript">
         $(document).ready(function() {
             $(".btnsearch").hover(function(){
