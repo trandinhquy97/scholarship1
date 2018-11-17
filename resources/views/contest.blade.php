@@ -117,6 +117,13 @@
             @endforeach
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 pagination">
+                {!! $contests->links() !!}
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Hết phần các mục -->
 

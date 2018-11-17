@@ -33,24 +33,21 @@ class GetDataToViewController extends Controller
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
             ->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
-            ->skip(0)
-            ->take(10)->get();
+            ->paginate(4);
         return view('scholarship', ['scholarships' => $scholarships]);
     }
     function getContests(){
         $contests = DB::table('sukien')->where("id_LoaiSuKien","2")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
-            ->skip(0)
-            ->take(10)->get();
+            ->paginate(4);
         return view('contest', ['contests' => $contests]);
     }
     function getWorkshops(){
         $workshops = DB::table('sukien')->where("id_LoaiSuKien","1")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
-            ->skip(0)
-            ->take(10)->get();
+            ->paginate(4);
         return view('workshop', ['workshops' => $workshops]);
     }
     function getScholarshipDetail($id){
