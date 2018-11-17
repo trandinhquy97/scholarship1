@@ -30,39 +30,7 @@
     </script>
 </head>
 <body >
-<nav class="navbar navbar-light bg-faded navbar-fixed-top delete-margin" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-            <img src="{{URL::asset('css/pictures/icon.png')}}" alt="">
-        </a>
-    </div>
-
-    <ul class="nav navbar-nav itemsinnav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">HỌC BỔNG</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CUỘC THI</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">WORKSHOP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">LIÊN HỆ</a>
-        </li>
-    </ul>
-
-    <ul class="nav navbar-nav ml-auto leftitemsinnav">
-        <input type="text" class="searchbar">
-        <li class="nav-item btnsearch">
-            <button><i class="fas fa-search white"></i></button>
-        </li>
-        <li class="nav-item btnlogin">
-            <i class="fas fa-user-alt white"></i>
-            <a class="nav-link white" href="#">Login</a>
-        </li>
-    </ul>
-</nav>
+@include('header')
 
 <!-- Hết menu -->
 
@@ -201,35 +169,7 @@
 
 
 
-<div class="footer">
-    <div class="bg"></div>
-    <div class="blur"></div>
-    <div class="row">
-        <div class="col-sm-4">
-            <h2>Follow us</h2>
-            <div class="lower">
-                <a class="outside" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="outside" href=""><i class="fab fa-youtube"></i></a>
-                <a class="outside" href=""><i class="fas fa-phone-volume"></i></a>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-        </div>
-    </div>
-    <p class="r">Copyright © All Rights reserved</p>
-</div>
+@include("footer")
 <!-- Xong phần footer -->
 
 </body>
