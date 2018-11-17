@@ -36,11 +36,16 @@ Route::get('/workshop', ['as'=>'getWorkshops','uses'=>'GetDataToViewController@g
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/personal_info', ['as'=>'getPersonal','uses'=>'GetDataToViewController@getPersonal']);
+
+
+
 Route::get('/post', function () {
     return view('post');
 });
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
+
 
 
 

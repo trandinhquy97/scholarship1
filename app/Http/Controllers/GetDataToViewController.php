@@ -81,4 +81,7 @@ class GetDataToViewController extends Controller
             ->take(8)->get();
         return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships, 'id'=>$id]);
     }
+    function getPersonal(){
+        return view("personal_info");
+    }
 }

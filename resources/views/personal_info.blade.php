@@ -10,63 +10,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/img/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/img/favicon-16x16.png')}}">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{URL::asset('personalpage.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/personalpage.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/elisyam-1.5.min.css')}}">
 
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".btnsearch").hover(function(){
-                    $(".searchbar").css("opacity","100");
-                },
-                function(){
-                    $(".searchbar").css("opacity","0");
-                });
-            $(".searchbar").hover(function(){
-                    $(".searchbar").css("opacity","100");
-                },
-                function(){
-                    $(".searchbar").css("opacity","0");
-                });
-
-
-        });
-    </script>
 </head>
 <body >
-<nav class="navbar navbar-light bg-faded navbar-fixed-top delete-margin" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-            <img src="{{URL::asset('css/pictures/icon.png')}}" alt="">
-        </a>
-    </div>
-
-    <ul class="nav navbar-nav itemsinnav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">HỌC BỔNG</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CUỘC THI</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">WORKSHOP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">LIÊN HỆ</a>
-        </li>
-    </ul>
-
-    <ul class="nav navbar-nav ml-auto leftitemsinnav">
-        <li class="nav-item btnsearch">
-            <button><i class="fas fa-search white"></i></button>
-        </li>
-        <li class="nav-item btnlogin">
-            <i class="fas fa-user-alt white"></i>
-            <a class="nav-link white" href="#">Login</a>
-        </li>
-    </ul>
-</nav>
+@include('header')
 <!-- Hết menu -->
 <div class="page-content d-flex align-items-stretch">
     <div class="compact-sidebar light-sidebar has-shadow">
