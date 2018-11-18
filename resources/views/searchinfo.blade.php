@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{URL::asset('css/css/fontawesome-all.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/searchinfo.css')}}">
+    {{--<link rel="stylesheet" href="{{URL::asset('css/searchinfo.css')}}">--}}
+    <link rel="stylesheet" href="{{URL::asset('css/index.css')}}">
     <script type="text/javascript">
         $(document).ready(function() {
             $(".btnsearch").hover(function(){
@@ -34,83 +35,61 @@
 
 <!-- Hết menu -->
 
-<div class="mainhead">
-    <div class="box">
-        <h2 class="head">Khám phá những cơ hội mới</h2>
-        <form action="" class="form">
-            <div class="topBox">
-                <select name="country" id="country">
-                    <option value="0">Mỹ</option>
-                    <option value="1">Anh</option>
-                    <option value="2">Pháp</option>
-                </select>
-                <select name="level" id="level">
-                    <option value="0">Đại học</option>
-                    <option value="1">Thạc sĩ</option>
-                </select>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="password" placeholder="Tìm kiếm">
-            </div>
-
-            <button type="submit" class="">Submit</button>
-        </form>
-    </div>
-</div>
+@include('mainhead')
 
 <!-- Hết phần head -->
-<div class="filter-contain">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 left">
-                <button>NỔI BẬT</button>
-                <button>MỚI NHẤT</button>
-            </div>
-            <div class="col-sm-4 mid">
-                <select name="contry" id="contry">
-                    <option value="0">Mỹ</option>
-                    <option value="1">Anh</option>
-                    <option value="2">Pháp</option>
-                </select>
-                <select name="level" id="level">
-                    <option value="0">Đại học</option>
-                    <option value="1">Thạc sĩ</option>
-                </select>
-            </div>
-            <div class="col-sm-4 right">
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-                <button></button>
-            </div>
-        </div>
-        <!-- <div class="left">
-            <button>NỔI BẬT</button>
-            <button>MỚI NHẤT</button>
-        </div>
-        <div class="mid">
-            <select name="contry" id="contry">
-                <option value="0">Mỹ</option>
-                <option value="1">Anh</option>
-                <option value="2">Pháp</option>
-            </select>
-            <select name="level" id="level">
-                <option value="0">Đại học</option>
-                <option value="1">Thạc sĩ</option>
-            </select>
-        </div>
-        <div class="right">
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-        </div> -->
-    </div>
-</div>
+{{--<div class="filter-contain">--}}
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-4 left">--}}
+                {{--<button>NỔI BẬT</button>--}}
+                {{--<button>MỚI NHẤT</button>--}}
+            {{--</div>--}}
+            {{--<div class="col-sm-4 mid">--}}
+                {{--<select name="contry" id="contry">--}}
+                    {{--<option value="0">Mỹ</option>--}}
+                    {{--<option value="1">Anh</option>--}}
+                    {{--<option value="2">Pháp</option>--}}
+                {{--</select>--}}
+                {{--<select name="level" id="level">--}}
+                    {{--<option value="0">Đại học</option>--}}
+                    {{--<option value="1">Thạc sĩ</option>--}}
+                {{--</select>--}}
+            {{--</div>--}}
+            {{--<div class="col-sm-4 right">--}}
+                {{--<button></button>--}}
+                {{--<button></button>--}}
+                {{--<button></button>--}}
+                {{--<button></button>--}}
+                {{--<button></button>--}}
+                {{--<button></button>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<!-- <div class="left">--}}
+            {{--<button>NỔI BẬT</button>--}}
+            {{--<button>MỚI NHẤT</button>--}}
+        {{--</div>--}}
+        {{--<div class="mid">--}}
+            {{--<select name="contry" id="contry">--}}
+                {{--<option value="0">Mỹ</option>--}}
+                {{--<option value="1">Anh</option>--}}
+                {{--<option value="2">Pháp</option>--}}
+            {{--</select>--}}
+            {{--<select name="level" id="level">--}}
+                {{--<option value="0">Đại học</option>--}}
+                {{--<option value="1">Thạc sĩ</option>--}}
+            {{--</select>--}}
+        {{--</div>--}}
+        {{--<div class="right">--}}
+            {{--<button></button>--}}
+            {{--<button></button>--}}
+            {{--<button></button>--}}
+            {{--<button></button>--}}
+            {{--<button></button>--}}
+            {{--<button></button>--}}
+        {{--</div> -->--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!-- Hết phần lọc -->
 <div class="scholarshipbox">
     <div class="container">

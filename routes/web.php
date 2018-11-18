@@ -21,11 +21,8 @@ Route::post('/signup', ['as'=>'postSignup','uses'=>'SignupController@postSignup'
 Route::get('/signup', function () {
     return view('signup');
 });
-Route::get('/searchinfo', function () {
-    return view('searchinfo');
-});
-
-
+Route::post('/searchinfo', ['as'=>'postSearch','uses'=>'SearchController@postSearch']);
+Route::get('/searchinfo', ['as'=>'getSearch','uses'=>'SearchController@getSearch']);
 //Thanh menu
 Route::get('/scholarship', ['as'=>'getScholarships','uses'=>'GetDataToViewController@getScholarships']);
 
