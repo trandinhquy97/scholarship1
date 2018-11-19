@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/vendor/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/vendor/bootstrap.css')}}">
     {{--<link rel="stylesheet" href="{{URL::asset('css/searchinfo.css')}}">--}}
-    <link rel="stylesheet" href="{{URL::asset('css/index.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/scholarship.css')}}">
     <script type="text/javascript">
         $(document).ready(function() {
             $(".btnsearch").hover(function(){
@@ -99,41 +99,33 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
+            @foreach($search_data as $search_datum)
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top bg" src="{{URL::asset($search_datum->AnhBia)}}" alt="Card image cap">
+                        <img class="country" src="{{URL::asset($search_datum->AnhQuocKy)}}" alt="">
+                        <div class="blur"></div>
+                        <p class="money">{{$search_datum->SoTienMax.$search_datum->TenDonVi}}</p>
+                        <p class="date">{{date('d/m/Y', strtotime($search_datum->deadline))}}</p>
+                        <div class="card-block">
+                            <div class="textboxh4">
+                                <h4 class="card-title">{{$search_datum->TenHocBong}}</h4>
+                            </div>
+                            <div class="textboxp">
+                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                            </div>
+                            <a href="{{'/scholarship/'.$search_datum->id_HocBong}}" class="">Xem thêm</a>
                         </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <img class="card-img-top bg" src="http://placehold.it/600x120" alt="Card image cap">
-                    <img class="country" src="{{URL::asset('css/pictures/usa.png')}}" alt="">
-                    <div class="blur"></div>
-                    <p class="money">2500$</p>
-                    <p class="date">30/12/2019</p>
-                    <div class="card-block">
-                        <div class="textboxh4">
-                            <h4 class="card-title">okyo company</h4>
-                        </div>
-                        <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
-                        </div>
-                        <a href="#" class="">Xem thêm</a>
-                    </div>
-                </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 pagination">
+                {!! $search_data->links() !!}
+                {{--{!! $search_key !!}--}}
             </div>
         </div>
     </div>
