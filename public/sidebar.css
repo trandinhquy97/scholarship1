@@ -1,0 +1,18 @@
+.default-sidebar
+{
+	background-color:#f7f7f9;
+}
+.list-unstyled li
+{
+	background-color:#f7f7f9;
+}
+.default-sidebar .side-navbar ul ul
+{
+	background-color:#f7f7f9;
+}
+.default-sidebar .side-navbar a[aria-expanded="true"] {
+    background: #B0B0B0;
+    color: #3C3C3C;
+    margin: 0 10px 0 10px;
+    border-radius: 4px 4px 0 0;
+}
