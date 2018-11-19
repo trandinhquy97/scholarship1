@@ -17,7 +17,7 @@ class TaiKhoan extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','username', 'email', 'password','kt_Quyen'
+        'id','username', 'email', 'password','kt_Quyen','id_TrangThai'
     ];
 
     /**
