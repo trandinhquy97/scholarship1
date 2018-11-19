@@ -31,13 +31,13 @@ class DatabaseController extends Controller
     	$listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->paginate(10);
     	return view('accounttable', ['accounts'=> $listUsers]);
     }
-    public function getUser($username){
-    	return DB::table('taikhoan')->where('username', 'like', $username)->first();
+    public function getUser($token){
+    	return DB::table('taikhoan')->where('remember_token', '=', $token)->first();
     }
 
     public function getCurrentUser($request){
-    	$currentname = $request->session()->get('currentname');
-    	return $this->getUser($currentname);
+    	$token = $request->session()->get('currenttoken');
+    	return $this->getUser($token);
     }
 
     public function banAccount(Request $request, $id){
@@ -58,5 +58,10 @@ class DatabaseController extends Controller
         }else{
             return response()->json([555,"Bạn không có quyền thực hiện hoạt động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    public function resetAccount(Request $request){
+        $user = $this->getCurrentUser($request);
+
     }
 }
