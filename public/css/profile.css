@@ -122,6 +122,8 @@ li.nav-item{
 	.db-social .justify-content-center .infos {
 		margin-top: 100px;
 	}
-
+    .page-content .content-inner {
+        margin-left: 100px;
+    }
 
 

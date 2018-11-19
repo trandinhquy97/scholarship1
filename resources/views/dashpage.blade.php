@@ -52,8 +52,8 @@ Author: SAEROX
                         <ul class="list-unstyled">
                             <li><a href="#dropdown-db" aria-expanded="false" data-toggle="collapse"><i class="la la-user"></i><span>Cá nhân</span></a>
                                 <ul id="dropdown-db" class="collapse list-unstyled pt-0">
-                                    <li><a href="/" target="mainside">Thông tin cá nhân</a></li>
-                                    <li><a href="/" target="mainside">Đổi mật khẩu</a></li>
+                                    <li><a href="/personal_info" target="mainside">Thông tin cá nhân</a></li>
+                                    <li><a href="/personal_info_edit" target="mainside">Đổi mật khẩu</a></li>
                                 </ul>
                             </li>
                             @if($type == 5)

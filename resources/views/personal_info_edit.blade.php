@@ -3,16 +3,23 @@
     <title> Example </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families":["Montserrat:400,500,600,700","Noto+Sans:400,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
     <!-- <link rel="stylesheet" href="vendor/bootstrap.css"> -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/img/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/img/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/img/favicon-16x16.png')}}">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{URL::asset('personalpage.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/elisyam-1.5.min.css')}}">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="assets/vendors/css/base/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/base/elisyam-1.5.min.css">
 
 
     <script type="text/javascript">
@@ -35,100 +42,9 @@
     </script>
 </head>
 <body >
-<nav class="navbar navbar-light bg-faded navbar-fixed-top delete-margin" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-            <img src="{{URL::asset('css/pictures/icon.png')}}" alt="">
-        </a>
-    </div>
-
-    <ul class="nav navbar-nav itemsinnav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">HỌC BỔNG</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CUỘC THI</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">WORKSHOP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">LIÊN HỆ</a>
-        </li>
-    </ul>
-
-    <ul class="nav navbar-nav ml-auto leftitemsinnav">
-        <li class="nav-item btnsearch">
-            <button><i class="fas fa-search white"></i></button>
-        </li>
-        <li class="nav-item btnlogin">
-            <i class="fas fa-user-alt white"></i>
-            <a class="nav-link white" href="#">Login</a>
-        </li>
-    </ul>
-</nav>
 <!-- Hết menu -->
 <div class="page-content d-flex align-items-stretch">
-    <div class="compact-sidebar light-sidebar has-shadow">
-        <!-- Begin Side Navbar -->
-        <nav class="side-navbar box-scroll sidebar-scroll">
-            <!-- Begin Main Navigation -->
-            <ul class="list-unstyled">
-                <li>
-                    <a href="pages-newsfeed.html">
-                        <i class="ti ti-receipt"></i><span>Newsfeed</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="app-chat.html">
-                        <i class="ti ti-comments"></i><span>Messages</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages-friends.html">
-                        <i class="ti ti-user"></i><span>Friends</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages-groups.html">
-                        <i class="ti ti-world"></i><span>Groups</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages-events.html">
-                        <i class="ti ti-calendar"></i><span>Events</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <i class="ti ti-headphone"></i><span>Musics</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages-albums.html">
-                        <i class="ti ti-gallery"></i><span>Images</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages-videos.html">
-                        <i class="ti ti-control-play"></i><span>Videos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">
-                        <i class="ti ti-stats-up"></i><span>Statistics</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="db-default.html">
-                        <i class="la la-angle-left"></i><span>Go Back</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- End Main Navigation -->
-        </nav>
-        <!-- End Side Navbar -->
-    </div>
+
     <!-- End Left Sidebar -->
     <!-- Begin Content -->
     <div class="content-inner profile">
@@ -247,37 +163,7 @@
             <!-- End Row -->
         </div>
         <!-- End Container -->
-        <!-- Begin Page Footer-->
-        <div class="footer">
-            <div class="bg"></div>
-            <div class="blur"></div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <h2>Follow us</h2>
-                    <div class="lower">
-                        <a class="outside" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="outside" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="outside" href=""><i class="fas fa-phone-volume"></i></a>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                    <a href="" class="reflink">học bổng</a>
-                </div>
-            </div>
-            <p class="r">Copyright © All Rights reserved</p>
-        </div>
-        <!-- End Page Footer -->
+
         <a href="#" class="go-top"><i class="la la-arrow-up"></i></a>
         <!-- Offcanvas Sidebar -->
         <div class="off-sidebar from-right">

@@ -84,4 +84,7 @@ class GetDataToViewController extends Controller
     function getPersonal(){
         return view("personal_info");
     }
+    function getPersonalEdit(){
+        return view("personal_info_edit");
+    }
 }

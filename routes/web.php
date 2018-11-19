@@ -30,11 +30,14 @@ Route::get('/contest', ['as'=>'getContests','uses'=>'GetDataToViewController@get
 
 Route::get('/workshop', ['as'=>'getWorkshops','uses'=>'GetDataToViewController@getWorkshops']);
 
+
+
 Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/personal_info', ['as'=>'getPersonal','uses'=>'GetDataToViewController@getPersonal']);
 
+Route::get('/personal_info_edit', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPersonalEdit']);
 
 
 Route::get('/post', function () {
