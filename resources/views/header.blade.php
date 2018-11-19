@@ -28,7 +28,7 @@
         <li class="nav-item btnlogin">
             <i class="fas fa-user-alt white"></i>
             @if(Session::has('currentname'))
-                <a class="nav-link white namedisplay" href="../personal_info">{{Session::get('currentname')}},</a>
+                <a class="nav-link white namedisplay" href="../dashboard">{{Session::get('currentname')}},</a>
                 {{--<a class="nav-link white" href="personal">{{Session::get('kt_quyen')}},</a>--}}
                 <a class="nav-link white" href="logout">Đăng xuất</a>
             @else
