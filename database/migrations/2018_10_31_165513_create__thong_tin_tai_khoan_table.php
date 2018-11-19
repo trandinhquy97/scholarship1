@@ -21,6 +21,7 @@ class CreateThongTinTaiKhoanTable extends Migration
 			$table->boolean('GioiTinh');
 			$table->text('QueQuan');
 			$table->text('DiaChi');
+            $table->integer('id_TrangThai')->default(1);
         });
     }
 
