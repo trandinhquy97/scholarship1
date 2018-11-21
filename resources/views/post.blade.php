@@ -2,17 +2,25 @@
 <html lang="en"><head>
     <title> Example </title>
     <meta charset="utf-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families":["Montserrat:400,500,600,700","Noto+Sans:400,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
     <!-- <link rel="stylesheet" href="vendor/bootstrap.css"> -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('assets/img/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('assets/img/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('assets/img/favicon-16x16.png')}}">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{URL::asset('personalpage.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/base/elisyam-1.5.min.css')}}">
+    <link rel="stylesheet" href="css/post.css">
+    <link rel="stylesheet" href="assets/vendors/css/base/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendors/css/base/elisyam-1.5.css">
     <script type="text/javascript">
         $(document).ready(function() {
             $(".btnsearch").hover(function(){
@@ -27,68 +35,13 @@
                 function(){
                     $(".searchbar").css("opacity","0");
                 });
-
-
         });
     </script>
 </head>
 <body >
-<nav class="navbar navbar-light bg-faded navbar-fixed-top delete-margin" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-            <img src="{{URL::asset('css/pictures/icon.png')}}" alt="">
-        </a>
-    </div>
-
-    <ul class="nav navbar-nav itemsinnav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">HỌC BỔNG</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CUỘC THI</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">WORKSHOP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">LIÊN HỆ</a>
-        </li>
-    </ul>
-
-    <ul class="nav navbar-nav ml-auto leftitemsinnav">
-        <li class="nav-item btnsearch">
-            <button><i class="fas fa-search white"></i></button>
-        </li>
-        <li class="nav-item btnlogin">
-            <i class="fas fa-user-alt white"></i>
-            <a class="nav-link white" href="#">Login</a>
-        </li>
-    </ul>
 </nav>
 <!-- Hết menu -->
-<div class="mainhead">
-    <div class="box">
-        <h2 class="head">Khám phá những cơ hội mới</h2>
-        <form action="" class="form">
-            <div class="topBox">
-                <select name="country" id="country">
-                    <option value="0" style="width: 5px">Mỹ</option>
-                    <option value="1">Anh</option>
-                    <option value="2">Pháp</option>
-                </select>
-                <select name="level" id="level">
-                    <option value="0">Đại học</option>
-                    <option value="1">Thạc sĩ</option>
-                </select>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="password" placeholder="Tìm kiếm">
-            </div>
 
-            <button type="submit" class="">Submit</button>
-        </form>
-    </div>
-</div>
 
 <!-- Hết phần head -->
 
