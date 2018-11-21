@@ -12,11 +12,11 @@ class QuyenTaiKhoan extends Seeder
     public function run()
     {
         DB::table('quyentaikhoan')->truncate();
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 1, 'TenQuyen' = > 'Sinh viên']);
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 2, 'TenQuyen' = > 'Tổ chức']);
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 3, 'TenQuyen' = > 'Nhân viên']);
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 4, 'TenQuyen' = > 'Người đăng tin']);
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 5, 'TenQuyen' = > 'Quản trị viên']);
-        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 6, 'TenQuyen' = > 'Kiểm duyệt viên']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 1, 'TenQuyen' => 'Sinh viên']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 2, 'TenQuyen' => 'Tổ chức']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 3, 'TenQuyen' => 'Nhân viên']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 4, 'TenQuyen' => 'Người đăng tin']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 5, 'TenQuyen' => 'Quản trị viên']);
+        DB::table('quyentaikhoan')->insert(['id_QuyenTaiKhoan' => 6, 'TenQuyen' => 'Kiểm duyệt viên']);
     }
 }
