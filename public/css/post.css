@@ -175,6 +175,7 @@ li.nav-item button{
 	padding-right: 3%;
 
 }
+
 .post .card .bg .infor{
 	position: relative;
 
@@ -187,7 +188,7 @@ li.nav-item button{
 	width: auto;
 }
 .post .card .bg .infor  input {
-	width: 30%;
+	width: 25%;
 	padding-top: 10px;
 	margin-left: 10px;
 	margin-top: 10px;
@@ -205,7 +206,7 @@ li.nav-item button{
 	padding-bottom: 10px;
 	margin-left: 10px;
 	font-size: 16px;
-	width: auto;
+	width: 25%;
 	display: inline-block;
 	border: none;
 	border-bottom: 1px solid orange;
@@ -216,7 +217,7 @@ li.nav-item button{
 	outline: none;
 }
 .post .card .bg .infor .deadline input {
-	width: 30%;
+	width: 25%;
 	margin-top: 10px;
 	font-size: 16px;
 	position: relative;
@@ -242,6 +243,7 @@ li.nav-item button{
 .green-border-focus
 {
 	display: flex;
+
 }
 .green-border-focus textarea {
 	border: 1px solid orange;
@@ -287,7 +289,7 @@ li.nav-item button{
 }
 .post .card .bg .infor label{
 	color: #818a91;
-	width: auto;
+	width: 135px;
 	margin-left: 10px;
 	margin-left: 20px;
 	padding-top: 20px;
