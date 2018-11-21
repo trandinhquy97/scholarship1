@@ -30,9 +30,9 @@
             @if(Session::has('currentname'))
                 <a class="nav-link white namedisplay" href="../dashboard">{{Session::get('currentname')}},</a>
                 {{--<a class="nav-link white" href="personal">{{Session::get('kt_quyen')}},</a>--}}
-                <a class="nav-link white" href="logout">Đăng xuất</a>
+                <a class="nav-link white" href="../logout">Đăng xuất</a>
             @else
-                <a class="nav-link white" href="login">Login</a>
+                <a class="nav-link white" href="../login">Login</a>
             @endif
         </li>
     </ul>

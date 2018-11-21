@@ -11,6 +11,7 @@ class SearchController extends Controller
         $search_key = $request->search;
         $request->session()->put('currentSearch', $search_key);
         $search_scholarship_data = DB::table('hocbong')->where('TenHocBong', 'like', '%'. $request->session()->get('currentSearch').'%')
+            ->where("id_TrangThaiHb","=",1)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
@@ -28,6 +29,7 @@ class SearchController extends Controller
     }
     function getSearch(Request $request){
         $search_scholarship_data = DB::table('hocbong')->where('TenHocBong', 'like', '%'. $request->session()->get('currentSearch').'%')
+            ->where("id_TrangThaiHb","=",1)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')

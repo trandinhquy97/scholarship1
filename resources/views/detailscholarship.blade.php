@@ -89,8 +89,15 @@
             	{{$scholarship->ThuTucNop}}
             </div>
             <div class="button-activity">
-	            <button type="button" class="btn btn-primary"><i class="fas fa-file-signature" style="margin-right: 10px;"></i>Đăng ký</button>
-            	
+                @if(Session::has('currentname')&&$currentAccount->kt_Quyen==1)
+	                {{--<button type="button" class="btn btn-primary" href="/dangky"><i class="fas fa-file-signature" style="margin-right: 10px;"></i>Đăng ký</button>--}}
+
+                    @if($checkInDataBaseRegisted == true)
+                        <a href="" class="btn btn-primary" role="button"><i class="fas fa-file-signature" style="margin-right: 10px;"></i>Đã đăng ký</a>
+                    @else
+                        <a href="{{$id}}/dangky" class="btn btn-primary" role="button"><i class="fas fa-file-signature" style="margin-right: 10px;"></i>Đăng ký</a>
+                    @endif
+            	@endif
             </div>
             <div class="source-link">
             	<b>Nguồn: </b>

@@ -45,6 +45,7 @@ Route::get('/post', function () {
 });
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
+Route::get('/scholarship/{idHocBong}/dangky', ['as'=>'getScholarshipDetail','uses'=>'RegistScholarshipController@registScholarship']);
 
 Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 

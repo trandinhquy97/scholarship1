@@ -9,7 +9,7 @@ use DB;
 class GetDataToViewController extends Controller
 {
     function getIndex(){
-        $scholarships = DB::table('hocbong')
+        $scholarships = DB::table('hocbong')->where("id_TrangThaiHb","=",1)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
@@ -27,7 +27,7 @@ class GetDataToViewController extends Controller
         return view('index', ['scholarships' => $scholarships, 'contests' => $contests, 'workshops' => $workshops]);
     }
     function getScholarships(){
-        $scholarships = DB::table('hocbong')
+        $scholarships = DB::table('hocbong')->where("id_TrangThaiHb","=",1)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
@@ -50,7 +50,7 @@ class GetDataToViewController extends Controller
             ->paginate(4);
         return view('workshop', ['workshops' => $workshops]);
     }
-    function getScholarshipDetail($id){
+    function getScholarshipDetail(Request $request, $id){
         $thisScholarship = DB::table('hocbong')->where("hocbong.id_HocBong",$id)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
@@ -72,14 +72,22 @@ class GetDataToViewController extends Controller
 
 
 //        LeftBar
-        $scholarships = DB::table('hocbong')
+        $scholarships = DB::table('hocbong')->where("id_TrangThaiHb","=",1)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')
             ->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->leftjoin('nganhhoc','nganhhoc.id_Nganhhoc','=','hocbong.id_NganhHoc')
             ->take(8)->get();
-        return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships, 'id'=>$id]);
+
+        $currentAccount = DB::table('taikhoan')->where('email','=',$request->session()->get('currentemail'))->first();
+        $checkInDataBaseRegisted = false;
+        $rows = DB::table('dangkyhocbong')->where('EmailDangKy','=',$request->session()->get('currentemail'))
+            ->where('id_HocBong','=',$id)->get();;
+        foreach ($rows as $row){
+            $checkInDataBaseRegisted = true;
+        }
+        return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships,'currentAccount'=>$currentAccount,'checkInDataBaseRegisted'=>$checkInDataBaseRegisted, 'id'=>$id]);
     }
     function getPersonal(){
         return view("personal_info");
