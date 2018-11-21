@@ -66,9 +66,6 @@ class GetDataToViewController extends Controller
         $thisForeignCirtifications = DB::table('dieukienngoaingu')->where("id_HocBong",$id)
             ->leftjoin('chungchingoaingu','chungchingoaingu.id_ChungChi','=','dieukienngoaingu.id_ChungChi')
             ->get();
-//        $thisComment = DB::table('hocbong')->where("hocbong.id_HocBong",$id)
-//            ->rightjoin('id_mucbinhluan','binhluan.id_DanhMucBinhLuan','=','hocbong.id_mucbinhluan');
-
 
 
 //        LeftBar
@@ -80,6 +77,10 @@ class GetDataToViewController extends Controller
             ->leftjoin('nganhhoc','nganhhoc.id_Nganhhoc','=','hocbong.id_NganhHoc')
             ->take(8)->get();
 
+        $comments = DB::table('binhluan')->where("id_DanhMucBinhLuan","=",$id)
+            ->leftjoin('taikhoan','binhluan.id_TaiKhoan','=','taikhoan.id')
+            ->get();
+
         $currentAccount = DB::table('taikhoan')->where('email','=',$request->session()->get('currentemail'))->first();
         $checkInDataBaseRegisted = false;
         $rows = DB::table('dangkyhocbong')->where('EmailDangKy','=',$request->session()->get('currentemail'))
@@ -87,7 +88,7 @@ class GetDataToViewController extends Controller
         foreach ($rows as $row){
             $checkInDataBaseRegisted = true;
         }
-        return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships,'currentAccount'=>$currentAccount,'checkInDataBaseRegisted'=>$checkInDataBaseRegisted, 'id'=>$id]);
+        return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships,'currentAccount'=>$currentAccount,'checkInDataBaseRegisted'=>$checkInDataBaseRegisted, 'comments'=>$comments,'id'=>$id]);
     }
     function getPersonal(){
         return view("personal_info");
@@ -95,4 +96,5 @@ class GetDataToViewController extends Controller
     function getPersonalEdit(){
         return view("personal_info_edit");
     }
+
 }

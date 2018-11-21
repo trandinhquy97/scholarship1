@@ -127,67 +127,34 @@
     </div>
     <div class="comment-container">
     	<span class="highlight-tit-n">Bình luận</span>
-        <div class="input-comment">
-        	<textarea placeholder="Bình luận..." rows="20" name="comment[text]" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
-        	<button id="btn-cmt" type="button" class="btn btn-success btn-cmt">Bình luận</button>
-        </div>
+        @if(Session::has('currentname'))
+            <div class="input-comment">
+                <form action="{{$id}}/comment" method="post" id="commentform">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {{--<textarea placeholder="Bình luận..." rows="20" name="comment_text" id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>--}}
+                    <textarea name="comment_text" id="" cols="40" rows="30" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <input type="submit" name="comment_submit" id="btn-cmt" class="btn btn-success btn-cmt" value="Bình luận">
+                    {{--<a href="{{$id}}/comment" id="btn-cmt" class="btn btn-success btn-cmt">Bình luận</a>--}}
+                </form>
+
+                {{--<button id="btn-cmt" type="button" class="btn btn-success btn-cmt">Bình luận</button>--}}
+            </div>
+        @endif
         <div id="comment-content" class="comment-content">
-        	<div class="comment-line grey-color"  id="cmt-1">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        		<div class="reply-line">
-        			<div class="reply-cmt">
-	        			<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt"  id="cmt-2">Trả lời</span>
-		        		<p class="content-cmt">
-		        			This is awesome
-		        		</p>
-        			</div>
-        			<div class="reply-cmt">
-	        			<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-		        		<p class="content-cmt">
-		        			This is awesome
-		        		</p>
-        			</div>
-        			<div class="reply-cmt">
-	        			<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-		        		<p class="content-cmt">
-		        			This is awesome
-		        		</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="comment-line">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        	</div>
-        	<div class="comment-line grey-color">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        	</div>
-        	<div class="comment-line">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        	</div>
-        	<div class="comment-line grey-color">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        	</div>
-        	<div class="comment-line">
-        		<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>
-        		<p class="content-cmt">
-        			This is awesome
-        		</p>
-        	</div>
+            @foreach($comments as $comment)
+                <div class="comment-line">
+                    <span class="name-cmt">{{$comment->username}}</span><span class="time-cmt">{{$comment->ThoiGian}}</span>
+                    <p class="content-cmt">
+                        {{$comment->NoiDung}}
+                    </p>
+                </div>
+            @endforeach
+                {{--<div class="comment-line grey-color">--}}
+                    {{--<span class="name-cmt">Hoàng Trọng Minh Đức</span><span class="time-cmt">13:23 20/10/2018</span> <span class="ans-cmt">Trả lời</span>--}}
+                    {{--<p class="content-cmt">--}}
+                        {{--This is awesome--}}
+                    {{--</p>--}}
+                {{--</div>--}}
         </div>
 	</div>
     @include("footer");

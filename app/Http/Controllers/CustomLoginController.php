@@ -21,6 +21,7 @@ class CustomLoginController extends Controller
         {
             $row = DB::table('taikhoan')->where('email','=',$email);
             if($row->first()->id_TrangThai!=0){
+                $request->session()->put('currentid', Auth::user()->id);
                 $request->session()->put('currentname', Auth::user()->username);
                 $request->session()->put('currentemail', Auth::user()->email);
                 $request->session()->put('currenttoken', Auth::user()->remember_token);
