@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <base href="/">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Elisyam - Datatables</title>
         <meta name="description" content="Elisyam is a Web App and Admin Dashboard Template built with Bootstrap 4">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -65,18 +66,22 @@
                                 @case(1)
                                     @php ($c = 'success')
                                     @php ($status = 'Hoạt động')
+                                    @php ($b = 'la-lock')
                                     @break
                                 @case(0)
                                     @php ($c = 'danger')
                                     @php ($status = 'Khóa')
+                                    @php ($b = 'la-unlock-alt')
                                     @break;
                             @endswitch
-                            <td><span style="width:100px;"><span class="badge-text badge-text-small {{$c}}">{{$status}}</span></span></td>
-                            <td>Sinh viên</td>
+                            <td><span style="width:100px;" id="st{{$value->id}}"><span class="badge-text badge-text-small {{$c}}" >{{$status}}</span></span></td>
+                            <td id="rl{{$value->id}}" rlid={{$value->kt_Quyen}}>{{$value->TenQuyen}}</td>
                             <td class="td-actions">
-                                <a class="btn-reset" id="{{$value->id}}"><i class="la ion-refresh"></i></a>
-                                <a class="btn-ban" id="{{$value->id}}"><i class="la la-user-times"></i></a>
-                                <a class="btn-del" id="{{$value->id}}"><i class="la ion-alert-circled"></i></a>
+                                <a class="btn-upg" id="{{$value->id}}"><i class="la la-user-plus delete
+"></i></a>
+                                <a class="btn-reset" id="{{$value->id}}"><i class="la ion-refresh delete"></i></a>
+                                <a class="btn-ban" id="{{$value->id}}" value="{{$value->id_TrangThai}}"><i class="la {{$b}} delete"></i></a>
+                                <a class="btn-del" id="{{$value->id}}"><i class="la ion-alert-circled delete"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -93,18 +98,15 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Bạn có muốn xóa tài khoản này không?</h4>
               </div>
+              <div class="modal-center" style="width:50%;margin: 0 auto;text-align:center;"></div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="modal-btn-yes">Có</button>
-                <button type="button" class="btn btn-default" id="modal-btn-no">Không</button>
+                <button type="button" class="btn btn-primary" id="modal-btn-yes">OK</button>
+                <button type="button" class="btn btn-default" id="modal-btn-no">Hủy</button>
               </div>
             </div>
           </div>
         </div>
     </div>
-    
-    {{-- <button class="btn btn-default" id="btn-confirm">Confirm</button> --}}
-
-    
-
     <!-- End Sorting -->
-    </body>   
+</body>   
+</html>

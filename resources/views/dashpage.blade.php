@@ -69,6 +69,7 @@ Author: SAEROX
                             <li class=""><a href="#dropdown-ui" aria-expanded="false" data-toggle="collapse"><i class="la ti-files"></i><span>Quản lí học bổng</span></a>
                                 <ul id="dropdown-ui" class="collapse list-unstyled pt-0">
                                     <li><a href="/manage/scholarship" target="mainside">Danh sách học bổng</a></li>
+                                    <li><a href="/manage/scholarship/approval" target="mainside">Duyệt bài đăng</a></li>
                                     <li><a href="/manage/scholarship/new" target="mainside">Thêm mới</a></li>
                                 </ul>
                             </li>
@@ -77,6 +78,7 @@ Author: SAEROX
                             <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
                                 <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
                                     <li><a href="/manage/post" target="mainside">Danh sách bài đăng</a></li>
+                                    <li><a href="/manage/post/approval" target="mainside">Duyệt bài đăng</a></li>
                                     <li><a href="/manage/post/new" target="mainside">Thêm mới</a></li>
                                 </ul>
                             </li>
