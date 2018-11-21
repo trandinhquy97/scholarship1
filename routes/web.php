@@ -46,11 +46,9 @@ Route::get('/post', function () {
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
 
-Route::get('/dashboard', function(){
-	return view('dashboard');
-});
+Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 
-Route::get('/dashpage', 'DatabaseController@routeDashBoard');
+Route::get('/dashpage', 'DatabaseController@routeBoardSide');
 
 Route::group(['prefix'=>'manage'], function(){
 	Route::group(['prefix'=>'scholarship'], function(){
@@ -58,10 +56,11 @@ Route::group(['prefix'=>'manage'], function(){
 		Route::get('delete/{id}', 'DatabaseController@delScholar');
 	});
 	Route::group(['prefix'=>'account'], function(){
+		Route::post('', 'DatabaseController@createAccount');
 		Route::get('', 'DatabaseController@getAllAccount');
-		Route::get('ban/{id}', 'DatabaseController@banAccount');
-		Route::get('del/{id}', 'DatabaseController@delAccount');
+		Route::put('', 'DatabaseController@changeAccount');
+		Route::delete('', 'DatabaseController@deleteAccount');
 	});
 });
-// Route::get('/manager/{userid}', 'DatabaseController@getData');
 
+Route::get('t', 'DatabaseController@test1');
