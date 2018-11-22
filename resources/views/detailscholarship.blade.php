@@ -21,7 +21,7 @@
             <div class="head-post">
                 <img class="cover-post" src="{{URL::asset($scholarship->AnhBia)}}">
                 <p id="tit">{{$scholarship->TenHocBong}}</p>
-                <img id="flag-contry" src="{{URL::asset('css/pictures/japan.png')}}">
+                <img id="flag-contry" src="{{URL::asset($scholarship->AnhQuocKy)}}">
                 <div class="deadline">Hạn chót nộp hồ sơ: <span>{{date('d/m/Y', strtotime($scholarship->deadline))}}</span></div>
             </div>
             <p id="author-post">Đăng bởi {{$scholarship->username}}, {{$scholarship->NgayTao}}</p>

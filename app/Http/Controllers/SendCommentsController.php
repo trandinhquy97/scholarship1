@@ -14,12 +14,25 @@ class SendCommentsController extends Controller
             DB::table('binhluan')->insert(
                 ['id_BinhLuan'=> null,
                     'id_DanhMucBinhLuan' => $id,
+                    'id_LoaiSuKien' => 0,
                     'id_TaiKhoan' => $request->session()->get('currentid'),
                     'ThoiGian' => Carbon::now(),
                     'NoiDung' => $request->get("comment_text"),
-                    'DaChinhSua' => 1,
-                    'id_BinhLuanGoc' => 1]
+                    'DaChinhSua' => 0]
             );
         return Redirect::to('/scholarship/'.$id);
+    }
+    function postCommentWorkshop(Request $request,$id){
+        if($request->get("comment_text")!=null)
+            DB::table('binhluan')->insert(
+                ['id_BinhLuan'=> null,
+                    'id_DanhMucBinhLuan' => $id,
+                    'id_LoaiSuKien' => 1,
+                    'id_TaiKhoan' => $request->session()->get('currentid'),
+                    'ThoiGian' => Carbon::now(),
+                    'NoiDung' => $request->get("comment_text"),
+                    'DaChinhSua' => 0]
+            );
+        return Redirect::to('/workshop/'.$id);
     }
 }

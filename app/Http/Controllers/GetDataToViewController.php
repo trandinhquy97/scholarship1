@@ -77,7 +77,7 @@ class GetDataToViewController extends Controller
             ->leftjoin('nganhhoc','nganhhoc.id_Nganhhoc','=','hocbong.id_NganhHoc')
             ->take(8)->get();
 
-        $comments = DB::table('binhluan')->where("id_DanhMucBinhLuan","=",$id)
+        $comments = DB::table('binhluan')->where("id_DanhMucBinhLuan","=",$id)->where('id_LoaiSuKien','=','0')
             ->leftjoin('taikhoan','binhluan.id_TaiKhoan','=','taikhoan.id')
             ->get();
 
@@ -89,6 +89,23 @@ class GetDataToViewController extends Controller
             $checkInDataBaseRegisted = true;
         }
         return view('detailscholarship',['scholarship'=>$thisScholarship[0],'ForeignCirtifications'=>$thisForeignCirtifications,'rightBarScholarships'=>$scholarships,'currentAccount'=>$currentAccount,'checkInDataBaseRegisted'=>$checkInDataBaseRegisted, 'comments'=>$comments,'id'=>$id]);
+    }
+    function getWorkshopDetail(Request $request, $id){
+        $workshopDetail = DB::table('sukien')->where('id_SuKien','=',$id)
+            ->leftjoin('taikhoan','sukien.id_NguoiDang','=','taikhoan.id')
+            ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
+            ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
+            ->first();
+        $workshops = DB::table('sukien')->where("id_LoaiSuKien","1")
+            ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
+            ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
+            ->take(8)->get();
+        $comments = DB::table('binhluan')->where("id_DanhMucBinhLuan","=",$id)->where('id_LoaiSuKien','=','1')
+            ->leftjoin('taikhoan','binhluan.id_TaiKhoan','=','taikhoan.id')
+            ->get();
+        return view('detailevent',['workshopDetail' => $workshopDetail,'workshops' => $workshops,'comments' => $comments,'id'=>$id]);
+
+//        return view('detailevent2',['workshopDetail' => $workshopDetail]);
     }
     function getPersonal(){
         return view("personal_info");

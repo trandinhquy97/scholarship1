@@ -61,7 +61,7 @@
                             <div class="textboxp">
                                 <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
                             </div>
-                            <a href="{{'/contests/'.$workshop->id_SuKien}}" class="">Xem thêm</a>
+                            <a href="{{'/workshop/'.$workshop->id_SuKien}}" class="">Xem thêm</a>
                         </div>
                     </div>
                 </div>

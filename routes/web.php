@@ -48,6 +48,9 @@ Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataTo
 Route::get('/scholarship/{idHocBong}/dangky', ['as'=>'getScholarshipDetail','uses'=>'RegistScholarshipController@registScholarship']);
 Route::post('/scholarship/{id}/comment',['as'=>'postComment','uses'=>'SendCommentsController@postComment']);
 
+Route::get('/workshop/{id}', ['as'=>'getWorkshopDetail','uses'=>'GetDataToViewController@getWorkshopDetail']);
+Route::post('/workshop/{id}/comment',['as'=>'postCommentWorkShop','uses'=>'SendCommentsController@postCommentWorkShop']);
+
 Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 
 Route::get('/dashpage', 'DatabaseController@routeBoardSide');
