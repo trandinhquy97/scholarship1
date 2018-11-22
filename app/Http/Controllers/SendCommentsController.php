@@ -35,4 +35,17 @@ class SendCommentsController extends Controller
             );
         return Redirect::to('/workshop/'.$id);
     }
+    function postCommentContest(Request $request,$id){
+        if($request->get("comment_text")!=null)
+            DB::table('binhluan')->insert(
+                ['id_BinhLuan'=> null,
+                    'id_DanhMucBinhLuan' => $id,
+                    'id_LoaiSuKien' => 2,
+                    'id_TaiKhoan' => $request->session()->get('currentid'),
+                    'ThoiGian' => Carbon::now(),
+                    'NoiDung' => $request->get("comment_text"),
+                    'DaChinhSua' => 0]
+            );
+        return Redirect::to('/workshop/'.$id);
+    }
 }

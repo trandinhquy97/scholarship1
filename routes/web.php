@@ -51,6 +51,9 @@ Route::post('/scholarship/{id}/comment',['as'=>'postComment','uses'=>'SendCommen
 Route::get('/workshop/{id}', ['as'=>'getWorkshopDetail','uses'=>'GetDataToViewController@getWorkshopDetail']);
 Route::post('/workshop/{id}/comment',['as'=>'postCommentWorkShop','uses'=>'SendCommentsController@postCommentWorkShop']);
 
+Route::get('/contest/{id}', ['as'=>'getContestDetail','uses'=>'GetDataToViewController@getContestDetail']);
+Route::post('/contest/{id}/comment',['as'=>'postCommentContest','uses'=>'SendCommentsController@postCommentContest']);
+
 Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 
 Route::get('/dashpage', 'DatabaseController@routeBoardSide');
