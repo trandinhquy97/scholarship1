@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Requests\SignupRequest;
 use App\TaiKhoan;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +31,8 @@ class SignupController extends Controller
                     'password'=>Hash::make($password),
                     'kt_Quyen'=>$type
                 ]);
+
+                DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'',"DiaChi"=>'']);
 //                echo $user;
                 Auth::login($user);
                 return Redirect::to("login");
