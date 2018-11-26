@@ -45,6 +45,17 @@ class DatabaseController extends Controller
     	return Redirect::to('/manage/scholarship');
     }
 
+    public function deleteScholar(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+
+         $idi = $request->input('idi');
+         DB::table('hocbong')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->where('id_HocBong', '=', $idi)->orWhere('id_NguoiDang','=', $user->id)->where('id_HocBong', '=', $idi)->delete();
+        return response()->json([999,"Da xoa"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+    }
+
     /*=========================================================================
         Route for manage account
     =========================================================================*/
