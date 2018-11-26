@@ -29,9 +29,20 @@ $(document).ready(function() {
       $("#modal-btn-yes").attr("meth", "DELETE");
       $("#modal-btn-yes").attr("idi", $(this).attr("id"));
     });
+    $(".btn-del-sl").on("click", function(){
+      console.log("xoa scholar"+$(this).attr("id"));
+      if($(".btn"))
+      showAlert("Bạn có muốn bài viết này không?");
+      $("#modal-btn-yes").attr("meth", "DELETE");
+      $("#modal-btn-yes").attr("idi", $(this).attr("id"));
+    });
+    
     $(".btn-ban").on("click", function(){
       console.log("ban acc"+$(this).attr("id")+$(this).attr("value"));
-      showAlert("Bạn có muốn khóa tài khoản này không?");
+      if($(this).attr("value") == 1)
+        showAlert("Bạn có muốn khóa tài khoản này không?");
+      else
+        showAlert("Bạn có muốn mở khóa tài khoản này không?")
       $("#modal-btn-yes").attr("meth", "PUT");
       $("#modal-btn-yes").attr("op", "3");
       $("#modal-btn-yes").attr("idi", $(this).attr("id"));
