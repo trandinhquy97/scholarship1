@@ -26,6 +26,7 @@ class CustomLoginController extends Controller
                 $request->session()->put('currentemail', Auth::user()->email);
                 $request->session()->put('currenttoken', Auth::user()->remember_token);
                 $request->session()->put('kt_quyen', Auth::user()->kt_Quyen);
+                $request->session()->put('id', Auth::user()->id);
                 return Redirect::to('/');
             }
             else

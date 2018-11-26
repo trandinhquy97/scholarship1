@@ -3,7 +3,9 @@
     <title> Example </title>
     <base href="/">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Elisyam is a Web App and Admin Dashboard Template built with Bootstrap 4">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Google Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
         WebFont.load({
@@ -21,6 +23,7 @@
     <link rel="stylesheet" href="css/personalpage.css">
     <link rel="stylesheet" href="assets/vendors/css/base/bootstrap.css">
     <link rel="stylesheet" href="assets/vendors/css/base/elisyam-1.5.css">
+
 
 </head>
 <body >
@@ -41,8 +44,8 @@
                             <img class="rounded-circle" src="assets/img/avatar/avatar-01.jpg" alt="...">
                         </div>
                         <div class="infos">
-                            <h1><B>Đỗ Minh Nhật</B></h1>
-                            <div class="location">Las Vegas, Nevada, U.S.</div>
+                            <h1><B>{{$profile->HoVaTen}}</B></h1>
+                            <div class="location">{{$email}}</div>
                         </div>
                     </div>
                     <!-- End Head Profile -->
@@ -62,19 +65,16 @@
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Ngày sinh:</div>
-                                        <div class="about-text">September 21, 1985</div>
+                                        <div class="about-text">{{$profile->NgaySinh }}</div>
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Nơi đang sống:</div>
-                                        <div class="about-text">Las Vegas, Nevada, U.S.</div>
+                                        <div class="about-text">{{$profile->QueQuan }}</div>
                                     </div>
-                                    <div class="about-infos d-flex flex-column">
-                                        <div class="about-title">Ngày tham gia:</div>
-                                        <div class="about-text">Febuary 20, 2017</div>
-                                    </div>
+
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Giới tính:</div>
-                                        <div class="about-text">Male</div>
+                                        <div class="about-text">@if($profile->GioiTinh  ==0) Nam @else Nữ @endif </div>
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Occupation:</div>
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Email:</div>
-                                        <div class="about-text">dgreen@email.com</div>
+                                        <div class="about-text">{{$email}}</div>
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Website:</div>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Số điện thoại:</div>
-                                        <div class="about-text">+00 987 654 32</div>
+                                        <div class="about-text">{{$profile->SDT}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -217,12 +217,7 @@
             <!-- End Row -->
         </div>
         <!-- End Container -->
-        <!-- Begin Page Footer-->
 
-
-        <!-- Offcanvas Sidebar -->
-
-        <!-- End Offcanvas Sidebar -->
     </div>
     <!-- End Content -->
 </div>

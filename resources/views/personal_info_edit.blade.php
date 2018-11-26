@@ -2,6 +2,7 @@
 <html lang="en"><head>
     <title> Example </title>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
@@ -67,8 +68,8 @@
                             <div class="mt-5">
                                 <img src="assets/img/avatar/avatar-01.jpg" alt="..." style="width: 120px;" class="avatar rounded-circle d-block mx-auto">
                             </div>
-                            <h3 class="text-center mt-3 mb-1">David Green</h3>
-                            <p class="text-center">dgreen@example.com</p>
+                            <h3 class="text-center mt-3 mb-1">{{$profile->HoVaTen}}</h3>
+                            <p class="text-center">{{$email}}</p>
                             <div class="em-separator separator-dashed"></div>
 
                         </div>
@@ -86,31 +87,31 @@
                                     <h4>01. Thông tin cá nhân</h4>
                                 </div>
                             </div>
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="/personal_info_edit">
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Họ và tên</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="David Green">
+                                        <input type="text" class="form-control" placeholder="David Green" name="HoVaTen" value={{$profile->HoVaTen}} >
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Ngày sinh</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="date" placeholder="Select value">
+                                        <input type="text" class="form-control" id="date" placeholder="Select value" name="NgaySinh" value={{$profile->NgaySinh}}>
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Giới tính</label>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <div class="styled-radio">
-                                                <input type="radio" name="radio" id="rad-2" >
+                                            <div class="styled-radio" >
+                                                <input type="radio"  id="rad-2" value="0" name="GioiTinh" >
                                                 <label for="rad-2">Nam</label><br>
 
                                             </div>
-                                            <div class="styled-radio">
+                                            <div class="styled-radio" >
 
-                                                <input type="radio" name="radio" id="rad-3" >
+                                                <input type="radio"  id="rad-3" value="1" name="GioiTinh">
                                                 <label for="rad-3">Nữ</label>
 
                                             </div>
@@ -121,41 +122,43 @@
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Email</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="dominhnhat2311@gmail.com">
+                                        <input type="text" class="form-control"  name="Email" value={{$email}} placeholder={{$email}}>
                                     </div>
                                 </div>
-                            </form>
+
                             <div class="col-10 ml-auto">
                                 <div class="section-title mt-3 mb-3">
                                     <h4>02. Thông tin địa chỉ và liên lạc</h4>
                                 </div>
                             </div>
-                            <form class="form-horizontal">
+
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Quê quán</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="123 Century Blvd">
+                                        <input type="text" class="form-control" name="QueQuan" placeholder={{$profile->QueQuan}} value={{$profile->QueQuan}}>
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Địa chỉ</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="Los Angeles">
+                                        <input type="text" class="form-control" name="DiaChi" placeholder={{$profile->DiaChi}} value={{$profile->DiaChi}}>
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Số điện thoại</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="0766800577">
+                                        <input type="text" class="form-control" name="SDT" placeholder={{$profile->SDT}} value={{$profile->SDT}}>
                                     </div>
                                 </div>
+                                <div class="em-separator separator-dashed"></div>
+                                <div class="text-right">
+                                    <input  name="_token" type="hiden" value="{{ csrf_token() }}" style="visibility:hidden;">
+                                    <button class="btn btn-gradient-01" type="submit">Lưu</button>
+                                    <button class="btn btn-shadow" type="reset">Hủy</button>
 
+                                </div>
                             </form>
-                            <div class="em-separator separator-dashed"></div>
-                            <div class="text-right">
-                                <button class="btn btn-gradient-01" type="submit">Lưu</button>
-                                <button class="btn btn-shadow" type="reset">Hủy</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>

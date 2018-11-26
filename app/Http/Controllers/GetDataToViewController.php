@@ -120,11 +120,56 @@ class GetDataToViewController extends Controller
             ->get();
         return view('detailcontest',['contestDetail' => $contestDetail,'contests' => $contest,'comments' => $comments,'id'=>$id]);
     }
-    function getPersonal(){
-        return view("personal_info");
-    }
-    function getPersonalEdit(){
-        return view("personal_info_edit");
+
+    public function getUser($username){
+        return DB::table('taikhoan')->where('username', '=', $username)->first();
     }
 
+    public function getUserById($id){
+        return DB::table('taikhoan')->where('id', '=', $id)->first();
+    }
+
+    public function getPublicUserState($id){
+        return DB::table('taikhoan')->select('id', 'username', 'id_TrangThai', 'kt_Quyen')->where('id', '=', $id)->first();
+    }
+
+    public function getCurrentUser(Request $request){
+        if($request->session()->has('currentname')){
+            $username = $request->session()->get('currentname');
+            return $this->getUser($username);
+        }
+        else{
+            return null;
+        }
+    }
+
+
+    function getPersonal(Request $request){
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+        $email = $user->email;
+        $profile = DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->first();
+        return view("personal_info", ['profile' => $profile],['email' => $email]);
+    }
+    function getPersonalEdit(Request $request){
+
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+        $email = $user->email;
+        $profile = DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->first();
+        return view("personal_info_edit",['profile' => $profile],['email' => $email]);
+    }
+    function postInfoEdit(Request $request){
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+
+        $hovaten = $request->input("HoVaTen");
+        $gioitinh = $request->input("GioiTinh");
+        $ngaysinh = $request->input("NgaySinh");
+        $quequan = $request->input("QueQuan");
+        $diachi = $request->input("DiaChi");
+        $sdt = $request->input("SDT");
+        DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->update(['HoVaTen'=> $hovaten,'GioiTinh'=> $gioitinh,'NgaySinh'=> $ngaysinh,'QueQuan'=> $quequan,'DiaChi'=> $diachi,'SDT'=> $sdt]);
+
+    }
 }

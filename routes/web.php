@@ -38,7 +38,7 @@ Route::get('/contact', function () {
 Route::get('/personal_info', ['as'=>'getPersonal','uses'=>'GetDataToViewController@getPersonal']);
 
 Route::get('/personal_info_edit', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPersonalEdit']);
-
+Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewController@postInfoEdit']);
 
 Route::get('/post', function () {
     return view('post');
