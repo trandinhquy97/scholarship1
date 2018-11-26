@@ -61,6 +61,7 @@ Route::get('/dashpage', 'DatabaseController@routeBoardSide');
 Route::group(['prefix'=>'manage'], function(){
 	Route::group(['prefix'=>'scholarship'], function(){
 		Route::get('/', 'DatabaseController@getAllScholar');
+		Route::delete('/', 'DatabaseController@deleteScholar');
 		Route::get('delete/{id}', 'DatabaseController@delScholar');
 	});
 	Route::group(['prefix'=>'account'], function(){
