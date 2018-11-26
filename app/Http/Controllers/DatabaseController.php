@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -159,6 +160,29 @@ class DatabaseController extends Controller
         else{
             return null;
         }
+    }
+
+    public function getAllComments(Request $request){
+        $quyen = $request->get("kt_Quyen");
+        if($quyen=3||$quyen=5||$quyen=6){
+            $commentsScholarship= DB::table('binhluan')->where("id_LoaiSuKien","=",0)
+                ->leftJoin('hocbong','hocbong.id_HocBong','=','binhluan.id_DanhMucBinhLuan')
+                ->paginate(10);
+        }
+        return view('commenttable',['commentsScholarship'=>$commentsScholarship]);
+    }
+    public function getAllCommentsEvent(Request $request){
+        $quyen = $request->get("kt_Quyen");
+        if($quyen=3||$quyen=5||$quyen=6) {
+            $comments = DB::table('binhluan')->where("binhluan.id_LoaiSuKien", "<>", 0)
+                ->leftJoin('sukien', 'sukien.id_SuKien', '=', 'binhluan.id_DanhMucBinhLuan')
+                ->paginate(10);
+        }
+        return view('commenteventtable',['comments'=>$comments]);
+    }
+    public function  delComment($id){
+        DB::delete('delete from binhluan where id_BinhLuan ='.$id);
+       return Redirect::back();
     }
 
 
