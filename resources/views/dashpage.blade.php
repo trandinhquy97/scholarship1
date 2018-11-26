@@ -65,7 +65,7 @@ Author: SAEROX
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 1 || $type == 5)
+                            @if($type == 2 || $type == 3 || $type == 4 || $type == 5 || $type == 6)
                             <li class=""><a href="#dropdown-ui" aria-expanded="false" data-toggle="collapse"><i class="la ti-files"></i><span>Quản lí học bổng</span></a>
                                 <ul id="dropdown-ui" class="collapse list-unstyled pt-0">
                                     <li><a href="/manage/scholarship" target="mainside">Danh sách học bổng</a></li>
@@ -74,7 +74,7 @@ Author: SAEROX
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 2  || $type == 5)
+                            @if($type == 2 || $type == 3 || $type == 4 || $type == 5 || $type == 6)
                             <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
                                 <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
                                     <li><a href="/manage/post" target="mainside">Danh sách bài đăng</a></li>
@@ -83,7 +83,7 @@ Author: SAEROX
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 5)
+                            @if($type == 3 || $type == 5 || $type == 6)
                             <li><a href="/manage/comment" aria-expanded="false" target="mainside"><i class="la la-commenting"></i><span>Quản lí bình luận</span></a>
                                 
                             </li>
@@ -94,7 +94,7 @@ Author: SAEROX
                     <!-- End Side Navbar -->
                 </div>
             </div>
-            <iframe name="mainside" src="/manage/scholarship" class="mainframe" frameborder="0"></iframe>
+            <iframe name="mainside" src="/personal_info" class="mainframe" frameborder="0"></iframe>
             <!-- Begin Vendor Js -->
         <script src="assets/vendors/js/base/jquery.min.js"></script>
         <script src="assets/vendors/js/base/core.min.js"></script>
