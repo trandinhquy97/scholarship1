@@ -32,7 +32,7 @@ class SignupController extends Controller
                     'kt_Quyen'=>$type
                 ]);
 
-                DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'',"DiaChi"=>'']);
+                DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam']);
 //                echo $user;
                 Auth::login($user);
                 return Redirect::to("login");
