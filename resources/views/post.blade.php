@@ -46,7 +46,7 @@
 <!-- Hết phần head -->
 
 <div class="post">
-    <div class="container">
+
         <div class="row">
             <div  class="col-sm-6 tilte">
                 <p>Đăng thông tin học bổng</p>
@@ -156,7 +156,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 <br>
 <br>

@@ -170,6 +170,6 @@ class GetDataToViewController extends Controller
         $diachi = $request->input("DiaChi");
         $sdt = $request->input("SDT");
         DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->update(['HoVaTen'=> $hovaten,'GioiTinh'=> $gioitinh,'NgaySinh'=> $ngaysinh,'QueQuan'=> $quequan,'DiaChi'=> $diachi,'SDT'=> $sdt]);
-
+        return redirect("/personal_info");
     }
 }

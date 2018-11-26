@@ -151,20 +151,20 @@ li.nav-item button{
 }
 /*post*/
 
-.post .container .row{
+.post  .row{
 
 	margin-top: 20px;
-	margin-left: 10%;
+	margin-left: 2%;
 
 }
-.post .container .tilte {
+.post  .tilte {
 	font-size: 30px;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #6c6c6c;
 
 }
-.post .container .tilte p{
+.post .tilte p{
 	margin-bottom: 10px;
 	border-bottom: solid 1px black;
 
@@ -296,7 +296,6 @@ li.nav-item button{
 	font-size: 18px;
 	text-align: left;
 	font-weight: bold;
-
 
 }
 
