@@ -70,6 +70,14 @@ Route::group(['prefix'=>'manage'], function(){
 		Route::put('', 'DatabaseController@changeAccount');
 		Route::delete('', 'DatabaseController@deleteAccount');
 	});
+    Route::group(['prefix'=>'comments'], function(){
+        Route::get('/', 'DatabaseController@getAllComments');
+        Route::get('/deletecomment/{id}', 'DatabaseController@delComment');
+    });
+    Route::group(['prefix'=>'commentssevent'], function(){
+        Route::get('/', 'DatabaseController@getAllCommentsEvent');
+        Route::get('deletecomment/{id}', 'DatabaseController@delComment');
+    });
 });
 
 Route::get('t', 'DatabaseController@test1');

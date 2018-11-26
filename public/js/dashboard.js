@@ -25,7 +25,7 @@ $(document).ready(function() {
     $(".btn-del").on("click", function(){
       console.log("xoa acc"+$(this).attr("id"));
       if($(".btn"))
-      showAlert("Bạn có muốn xóa tài khoản này không?");
+      showAlert("Bạn có muốn xóa không?");
       $("#modal-btn-yes").attr("meth", "DELETE");
       $("#modal-btn-yes").attr("idi", $(this).attr("id"));
     });
