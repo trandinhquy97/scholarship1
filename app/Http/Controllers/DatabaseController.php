@@ -53,7 +53,7 @@ class DatabaseController extends Controller
 
          $idi = $request->input('idi');
          DB::table('hocbong')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->where('id_HocBong', '=', $idi)->orWhere('id_NguoiDang','=', $user->id)->where('id_HocBong', '=', $idi)->delete();
-        return response()->json([999,"Da xoa"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+        return response()->json([999,"Đã xóa bài học bổng thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
     }
 
     /*=========================================================================
