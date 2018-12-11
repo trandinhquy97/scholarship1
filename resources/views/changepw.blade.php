@@ -63,7 +63,8 @@
             <h2><b>Đổi mật khẩu tài khoản</b></h2>
         </div>
         <div class="widget-body">
-            <form>
+            <form action="{{url('/changepw')}}" class="form" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Mật khẩu hiện tại</label>
                     <div class="col-lg-6">

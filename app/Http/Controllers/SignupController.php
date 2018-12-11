@@ -29,12 +29,18 @@ class SignupController extends Controller
                     'username'=>$username,
                     'email'=>$email,
                     'password'=>Hash::make($password),
-                    'kt_Quyen'=>$type
+                    'kt_Quyen'=>$type,
+                    'id_TrangThai'=>1
                 ]);
 
-                DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam']);
+                DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam',"id_TrangThai"=>0]);
 //                echo $user;
                 Auth::login($user);
+
+
+
+//                $lastid = DB::getPdo()->lastInsertId();
+//                DB::table('thongtintaikhoan')->insert(["id_TaiKhoan"=>$lastid]);
                 return Redirect::to("login");
             }
             else{

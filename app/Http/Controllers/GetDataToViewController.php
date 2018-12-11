@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\NewArticle;
 use DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 
 class GetDataToViewController extends Controller
@@ -171,5 +175,24 @@ class GetDataToViewController extends Controller
         $sdt = $request->input("SDT");
         DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->update(['HoVaTen'=> $hovaten,'GioiTinh'=> $gioitinh,'NgaySinh'=> $ngaysinh,'QueQuan'=> $quequan,'DiaChi'=> $diachi,'SDT'=> $sdt]);
         return redirect("/personal_info");
+    }
+    function getPasswordEdit(Request $request){
+        return view("changepw");
+    }
+    function postPasswordEdit(Request $request){
+        $oldpassword = $request->input("password");
+        $newpassword = $request->input("passwordnew");
+        $validnewpassword = $request->input("passwordconf");
+
+        $currentid = $request->session()->get('currentid');
+        $currentpass = DB::table('taikhoan')->where('id','=',$currentid)->first()->password;
+        $passwordIsOk = password_verify( $oldpassword, $currentpass);
+        if(DB::table('taikhoan')->where('id','=',$currentid)->count()>0&&$newpassword==$validnewpassword&&$passwordIsOk){
+            DB::table('taikhoan')->where('id','=',$currentid)->update(['password'=> Hash::make($newpassword)]);
+            Auth::logout();
+            Session::flush();
+            return "<script>window.top.location.href = \"/login\";</script>";
+        };
+        return view("changepw");
     }
 }

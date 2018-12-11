@@ -39,6 +39,8 @@ Route::get('/personal_info', ['as'=>'getPersonal','uses'=>'GetDataToViewControll
 
 Route::get('/personal_info_edit', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPersonalEdit']);
 Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewController@postInfoEdit']);
+Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPasswordEdit']);
+Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
 Route::get('/post', function () {
     return view('post');
