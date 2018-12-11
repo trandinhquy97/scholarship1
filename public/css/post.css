@@ -191,6 +191,7 @@ li.nav-item button{
 	width: 20%;
 	padding-top: 10px;
 	margin-left: 10px;
+	margin-right: 10px;
 	margin-top: 10px;
 	font-size: 16px;
 	position: relative;
@@ -205,6 +206,7 @@ li.nav-item button{
 	margin-top: 10px;
 	padding-bottom: 10px;
 	margin-left: 10px;
+	margin-right: 10px;
 	font-size: 16px;
 	width: 20%;
 	display: inline-block;
@@ -217,8 +219,9 @@ li.nav-item button{
 	outline: none;
 }
 .post .card .bg .infor .deadline input {
-	width: 25%;
+	width: 20%;
 	margin-top: 10px;
+	margin-right: 10px;
 	font-size: 16px;
 	position: relative;
 	display: inline-block;
@@ -289,13 +292,17 @@ li.nav-item button{
 }
 .post .card .bg .infor label{
 	color: #818a91;
-	width: 150px;
-	margin-left: 10px;
+	width: 160px;
 	margin-left: 20px;
+	margin-right: 20px;
 	padding-top: 20px;
 	font-size: 18px;
 	text-align: left;
 	font-weight: bold;
+
+}
+.post .card .bg .spacing {
+	margin-left: 40px;
 
 }
 

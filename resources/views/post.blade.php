@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="row">
-            <div  class="col-sm-10">
+            <div  class="col-sm-9">
                 <div class="card">
                     <div class="container">
                         <form class="bg" method="post" action="/posthb" enctype="multipart/form-data">
@@ -69,8 +69,6 @@
                                             }@endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="spacing">
                                 </div>
                                 <div class="spacing">
                                     <div class="subject">
@@ -97,11 +95,19 @@
                                             }@endforeach
                                         </select>
                                         <label>Giá trị :</label>
-                                        <select name="giatrihb">
-                                            @foreach($giatrihb as $giatrihbb){
-                                            <option value={{$giatrihbb->id_GiaTriHb}}>{{$giatrihbb->SoTienMin}}{{$giatrihbb->TenDonVi}} - {{$giatrihbb->SoTienMax}}{{$giatrihbb->TenDonVi}}</option>
+                                        <select name="donvitien">
+                                            @foreach($donvitien as $donvitienb){
+                                            <option value={{$donvitienb->id_DonVi}}>{{$donvitienb->TenDonVi}}</option>
                                             }@endforeach
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="spacing">
+                                    <div class="soluong">
+                                        <label>Giá trị học bổng thấp nhất :</label>
+                                        <input type="number" name="sotienmin">
+                                        <label>Giá trị học bổng cao nhất</label>
+                                        <input type="number" name="sotienmax"><br>
                                     </div>
                                 </div>
 

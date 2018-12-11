@@ -146,8 +146,6 @@ class GetDataToViewController extends Controller
             return null;
         }
     }
-
-
     function getPersonal(Request $request){
         $user = $this->getCurrentUser($request);
         $id = $user->id;
@@ -195,6 +193,11 @@ class GetDataToViewController extends Controller
         };
         return view("changepw");
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     function postPosthb(Request $request){
         $user = $this->getCurrentUser($request);
         $id = $user->id;
@@ -203,10 +206,11 @@ class GetDataToViewController extends Controller
         $idnganhhoc = $request->input("nganhhoc");
         $idbachoc = $request->input("bachoc");
         $idtruonghoc = $request->input("truonghoc");
-        $idgiatrihb = $request->input("giatrihb");
+        $iddonvitien = $request->input("donvitien");
         $deadline = $request->input("deadline");
         $link = $request->input("link");
-
+        $sotenmin=$request->input("sotienmin");
+        $sotenmax=$request->input("sotienmax");
         $coverimage = $request->file("coverimage");
         $ext = $coverimage->getClientOriginalExtension();
         $urlimage = "css/pictures/".$coverimage;
@@ -215,8 +219,12 @@ class GetDataToViewController extends Controller
         $soluong = $request->input("soluong");
         $yeucau = $request->input("yeucau");
         $thutuc = $request->input("thutuc");
-        DB::table('hocbong')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenHocBong'=> $tenhb,'id_LoaiHb'=> $idloaihb,'deadline'=> $deadline,'id_TruongHoc'=> $idtruonghoc,
-            'id_BacHoc'=> $idbachoc,'id_GiaTriHb'=> $idgiatrihb,'NguonThongTin'=> '','id_NganhHoc'=> $idnganhhoc,'SoLuong'=> $soluong,'YeuCau'=> $yeucau,'ThuTucNop'=> $thutuc,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiHb'=> 2]);
+        $giatrihocbongnew = DB::table('giatrihocbong')->insert(['SoTienMin'=> $sotenmin,'SoTienMax'=> $sotenmax,'id_DonViTien'=> $iddonvitien,'MoTa'=>"",'PhanTramHb'=>0]);
+
+        $idgratrihb = DB::getPdo()->lastInsertId();
+
+            DB::table('hocbong')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenHocBong'=> $tenhb,'id_LoaiHb'=> $idloaihb,'deadline'=> $deadline,'id_TruongHoc'=> $idtruonghoc,
+            'id_BacHoc'=> $idbachoc,'id_GiaTriHb'=> $idgratrihb,'NguonThongTin'=> '','id_NganhHoc'=> $idnganhhoc,'SoLuong'=> $soluong,'YeuCau'=> $yeucau,'ThuTucNop'=> $thutuc,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiHb'=> 2]);
         return redirect("/dashbroad");
     }
     function getPosthb(Request $request){
@@ -225,9 +233,8 @@ class GetDataToViewController extends Controller
         $nganhhoc = DB::table('nganhhoc')->get();
         $truonghoc = DB::table('truonghoc')->get();
         $quocgia = DB::table('quocgia')->get();
-        $giatrihb = DB::table('giatrihocbong')
-            ->leftJoin('donvitien', 'giatrihocbong.id_DonViTien', '=', 'donvitien.id_DonVi')
+        $donvitien = DB::table('donvitien')
             ->get();
-        return view("post",['bachoc' => $bachoc,'loaihb' => $loaihb,'truonghoc' => $truonghoc,'nganhhoc' => $nganhhoc,'quocgia' => $quocgia,'giatrihb' => $giatrihb]);
+        return view("post",['bachoc' => $bachoc,'loaihb' => $loaihb,'truonghoc' => $truonghoc,'nganhhoc' => $nganhhoc,'quocgia' => $quocgia,'donvitien' => $donvitien]);
     }
 }

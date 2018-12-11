@@ -42,8 +42,6 @@ Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewC
 Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPasswordEdit']);
 Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
-Route::get('/posthb', ['as'=>'getPosthb','files' => true,'uses'=>'GetDataToViewController@getPosthb']);
-Route::post('/posthb', ['as'=>'postPosthb','files' => true,'uses'=>'GetDataToViewController@postPosthb']);
 
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
@@ -65,11 +63,13 @@ Route::group(['prefix'=>'manage'], function(){
 		Route::get('/', 'DatabaseController@getAllScholar');
 		Route::delete('/', 'DatabaseController@deleteScholar');
 		Route::get('delete/{id}', 'DatabaseController@delScholar');
+        Route::get('/new', 'GetDataToViewController@getPosthb');
+        Route::post('/new', 'GetDataToViewController@postPosthb');
 	});
 	Route::group(['prefix'=>'account'], function(){
 		Route::post('', 'DatabaseController@createAccount');
 		Route::get('', 'DatabaseController@getAllAccount');
-		Route::put('', 'DatabaseController@changeAccount');
+		Route::put('', 'GetDataToViewController@getPosthb');
 		Route::delete('', 'DatabaseController@deleteAccount');
 	});
     Route::group(['prefix'=>'post'], function(){
