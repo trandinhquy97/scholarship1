@@ -75,7 +75,7 @@ Author: SAEROX
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 2  || $type == 5)
+                            @if($type == 5)
                             <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
                                 <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
                                     <li><a href="/manage/post" target="mainside">Danh sách bài đăng</a></li>
@@ -83,6 +83,14 @@ Author: SAEROX
                                     <li><a href="/manage/post/new" target="mainside">Thêm mới</a></li>
                                 </ul>
                             </li>
+                            @endif
+                            @if($type == 2)
+                                <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
+                                    <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
+                                        <li><a href="/manage/ownpost" target="mainside">Danh sách bài đăng</a></li>
+                                        <li><a href="/manage/post/new" target="mainside">Thêm mới</a></li>
+                                    </ul>
+                                </li>
                             @endif
                             @if($type == 3 || $type == 5 || $type == 6)
                                 <li><a href="#dropdown-comments" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bình luận</span></a>

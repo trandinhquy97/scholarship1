@@ -46,6 +46,6 @@ class SendCommentsController extends Controller
                     'NoiDung' => $request->get("comment_text"),
                     'DaChinhSua' => 0]
             );
-        return Redirect::to('/workshop/'.$id);
+        return Redirect::to('/contest/'.$id);
     }
 }

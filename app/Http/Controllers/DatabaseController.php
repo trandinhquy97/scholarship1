@@ -135,8 +135,38 @@ class DatabaseController extends Controller
             return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
         }
     }
-    
+    /*=========================================================================
+    Route for manage post
+    =========================================================================*/
+    public function getAllPost(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user))
+            return Redirect::to('/');
+        else{
+            if($user->kt_Quyen != 5)
+                return Redirect::to('');
+        }
+        $listUsers = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
+            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->paginate(10);
 
+        return view('posttable', ['posts'=> $listUsers]);
+    }
+
+    public function getOwnPost(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user))
+            return Redirect::to('/');
+        else{
+            if($user->kt_Quyen != 2)
+                return Redirect::to('');
+        }
+        $id = $request->session()->has('currentid');
+        $listUsers = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
+            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')
+            ->where('id_NguoiDang','=',$id)->paginate(10);
+
+        return view('posttable', ['posts'=> $listUsers]);
+    }
     /*=========================================================================
         Helper
     =========================================================================*/
