@@ -91,7 +91,7 @@
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Họ và tên</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" placeholder="David Green" name="HoVaTen" value={{$profile->HoVaTen}} >
+                                        <input type="text" class="form-control" placeholder="David Green" name="HoVaTen" value="{{$profile->HoVaTen}}" >
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">

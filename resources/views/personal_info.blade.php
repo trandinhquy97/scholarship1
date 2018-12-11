@@ -88,10 +88,7 @@
                                         <div class="about-title">Email:</div>
                                         <div class="about-text">{{$email}}</div>
                                     </div>
-                                    <div class="about-infos d-flex flex-column">
-                                        <div class="about-title">Website:</div>
-                                        <div class="about-text">www.be-elisyam.com</div>
-                                    </div>
+
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Số điện thoại:</div>
                                         <div class="about-text">{{$profile->SDT}}</div>

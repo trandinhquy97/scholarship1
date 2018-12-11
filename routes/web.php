@@ -42,9 +42,9 @@ Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewC
 Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPasswordEdit']);
 Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
-Route::get('/post', function () {
-    return view('post');
-});
+Route::get('/posthb', ['as'=>'getPosthb','files' => true,'uses'=>'GetDataToViewController@getPosthb']);
+Route::post('/posthb', ['as'=>'postPosthb','files' => true,'uses'=>'GetDataToViewController@postPosthb']);
+
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
 Route::get('/scholarship/{idHocBong}/dangky', ['as'=>'getScholarshipDetail','uses'=>'RegistScholarshipController@registScholarship']);

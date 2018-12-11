@@ -195,4 +195,39 @@ class GetDataToViewController extends Controller
         };
         return view("changepw");
     }
+    function postPosthb(Request $request){
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+        $tenhb = $request->input("tenhb");
+        $idloaihb = $request->input("loaihb");
+        $idnganhhoc = $request->input("nganhhoc");
+        $idbachoc = $request->input("bachoc");
+        $idtruonghoc = $request->input("truonghoc");
+        $idgiatrihb = $request->input("giatrihb");
+        $deadline = $request->input("deadline");
+        $link = $request->input("link");
+
+        $coverimage = $request->file("coverimage");
+        $ext = $coverimage->getClientOriginalExtension();
+        $urlimage = "css/pictures/".$coverimage;
+        $savefile = microtime().'.'.$ext;
+        $coverimage->move("css/pictures/",$savefile);
+        $soluong = $request->input("soluong");
+        $yeucau = $request->input("yeucau");
+        $thutuc = $request->input("thutuc");
+        DB::table('hocbong')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenHocBong'=> $tenhb,'id_LoaiHb'=> $idloaihb,'deadline'=> $deadline,'id_TruongHoc'=> $idtruonghoc,
+            'id_BacHoc'=> $idbachoc,'id_GiaTriHb'=> $idgiatrihb,'NguonThongTin'=> '','id_NganhHoc'=> $idnganhhoc,'SoLuong'=> $soluong,'YeuCau'=> $yeucau,'ThuTucNop'=> $thutuc,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiHb'=> 2]);
+        return redirect("/dashbroad");
+    }
+    function getPosthb(Request $request){
+        $bachoc = DB::table('bachoc')->get();
+        $loaihb = DB::table('loaihocbong')->get();
+        $nganhhoc = DB::table('nganhhoc')->get();
+        $truonghoc = DB::table('truonghoc')->get();
+        $quocgia = DB::table('quocgia')->get();
+        $giatrihb = DB::table('giatrihocbong')
+            ->leftJoin('donvitien', 'giatrihocbong.id_DonViTien', '=', 'donvitien.id_DonVi')
+            ->get();
+        return view("post",['bachoc' => $bachoc,'loaihb' => $loaihb,'truonghoc' => $truonghoc,'nganhhoc' => $nganhhoc,'quocgia' => $quocgia,'giatrihb' => $giatrihb]);
+    }
 }

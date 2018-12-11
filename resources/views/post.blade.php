@@ -56,63 +56,59 @@
             <div  class="col-sm-10">
                 <div class="card">
                     <div class="container">
-                        <form class="bg" >
+                        <form class="bg" method="post" action="/posthb" enctype="multipart/form-data">
                             <div class="infor">
                                 <div class="spacing">
                                     <div class="scholarshipname">
-                                        <label>Tên học bổng:</label>
+                                        <label>Tên học bổng :</label>
                                         <input type="text" name="tenhb">
                                         <label>Loại học bổng *</label>
-                                        <select>
-                                            <option value="nganhan">Ngắn hạn</option>
-                                            <option value="daihan">Dài hạn</option>
-                                            <option value="toanphan">Toàn phần</option>
-                                            <option value="banphan">Bán phần</option>
+                                        <select name="loaihb">
+                                            @foreach($loaihb as $loaihbb){
+                                            <option value={{$loaihbb->id_LoaiHb}}>{{$loaihbb->TenLoaiHb}}</option>
+                                            }@endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="spacing">
-
                                 </div>
                                 <div class="spacing">
                                     <div class="subject">
-                                        <label>Ngành học:</label>
-                                        <select  >
-                                            <option value="cntt">Công nghệ thông tin</option>
-                                            <option value="hoahoc">Hóa học</option>
-                                            <option value="kinhte">Kinh tế</option>
-                                            <option value="ngoaingu">Ngoại ngữ</option>
-                                            <option value="cauduong">Xây dựng cầu đường</option>
-                                            <option value="sinhhoc">Sinh học</option>
+                                        <label>Ngành học :</label>
+                                        <select name="nganhhoc">
+                                            @foreach($nganhhoc as $nganhhocb){
+                                            <option value={{$nganhhocb->id_NganhHoc}}>{{$nganhhocb->TenNganhHoc}}</option>
+                                            }@endforeach
                                         </select>
-                                        <label>Bậc học</label>
-                                        <select>
-                                            <option value="daihoc">Đại học</option>
-                                            <option value="thacsy">Thạc sỹ</option>
-                                            <option value="tiensy">Tiến sỹ</option>
-                                            <option value="Saudaihoc">Sau đại học</option>
+                                        <label>Bậc học :</label>
+                                        <select name="bachoc">
+                                            @foreach($bachoc as $bachocc){
+                                            <option value={{$bachocc->id_BacHoc}}>{{$bachocc->TenBacHoc}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="spacing">
                                     <div class="university">
-                                        <label>Trường học:</label>
-                                        <input type="text" name="tentruong">
-                                        <label>Quốc gia:</label>
-                                        <input type="text" name="quocgia"><br>
+                                        <label>Trường học :</label>
+                                        <select name="truonghoc">
+                                            @foreach($truonghoc as $truonghocb){
+                                            <option value={{$truonghocb->id_TruongHoc}}>{{$truonghocb->TenTruongHoc}}</option>
+                                            }@endforeach
+                                        </select>
+                                        <label>Giá trị :</label>
+                                        <select name="giatrihb">
+                                            @foreach($giatrihb as $giatrihbb){
+                                            <option value={{$giatrihbb->id_GiaTriHb}}>{{$giatrihbb->SoTienMin}}{{$giatrihbb->TenDonVi}} - {{$giatrihbb->SoTienMax}}{{$giatrihbb->TenDonVi}}</option>
+                                            }@endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="spacing">
-                                    <div class="level">
 
-                                    </div>
-                                </div>
                                 <div class="spacing">
                                     <div class="deadline">
-                                        <label>Hạn chót nộp đơn:</label>
+                                        <label>Hạn chót :</label>
                                         <input type="date" name="deadline"><br>
-
-
                                     </div>
                                     <script type="text/javascript">
                                         $(function () {
@@ -123,7 +119,7 @@
 
                                 <div class="spacing">
                                     <div class="link">
-                                        <label>Link đăng ký:</label>
+                                        <label>Link đăng ký :</label>
                                         <input type="link" name="link">
                                         <label>Số lượng</label>
                                         <input type="number" name="soluong"><br>
@@ -132,22 +128,31 @@
 
                                 <div class="spacing">
                                     <div class="coverimages">
-                                        <label>Ảnh bìa:</label>
+                                        <label>Ảnh bìa :</label>
                                         <input type="file" name="coverimage" ><br>
                                     </div>
                                 </div>
                                 <div class="spacing">
                                     <div class="request">
                                         <div class="form-group green-border-focus">
-                                            <label>Yêu cầu:</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5"></textarea>
+                                            <label>Yêu cầu :</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" name="yeucau"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spacing">
+                                    <div class="request">
+                                        <div class="form-group green-border-focus">
+                                            <label>Thủ tục nộp đơn :</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" name="thutuc"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cen">
                                     <div class="buttonbot">
-                                        <button type="button" onclick="alert('Submited')">Submit</button>
-                                        <button type="button" onclick="alert('Canceled!')">Cancel</button>
+                                        <input  name="_token" type="hidden" value="{{ csrf_token() }}" style="visibility:hidden;">
+                                        <button type="submit">Submit</button>
+                                        <button type="reset">Cancel</button>
                                     </div>
 
                                 </div>
