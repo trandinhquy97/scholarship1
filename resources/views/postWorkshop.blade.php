@@ -106,9 +106,9 @@
                                 <div class="spacing">
                                     <div class="thoigiandienra">
                                         <label>Thời gian bắt đầu sự kiện :</label>
-                                        <input type="datetime-local" name="batdausk"><br>
+                                        <input type="datetime-local" name="batdausk">
                                         <label>Thời gian kết thúc sự kiện :</label>
-                                        <input type="datetime-local" name="ketthucsk"><br>
+                                        <input type="datetime-local" name="ketthucsk">
                                     </div>
                                     <script type="text/javascript">
                                         $(function () {
