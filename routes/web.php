@@ -91,3 +91,9 @@ Route::group(['prefix'=>'manage'], function(){
 });
 
 Route::get('t', 'DatabaseController@test1');
+
+Route::get('/resetpassword', ['as'=>'resetpassword','uses'=>'CustomResetPasswordController@getView']);
+Route::post('/resetpassword','CustomResetPasswordController@sendToken');
+Route::get('/resetpassword/{email}/{token}','CustomResetPasswordController@validateToken');
+Route::post('/resetpassword/{email}/{token}','CustomResetPasswordController@resetPassword');
+
