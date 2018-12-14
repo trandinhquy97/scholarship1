@@ -32,8 +32,22 @@ $(document).ready(function() {
     $(".btn-del-sl").on("click", function(){
       console.log("xoa scholar"+$(this).attr("id"));
       if($(".btn"))
-      showAlert("Bạn có muốn bài viết này không?");
+      showAlert("Bạn có muốn xóa bài viết này không?");
       $("#modal-btn-yes").attr("meth", "DELETE");
+      $("#modal-btn-yes").attr("idi", $(this).attr("id"));
+    });
+    $(".btn-ck-sl").on("click", function(){
+      console.log("cf scholar"+$(this).attr("id"));
+      if($(".btn"))
+      showAlert("Bạn có muốn xác nhận bài viết này không?");
+      $("#modal-btn-yes").attr("meth", "POST");
+      $("#modal-btn-yes").attr("idi", $(this).attr("id"));
+    });
+    $(".btn-ignore-sl").on("click", function(){
+      console.log("cf scholar"+$(this).attr("id"));
+      if($(".btn"))
+      showAlert("Xác nhận không duyệt bài viết này?");
+      $("#modal-btn-yes").attr("meth", "PUT");
       $("#modal-btn-yes").attr("idi", $(this).attr("id"));
     });
     
@@ -107,6 +121,10 @@ $(document).ready(function() {
             switch (result[0]) {
               case 999:
                 $("#alert-return").attr("class", "alert alert-success alert-dismissible");
+                if($("#modal-btn-yes").attr("meth")==='DELETE' || 
+                  (window.location.href.indexOf('approval') != 1 )){
+                  location.reload();
+                }
                 break;
               case 555:
                 $("#alert-return").attr("class", "alert alert-danger alert-dismissible");
@@ -115,18 +133,6 @@ $(document).ready(function() {
             refreshTable(result[2]);
           }
       });
-      // $.get(window.location.href+"/"+$("#modal-btn-yes").attr("op")+"/"+$("#modal-btn-yes").attr("idi"), function(res){
-      //   $("#alert-return").html(close+res[1]);
-      //   switch (res[0]) {
-      //   case 999:
-      //     $("#alert-return").attr("class", "alert alert-success alert-dismissible");
-      //     break;
-      //   case 555:
-      //     $("#alert-return").attr("class", "alert alert-fail alert-dismissible");
-      //     break;
-      //   }
-      // });
-      // console.log("xóa")
       $("#modal-btn-yes").attr("op");
     }else{
 

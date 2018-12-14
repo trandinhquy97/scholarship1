@@ -16,5 +16,7 @@ class TrangThai extends Seeder
 		DB::table('trangthai')->insert(['TenTrangThai' => "Chưa duyệt"]);
 		DB::table('trangthai')->insert(['TenTrangThai' => "Còn hạn"]);
 		DB::table('trangthai')->insert(['TenTrangThai' => "Hết hạn"]);
+        DB::table('trangthai')->insert(['TenTrangThai' => "Không duyệt"]);
+        DB::table('trangthai')->insert(['TenTrangThai' => "Khóa"]);
     }
 }

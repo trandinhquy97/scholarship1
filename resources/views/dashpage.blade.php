@@ -66,32 +66,44 @@ Author: SAEROX
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 1 || $type == 5)
+                            @if($type != 1)
                             <li class=""><a href="#dropdown-ui" aria-expanded="false" data-toggle="collapse"><i class="la ti-files"></i><span>Quản lí học bổng</span></a>
                                 <ul id="dropdown-ui" class="collapse list-unstyled pt-0">
+                                    @if($type != 4 && $type != 6)
                                     <li><a href="/manage/scholarship" target="mainside">Danh sách học bổng</a></li>
+                                    @endif
+                                    @if($type ==3 || $type == 5 || $type == 6)
                                     <li><a href="/manage/scholarship/approval" target="mainside">Duyệt bài đăng</a></li>
+                                    @endif
+                                    @if($type != 6)
                                     <li><a href="/manage/scholarship/new" target="mainside">Thêm mới</a></li>
+                                    @endif
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 5)
+                            @if($type != 1)
                             <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
                                 <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
+                                    @if($type != 4 && $type != 6)
                                     <li><a href="/manage/post" target="mainside">Danh sách bài đăng</a></li>
+                                    @endif
+                                    @if($type ==3 || $type == 5 || $type == 6)
                                     <li><a href="/manage/post/approval" target="mainside">Duyệt bài đăng</a></li>
+                                    @endif
+                                    @if($type != 6)
                                     <li><a href="/manage/post/new" target="mainside">Thêm mới</a></li>
+                                    @endif
                                 </ul>
                             </li>
                             @endif
-                            @if($type == 2)
+                           {{--  @if($type == 2)
                                 <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
                                     <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
                                         <li><a href="/manage/ownpost" target="mainside">Danh sách bài đăng</a></li>
                                         <li><a href="/manage/post/new" target="mainside">Thêm mới</a></li>
                                     </ul>
                                 </li>
-                            @endif
+                            @endif --}}
                             @if($type == 3 || $type == 5 || $type == 6)
                                 <li><a href="#dropdown-comments" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bình luận</span></a>
                                     <ul id="dropdown-comments" class="collapse list-unstyled pt-0">
@@ -108,7 +120,7 @@ Author: SAEROX
                     <!-- End Side Navbar -->
                 </div>
             </div>
-            <iframe name="mainside" src="/manage/scholarship" class="mainframe" frameborder="0"></iframe>
+            <iframe name="mainside" src="/personal_info" class="mainframe" frameborder="0"></iframe>
             <!-- Begin Vendor Js -->
         <script src="assets/vendors/js/base/jquery.min.js"></script>
         <script src="assets/vendors/js/base/core.min.js"></script>

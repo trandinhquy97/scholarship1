@@ -61,7 +61,7 @@
 </head>
 <body>
 <div class="widget-header bordered no-actions d-flex align-items-center">
-    <h2><b>Quản lý bài đăng tin tức học bổng</b></h2>
+    <h2><b>Phê duyệt bài đăng tin tức sự kiện</b></h2>
 </div>
 <div id="alert-return" class="alert alert-success alert-dismissible hidden">
     <a class="close" data-dismiss="alert" aria-label="close"></a>
@@ -121,8 +121,10 @@
                     <td><span style="width:100px;"><span class="badge-text badge-text-small {{$status}}">{{$value->TenTrangThai}}</span></span></td>
                     <td>{{$value->ThoiGianBatDauSuKien}}</td>
                     <td class="td-actions">
-                        <a id="btn-edit" href="manage/{{$direct}}/edit/{{$value->id_SuKien}}"><i class="la la-edit edit"></i></a>
-                        <a class="btn-del-sl" id="{{$value->id_SuKien}}"><i class="la la-close delete"></i></a>
+                        @if($value->id_TrangThaiTopic == 2)
+                        <a class="btn-ck-sl" id="{{$value->id_SuKien}}"><i class="la la-check-circle delete"></i></a>
+                        @endif
+                        <a class="btn-ignore-sl" id="{{$value->id_SuKien}}"><i class="la la-mail-reply-all delete"></i></a>
                     </td>
                 </tr>
             @endforeach

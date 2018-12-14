@@ -49,51 +49,43 @@
 
         <div class="row">
             <div  class="col-sm-6 tilte">
-                <p>Đăng thông tin học bổng</p>
+                <p>Đăng thông tin sự kiện</p>
             </div>
         </div>
         <div class="row">
             <div  class="col-sm-9">
                 <div class="card">
                     <div class="container">
-                        <form class="bg" method="post" action="/posthb" enctype="multipart/form-data">
+                        <form class="bg" method="post" action="/postworkshop" enctype="multipart/form-data">
                             <div class="infor">
                                 <div class="spacing">
                                     <div class="scholarshipname">
-                                        <label>Tên học bổng :</label>
-                                        <input type="text" name="tenhb">
-                                        <label>Loại học bổng *</label>
-                                        <select name="loaihb">
-                                            @foreach($loaihb as $loaihbb){
-                                            <option value={{$loaihbb->id_LoaiHb}}>{{$loaihbb->TenLoaiHb}}</option>
-                                            }@endforeach
-                                        </select>
+                                        <label>Tên sự kiện :</label>
+                                        <input type="text" name="tensk">
+                                        <label>Tiêu đề :</label>
+                                        <input type="text" name="tieude">
                                     </div>
                                 </div>
                                 <div class="spacing">
                                     <div class="subject">
-                                        <label>Ngành học :</label>
-                                        <select name="nganhhoc">
-                                            @foreach($nganhhoc as $nganhhocb){
-                                            <option value={{$nganhhocb->id_NganhHoc}}>{{$nganhhocb->TenNganhHoc}}</option>
+                                        <label>Thành phố :</label>
+                                        <select name="thanhpho">
+                                            @foreach($thanhpho as $thanhphob){
+                                            <option value={{$thanhphob->id_ThanhPho}}>{{$thanhphob->TenThanhPho}}</option>
                                             }@endforeach
                                         </select>
-                                        <label>Bậc học :</label>
-                                        <select name="bachoc">
-                                            @foreach($bachoc as $bachocc){
-                                            <option value={{$bachocc->id_BacHoc}}>{{$bachocc->TenBacHoc}}</option>
-                                            @endforeach
+                                        <label>Loại sự kiện * :</label>
+                                        <select name="loaisk">
+                                            @foreach($loaisk as $loaiskb){
+                                            <option value={{$loaiskb->id_LoaiSuKien}}>{{$loaiskb->TenLoaiSuKien}}</option>
+                                            }@endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="spacing">
                                     <div class="university">
-                                        <label>Trường học :</label>
-                                        <select name="truonghoc">
-                                            @foreach($truonghoc as $truonghocb){
-                                            <option value={{$truonghocb->id_TruongHoc}}>{{$truonghocb->TenTruongHoc}}</option>
-                                            }@endforeach
-                                        </select>
+                                        <label>Giải thưởng :</label>
+                                        <input type="number" name="giaithuong">
                                         <label>Giá trị :</label>
                                         <select name="donvitien">
                                             @foreach($donvitien as $donvitienb){
@@ -103,18 +95,20 @@
                                     </div>
                                 </div>
                                 <div class="spacing">
-                                    <div class="soluong">
-                                        <label>Giá trị học bổng thấp nhất :</label>
-                                        <input type="number" name="sotienmin">
-                                        <label>Giá trị học bổng cao nhất</label>
-                                        <input type="number" name="sotienmax"><br>
+                                    <div class="thoigiandangky">
+                                        <label>Thời gian bắt đầu đăng ký :</label>
+                                        <input type="date" name="batdaudk">
+                                        <label>Thời gian kết thúc đăng ký</label>
+                                        <input type="date" name="ketthucdk"><br>
                                     </div>
                                 </div>
 
                                 <div class="spacing">
-                                    <div class="deadline">
-                                        <label>Hạn chót :</label>
-                                        <input type="date" name="deadline"><br>
+                                    <div class="thoigiandienra">
+                                        <label>Thời gian bắt đầu sự kiện :</label>
+                                        <input type="datetime-local" name="batdausk">
+                                        <label>Thời gian kết thúc sự kiện :</label>
+                                        <input type="datetime-local" name="ketthucsk">
                                     </div>
                                     <script type="text/javascript">
                                         $(function () {
@@ -127,8 +121,8 @@
                                     <div class="link">
                                         <label>Link đăng ký :</label>
                                         <input type="link" name="link">
-                                        <label>Số lượng</label>
-                                        <input type="number" name="soluong"><br>
+                                        <label>Địa điểm</label>
+                                        <input type="text" name="diadiem"><br>
                                     </div>
                                 </div>
 
@@ -141,16 +135,8 @@
                                 <div class="spacing">
                                     <div class="request">
                                         <div class="form-group green-border-focus">
-                                            <label>Yêu cầu :</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" name="yeucau"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="spacing">
-                                    <div class="request">
-                                        <div class="form-group green-border-focus">
-                                            <label>Thủ tục nộp đơn :</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" name="thutuc"></textarea>
+                                            <label>Nội dung:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" name="noidung"></textarea>
                                         </div>
                                     </div>
                                 </div>

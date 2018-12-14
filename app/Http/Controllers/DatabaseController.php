@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Requests\SignupRequest;
+use App\TaiKhoan;
 use http\Env\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -37,7 +40,7 @@ class DatabaseController extends Controller
         if(is_null($user)){
             return Redirect::to('/');
         }
-    	$articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->where('id_NguoiDang', '=', $user->id)->orWhereRaw('\''.$user->kt_Quyen.'\' = 5')->paginate(10);
+    	$articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
 	    return view('scholartable', ['articles' =>$articles]);
     }
     public function delScholar(Request $request, $id){
@@ -57,11 +60,91 @@ class DatabaseController extends Controller
         return response()->json([999,"Đã xóa bài học bổng thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
     }
 
+    public function getAllSchlConf(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen == 1){
+            return Redirect::to("/");
+        }
+        $articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->where('id_TrangThaiHb', '=', 2)->whereRaw('\''.$user->kt_Quyen.'\' >= 3')->whereRaw($user->kt_Quyen.'<>4')->paginate(10);
+        return view('scholarapproval', ['articles' =>$articles]);
+    }
+
+    public function confirmArticle(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+            return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE); 
+        }
+        $id = $request->input('idi');
+        DB::table('hocbong')->where('id_HocBong', '=', $id)->update(['id_TrangThaiHb'=>1]);
+        return response()->json([999,"Xác nhận bài đăng thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ignoreArticle(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+            return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE); 
+        }
+        $id = $request->input('idi');
+        DB::table('hocbong')->where('id_HocBong', '=', $id)->update(['id_TrangThaiHb'=>5]);
+        return response()->json([999,"Không xét duyệt  bài đăng ".$id], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+    }
+
     /*=========================================================================
         Route for manage account
     =========================================================================*/
     public function createAccount(Request $request){
         return $request->input('username');
+    }
+
+    public function getCreateNewAccount(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user))
+            return "You must login to do this action";
+        else{
+            if($user->kt_Quyen != 5)
+                return Redirect::to('');
+        }
+        $listRole = DB::table("quyentaikhoan")->get();
+        return view('newemployee', ['roles'=>$listRole]);
+    }
+
+    public function createNewAccount(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user))
+            return "You must login to do this action";
+        else{
+            if($user->kt_Quyen != 5)
+                return Redirect::to('');
+        }
+        $listRole = DB::table("quyentaikhoan")->get();
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $roleId = $request->input('role');
+        $checkUn = DB::table('taikhoan')->where('username', 'like', $username)->first();
+        if(!is_null($checkUn)){
+            return view('newemployee', ['status'=>2, 'mes'=>$username.' đã tồn tại trong hệ thống','roles'=>$listRole]);
+        }
+        $user = TaiKhoan::create([
+                    'id'=>null,
+                    'username'=>$username,
+                    'email'=>$email,
+                    'password'=>Hash::make($password),
+                    'kt_Quyen'=>$roleId,
+                    'id_TrangThai'=>1
+                ]);
+
+        DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam',"id_TrangThai"=>0]);
+        return view('newemployee', ['status'=>1, 'mes'=>'Đã tạo thành công tài khoản '.$username,'roles'=>$listRole]);
     }
 
     public function getAllAccount(Request $request){
@@ -129,7 +212,7 @@ class DatabaseController extends Controller
                 return response()->json([555,"Bạn không thể thực hiện hành động này trên tài khoản chính mình"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
             }
             DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->where('id', '=', $idUser)->delete();
-            return response()->json([555,"Bạn đã xóa tài khoản <u>".$userOp->username."</u> thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+            return response()->json([999,"Bạn đã xóa tài khoản <u>".$userOp->username."</u> thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
         }
         else{
             return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
@@ -141,31 +224,58 @@ class DatabaseController extends Controller
     public function getAllPost(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user))
-            return Redirect::to('/');
+            return "You must login to do this action";
         else{
-            if($user->kt_Quyen != 5)
+            if($user->kt_Quyen == 1)
                 return Redirect::to('');
         }
-        $listUsers = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
-            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->paginate(10);
+        $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
+            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
 
-        return view('posttable', ['posts'=> $listUsers]);
+        return view('posttable', ['posts'=> $posts]);
     }
 
-    public function getOwnPost(Request $request){
+    public function getAllPostConf(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user))
-            return Redirect::to('/');
+            return "You must login to do this action";
         else{
-            if($user->kt_Quyen != 2)
+            if($user->kt_Quyen == 1 || $user->kt_Quyen == 2 || $user->kt_Quyen == 4)
                 return Redirect::to('');
         }
-        $id = $request->session()->has('currentid');
-        $listUsers = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
-            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')
-            ->where('id_NguoiDang','=',$id)->paginate(10);
+        $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
+            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->where('sukien.id_TrangThaiTopic','=',2)->whereRaw($user->kt_Quyen.'<>1')->whereRaw($user->kt_Quyen.'<>2')->whereRaw($user->kt_Quyen.'<>4')->paginate(10);
 
-        return view('posttable', ['posts'=> $listUsers]);
+        return view('postapproval', ['posts'=> $posts]);
+    }
+
+    public function deletePost(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen == 3 || $user->kt_Quyen == 5 || $user->kt_Quyen == 6){
+            $idi = $request->input('idi');
+            DB::table('sukien')->where('id_SuKien', '=', $idi)->delete();
+            return response()->json([999,"Bạn đã bài đăng <u>".$idi."</u> thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+        }
+        else{
+            return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+
+
+    public function confirmPost(Request $request){
+        $id = $request->input('idi');
+        DB::table('sukien')->where('id_SuKien', '=', $id)->update(['id_TrangThaiTopic'=>1]);
+        return response()->json([999,"Xác nhận bài đăng thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ignorePost(Request $request){
+        $id = $request->input('idi');
+        DB::table('sukien')->where('id_SuKien', '=', $id)->update(['id_TrangThaiTopic'=>5]);
+        return response()->json([999,"Không xét duyệt  bài đăng ".$id], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
     }
     /*=========================================================================
         Helper
@@ -231,5 +341,11 @@ class DatabaseController extends Controller
         // return Redirect::to('');
         return response()->json([555,"B2222222".$str], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
         // return 'test2';
+    }
+
+    public function upFile(Request $req){
+        $file = $req->file;
+        $file->move(public_path('/upload'), end($file));
+        return "aaa";
     }
 }
