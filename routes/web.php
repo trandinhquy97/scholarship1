@@ -42,6 +42,8 @@ Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewC
 Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPasswordEdit']);
 Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
+Route::get('/postworkshop', ['as'=>'getworkshop','uses'=>'GetDataToViewController@getPostsk']);
+Route::post('/postworkshop', ['as'=>'postworkshop','uses'=>'GetDataToViewController@postPostsk']);
 
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);

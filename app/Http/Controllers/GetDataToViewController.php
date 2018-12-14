@@ -213,14 +213,13 @@ class GetDataToViewController extends Controller
         $sotenmax=$request->input("sotienmax");
         $coverimage = $request->file("coverimage");
         $ext = $coverimage->getClientOriginalExtension();
-        $urlimage = "css/pictures/".$coverimage;
         $savefile = microtime().'.'.$ext;
+        $urlimage = "css/pictures/".$savefile;
         $coverimage->move("css/pictures/",$savefile);
         $soluong = $request->input("soluong");
         $yeucau = $request->input("yeucau");
         $thutuc = $request->input("thutuc");
-        $giatrihocbongnew = DB::table('giatrihocbong')->insert(['SoTienMin'=> $sotenmin,'SoTienMax'=> $sotenmax,'id_DonViTien'=> $iddonvitien,'MoTa'=>"",'PhanTramHb'=>0]);
-
+         DB::table('giatrihocbong')->insert(['SoTienMin'=> $sotenmin,'SoTienMax'=> $sotenmax,'id_DonViTien'=> $iddonvitien,'MoTa'=>"",'PhanTramHb'=>0]);
         $idgratrihb = DB::getPdo()->lastInsertId();
 
             DB::table('hocbong')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenHocBong'=> $tenhb,'id_LoaiHb'=> $idloaihb,'deadline'=> $deadline,'id_TruongHoc'=> $idtruonghoc,
@@ -237,4 +236,39 @@ class GetDataToViewController extends Controller
             ->get();
         return view("post",['bachoc' => $bachoc,'loaihb' => $loaihb,'truonghoc' => $truonghoc,'nganhhoc' => $nganhhoc,'quocgia' => $quocgia,'donvitien' => $donvitien]);
     }
+    function postPostsk(Request $request){
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+        $tensk = $request->input("tensk");
+        $idloaisk = $request->input("loaisk");
+        $idthanhpho = $request->input("thanhpho");
+        $giaithuong = $request->input("giaithuong");
+        $batdaudk = $request->input("batdaudk");
+        $iddonvitien = $request->input("donvitien");
+        $link = $request->input("link");
+        $ketthucdk=$request->input("ketthucdk");
+        $batdausk=$request->input("batdausk");
+        $ketthucsk=$request->input("ketthucsk");
+        $coverimage = $request->file("coverimage");
+        $ext = $coverimage->getClientOriginalExtension();
+
+        $savefile = microtime().'.'.$ext;
+        $urlimage = "css/pictures/".$savefile;
+        $coverimage->move("css/pictures/",$savefile);
+        $diadiem = $request->input("diadiem");
+        $noidung = $request->input("noidung");
+        $tieude = $request->input("tieude");
+
+        DB::table('sukien')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenSuKien'=> $tensk,'id_LoaiSuKien'=> $idloaisk,'TieuDeBaiDang'=> $tieude,'id_ThanhPHo'=> $idthanhpho,
+            'ThoiGianBatDauDangKy'=> $batdaudk,'ThoiGianKetThucDangKy'=> $ketthucdk,'ThoiGianBatDauSuKien'=> $batdausk,'ThoiGianKetThucSuKien'=> $ketthucsk,'NguonThongTin'=> '','diadiem'=> $diadiem,'GiaiThuong'=> $giaithuong,'NoiDung'=> $noidung,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiTopic'=> 2,'id_MucBinhLuan'=>null]);
+        return redirect("/dashpage");
+    }
+    function getPostsk(Request $request){
+        $thanhpho = DB::table('thanhpho')->get();
+        $loaisk = DB::table('loaisukien')->get();
+        $donvitien = DB::table('donvitien')
+            ->get();
+        return view("postWorkshop",['thanhpho' => $thanhpho,'loaisk' => $loaisk,'donvitien' => $donvitien]);
+    }
+
 }
