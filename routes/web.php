@@ -59,26 +59,36 @@ Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 Route::get('/dashpage', 'DatabaseController@routeBoardSide');
 
 Route::group(['prefix'=>'manage'], function(){
+
 	Route::group(['prefix'=>'scholarship'], function(){
 		Route::get('/', 'DatabaseController@getAllScholar');
+        Route::get('{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
 		Route::delete('/', 'DatabaseController@deleteScholar');
 		Route::get('delete/{id}', 'DatabaseController@delScholar');
         Route::get('/new', 'GetDataToViewController@getPosthb');
         Route::post('/new', 'GetDataToViewController@postPosthb');
+		Route::get('approval', 'DatabaseController@getAllSchlConf');
+        Route::post('approval', 'DatabaseController@confirmArticle');
+        Route::put('approval', 'DatabaseController@ignoreArticle');
+		Route::delete('approval', 'DatabaseController@deleteScholar');
 	});
 	Route::group(['prefix'=>'account'], function(){
 		Route::post('', 'DatabaseController@createAccount');
 		Route::get('', 'DatabaseController@getAllAccount');
-		Route::put('', 'GetDataToViewController@getPosthb');
+		Route::put('', 'DatabaseController@changeAccount');
 		Route::delete('', 'DatabaseController@deleteAccount');
+        Route::get('new', 'DatabaseController@getCreateNewAccount');
+        Route::post('new', 'DatabaseController@createNewAccount');
 	});
     Route::group(['prefix'=>'post'], function(){
         Route::get('/', 'DatabaseController@getAllPost');
-        Route::get('approval/{id}', 'DatabaseController@approvalPost');
-        Route::get('new/{id}', 'DatabaseController@newPost');
-    });
-    Route::group(['prefix'=>'ownpost'], function(){
-        Route::get('/', 'DatabaseController@getOwnPost');
+        Route::get('{id}', 'DatabaseController@editPost')->where('id', '[0-9]+');;
+        Route::get('new', 'DatabaseController@createNewPost');
+        Route::delete('/', 'DatabaseController@deletePost');
+        Route::get('approval', 'DatabaseController@getAllPostConf');
+        Route::post('approval', 'DatabaseController@confirmPost');
+        Route::put('approval', 'DatabaseController@ignorePost');
+        Route::delete('approval', 'DatabaseController@deletePost');
     });
     Route::group(['prefix'=>'comments'], function(){
         Route::get('/', 'DatabaseController@getAllComments');
@@ -89,5 +99,3 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('deletecomment/{id}', 'DatabaseController@delComment');
     });
 });
-
-Route::get('t', 'DatabaseController@test1');
