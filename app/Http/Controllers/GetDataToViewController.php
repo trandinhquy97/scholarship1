@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\NewArticle;
-use DB;
+use App\TaiKhoan;
+use http\Env\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -42,6 +44,7 @@ class GetDataToViewController extends Controller
     }
     function getContests(){
         $contests = DB::table('sukien')->where("id_LoaiSuKien","2")
+            ->where('id_TrangThaiTopic', '=', '1')
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->paginate(4);
@@ -49,12 +52,15 @@ class GetDataToViewController extends Controller
     }
     function getWorkshops(){
         $workshops = DB::table('sukien')->where("id_LoaiSuKien","1")
+            ->where('id_TrangThaiTopic', '=', '1')
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->paginate(4);
         return view('workshop', ['workshops' => $workshops]);
     }
     function getScholarshipDetail(Request $request, $id){
+        
+
         $thisScholarship = DB::table('hocbong')->where("hocbong.id_HocBong",$id)
             ->leftjoin('giatrihocbong','hocbong.id_HocBong','=','giatrihocbong.id_GiaTriHb')
             ->leftjoin('donvitien','giatrihocbong.id_DonViTien','=','donvitien.id_DonVi')
@@ -70,7 +76,15 @@ class GetDataToViewController extends Controller
         $thisForeignCirtifications = DB::table('dieukienngoaingu')->where("id_HocBong",$id)
             ->leftjoin('chungchingoaingu','chungchingoaingu.id_ChungChi','=','dieukienngoaingu.id_ChungChi')
             ->get();
-
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            if($thisScholarship[0]->id_TrangThaiHb != 1)
+                return Redirect::to('/');
+        }else{
+            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+                return Redirect::to('/');
+            }
+        }
 
 //        LeftBar
         $scholarships = DB::table('hocbong')->where("id_TrangThaiHb","=",1)
@@ -100,6 +114,15 @@ class GetDataToViewController extends Controller
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->first();
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            if($workshopDetail->id_TrangThaiTopic != 1)
+                return Redirect::to('/');
+        }else{
+            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+                return Redirect::to('/');
+            }
+        }
         $workshops = DB::table('sukien')->where("id_LoaiSuKien","1")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
@@ -115,6 +138,15 @@ class GetDataToViewController extends Controller
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->first();
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            if($contestDetail->id_TrangThaiTopic != 1)
+                return Redirect::to('/');
+        }else{
+            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+                return Redirect::to('/');
+            }
+        }
         $contest = DB::table('sukien')->where("id_LoaiSuKien","2")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')

@@ -40,7 +40,7 @@ class DatabaseController extends Controller
         if(is_null($user)){
             return Redirect::to('/');
         }
-    	$articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
+    	$articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
 	    return view('scholartable', ['articles' =>$articles]);
     }
     public function delScholar(Request $request, $id){
@@ -63,19 +63,36 @@ class DatabaseController extends Controller
     public function getAllSchlConf(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user)){
-            return Redirect::to("");
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen == 1){
+            return Redirect::to("/");
         }
         $articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->where('id_TrangThaiHb', '=', 2)->whereRaw('\''.$user->kt_Quyen.'\' >= 3')->whereRaw($user->kt_Quyen.'<>4')->paginate(10);
         return view('scholarapproval', ['articles' =>$articles]);
     }
 
     public function confirmArticle(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+            return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE); 
+        }
         $id = $request->input('idi');
         DB::table('hocbong')->where('id_HocBong', '=', $id)->update(['id_TrangThaiHb'=>1]);
         return response()->json([999,"Xác nhận bài đăng thành công"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
     }
 
     public function ignoreArticle(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user)){
+            return "You must login to do this action";
+        }
+        if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+            return response()->json([555,"Bạn không có quyền thực hiện hành động này"], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE); 
+        }
         $id = $request->input('idi');
         DB::table('hocbong')->where('id_HocBong', '=', $id)->update(['id_TrangThaiHb'=>5]);
         return response()->json([999,"Không xét duyệt  bài đăng ".$id], 200,['Content-Type' => 'application/json;charset=utf-8', 'Charset' => 'utf-8'],JSON_UNESCAPED_UNICODE);
@@ -91,7 +108,7 @@ class DatabaseController extends Controller
     public function getCreateNewAccount(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user))
-            return Redirect::to('/');
+            return "You must login to do this action";
         else{
             if($user->kt_Quyen != 5)
                 return Redirect::to('');
@@ -101,6 +118,13 @@ class DatabaseController extends Controller
     }
 
     public function createNewAccount(Request $request){
+        $user = $this->getCurrentUser($request);
+        if(is_null($user))
+            return "You must login to do this action";
+        else{
+            if($user->kt_Quyen != 5)
+                return Redirect::to('');
+        }
         $listRole = DB::table("quyentaikhoan")->get();
         $username = $request->input('username');
         $email = $request->input('email');
@@ -200,7 +224,7 @@ class DatabaseController extends Controller
     public function getAllPost(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user))
-            return Redirect::to('/');
+            return "You must login to do this action";
         else{
             if($user->kt_Quyen == 1)
                 return Redirect::to('');
@@ -214,7 +238,7 @@ class DatabaseController extends Controller
     public function getAllPostConf(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user))
-            return Redirect::to('/');
+            return "You must login to do this action";
         else{
             if($user->kt_Quyen == 1 || $user->kt_Quyen == 2 || $user->kt_Quyen == 4)
                 return Redirect::to('');
