@@ -196,14 +196,14 @@ class GetDataToViewController extends Controller
     function postInfoEdit(Request $request){
         $user = $this->getCurrentUser($request);
         $id = $user->id;
-
         $hovaten = $request->input("HoVaTen");
         $gioitinh = $request->input("GioiTinh");
         $ngaysinh = $request->input("NgaySinh");
         $quequan = $request->input("QueQuan");
         $diachi = $request->input("DiaChi");
         $sdt = $request->input("SDT");
-        DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->update(['HoVaTen'=> $hovaten,'GioiTinh'=> $gioitinh,'NgaySinh'=> $ngaysinh,'QueQuan'=> $quequan,'DiaChi'=> $diachi,'SDT'=> $sdt]);
+        $cv = $request->input("cv");
+        DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->update(['HoVaTen'=> $hovaten,'GioiTinh'=> $gioitinh,'LinkCV'=> $cv,'NgaySinh'=> $ngaysinh,'QueQuan'=> $quequan,'DiaChi'=> $diachi,'SDT'=> $sdt]);
         return redirect("/personal_info");
     }
     function getPasswordEdit(Request $request){
@@ -283,18 +283,18 @@ class GetDataToViewController extends Controller
         $ketthucsk=$request->input("ketthucsk");
         $coverimage = $request->file("coverimage");
         $ext = $coverimage->getClientOriginalExtension();
+            $savefile = microtime().'.'.$ext;
+            $urlimage = "css/pictures/".$savefile;
+            $coverimage->move("css/pictures/",$savefile);
+            $diadiem = $request->input("diadiem");
+            $noidung = $request->input("noidung");
+            $tieude = $request->input("tieude");
 
-        $savefile = microtime().'.'.$ext;
-        $urlimage = "css/pictures/".$savefile;
-        $coverimage->move("css/pictures/",$savefile);
-        $diadiem = $request->input("diadiem");
-        $noidung = $request->input("noidung");
-        $tieude = $request->input("tieude");
+            DB::table('sukien')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenSuKien'=> $tensk,'id_LoaiSuKien'=> $idloaisk,'TieuDeBaiDang'=> $tieude,'id_ThanhPHo'=> $idthanhpho,
+                'ThoiGianBatDauDangKy'=> $batdaudk,'ThoiGianKetThucDangKy'=> $ketthucdk,'ThoiGianBatDauSuKien'=> $batdausk,'ThoiGianKetThucSuKien'=> $ketthucsk,'NguonThongTin'=> '','diadiem'=> $diadiem,'GiaiThuong'=> $giaithuong,'NoiDung'=> $noidung,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiTopic'=> 2,'id_MucBinhLuan'=>2]);
+            return redirect("/dashpage");
+        }
 
-        DB::table('sukien')->insert(['id_NguoiDang'=> $id,'AnhBia'=> $urlimage,'TenSuKien'=> $tensk,'id_LoaiSuKien'=> $idloaisk,'TieuDeBaiDang'=> $tieude,'id_ThanhPHo'=> $idthanhpho,
-            'ThoiGianBatDauDangKy'=> $batdaudk,'ThoiGianKetThucDangKy'=> $ketthucdk,'ThoiGianBatDauSuKien'=> $batdausk,'ThoiGianKetThucSuKien'=> $ketthucsk,'NguonThongTin'=> '','diadiem'=> $diadiem,'GiaiThuong'=> $giaithuong,'NoiDung'=> $noidung,'LinkDangKy'=> $link,'SoLuotQuanTam'=> 0,'id_TrangThaiTopic'=> 2,'id_MucBinhLuan'=>null]);
-        return redirect("/dashpage");
-    }
     function getPostsk(Request $request){
         $thanhpho = DB::table('thanhpho')->get();
         $loaisk = DB::table('loaisukien')->get();

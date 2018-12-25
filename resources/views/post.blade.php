@@ -167,7 +167,7 @@
                 </div>
             </div>
         </div>
-
+            <script src="assets/vendors/js/checkImage.js"></script>
 </div>
 <br>
 <br>

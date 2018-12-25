@@ -81,8 +81,8 @@
                                         <div class="about-text">UX Designer</div>
                                     </div>
                                     <div class="about-infos d-flex flex-column">
-                                        <div class="about-title">Skills:</div>
-                                        <div class="about-text">Photoshop, Illustrator, Javascript, HTML, CSS</div>
+                                        <div class="about-title">Link of CV:</div>
+                                        <div class="about-text">{{$profile->LinkCV}}</div>
                                     </div>
                                     <div class="about-infos d-flex flex-column">
                                         <div class="about-title">Email:</div>

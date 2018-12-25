@@ -105,13 +105,13 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <div class="styled-radio" >
-                                                <input type="radio"  id="rad-2" value="0" name="GioiTinh" >
+                                                <input type="radio"  id="rad-2" value="0" name="GioiTinh" @if($profile->GioiTinh  ==0) checked @endif >
                                                 <label for="rad-2">Nam</label><br>
 
                                             </div>
                                             <div class="styled-radio" >
 
-                                                <input type="radio"  id="rad-3" value="1" name="GioiTinh">
+                                                <input type="radio"  id="rad-3" value="1" name="GioiTinh" @if($profile->GioiTinh  ==1) checked @endif>
                                                 <label for="rad-3">Nữ</label>
 
                                             </div>
@@ -123,6 +123,12 @@
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Email</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control"  name="Email" value={{$email}} placeholder={{$email}}>
+                                    </div>
+                                </div>
+                                <div class="form-group row d-flex align-items-center mb-5">
+                                    <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Link of CV</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control"  name="cv" value={{$profile->LinkCV}}>
                                     </div>
                                 </div>
 
@@ -195,6 +201,7 @@
 </div>
 <!-- End Page Content -->
 </div>
+<script src="assets/vendors/js/checkImage.js"></script>
 <!-- Begin Vendor Js -->
 <script src="assets/vendors/js/base/jquery.min.js"></script>
 <script src="assets/vendors/js/base/core.min.js"></script>

@@ -3,6 +3,7 @@
     <title> Example </title>
     <meta charset="utf-8">
     <base href="/">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
@@ -59,6 +60,9 @@
                         <form class="bg" method="post" action="/postworkshop" enctype="multipart/form-data">
                             <div class="infor">
                                 <div class="spacing">
+                                    @if (Session::has('msg'))
+                                        <div class="alert alert-info">{{ Session::get('msg') }}</div>
+                                    @endif
                                     <div class="scholarshipname">
                                         <label>Tên sự kiện :</label>
                                         <input type="text" name="tensk">
@@ -110,11 +114,11 @@
                                         <label>Thời gian kết thúc sự kiện :</label>
                                         <input type="datetime-local" name="ketthucsk">
                                     </div>
-                                    <script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker1').datetimepicker();
-                                        });
-                                    </script>
+                                    {{--<script type="text/javascript">--}}
+                                        {{--$(function () {--}}
+                                            {{--$('#datetimepicker1').datetimepicker();--}}
+                                        {{--});--}}
+                                    {{--</script>--}}
                                 </div>
 
                                 <div class="spacing">
@@ -129,7 +133,8 @@
                                 <div class="spacing">
                                     <div class="coverimages">
                                         <label>Ảnh bìa :</label>
-                                        <input type="file" name="coverimage" ><br>
+                                        <input type="file" name="coverimage" id="im" >
+                                        <br>
                                     </div>
                                 </div>
                                 <div class="spacing">
@@ -154,6 +159,8 @@
             </div>
         </div>
 
+            {{--<script src="assets/vendors/js/bootstrap-select/bootstrap-select.js"></scrip--}}
+            <script src="assets/vendors/js/checkImage.js"></script>
 </div>
 <br>
 <br>
