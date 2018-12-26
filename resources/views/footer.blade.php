@@ -10,20 +10,20 @@
                 <a class="outside" href=""><i class="fas fa-phone-volume"></i></a>
             </div>
         </div>
-        <div class="col-sm-8">
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-            <a href="" class="reflink">học bổng</a>
-        </div>
+        {{--<div class="col-sm-8">--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+            {{--<a href="" class="reflink">học bổng</a>--}}
+        {{--</div>--}}
     </div>
     <p class="r">Copyright © All Rights reserved</p>
 </div>

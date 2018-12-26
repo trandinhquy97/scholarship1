@@ -35,18 +35,7 @@
 	@include('header')
 <!-- Hết menu -->
 
-<div class="mainhead">
-    <div class="box">
-        <h2 class="head">Khám phá những cơ hội mới</h2>
-        <form action="" class="form">
-            <div class="inputBox">
-                <input type="text" name="search" placeholder="Tìm kiếm">
-            </div>
-
-            <button type="submit" class="">Submit</button>
-        </form>
-    </div>
-</div>
+    @include('mainhead')
 
 <!-- Hết phần head -->
 

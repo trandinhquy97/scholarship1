@@ -121,14 +121,14 @@
             @endforeach
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 pagination">
-                {!! $search_scholarship_data->links() !!}
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-12 pagination">--}}
+                {{--{!! $search_scholarship_data->links() !!}--}}
                 {{--{!! $search_key !!}--}}
-            </div>
-        </div>
-    </div>
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 
     <div class="container">
@@ -160,14 +160,14 @@
             @endforeach
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 pagination">
-                {!! $search_contest_data->links() !!}
+    {{--<div class="container">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-sm-12 pagination">--}}
+                {{--{!! $search_contest_data->links() !!}--}}
                 {{--{!! $search_key !!}--}}
-            </div>
-        </div>
-    </div>
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="container">
         <div class="row">
@@ -201,7 +201,15 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 pagination">
-                {!! $search_workshop_data->links() !!}
+                @if($nummaxindex == 1)
+                    {!! $search_scholarship_data->links() !!}
+                @endif
+                @if($nummaxindex == 2)
+                    {!! $search_contest_data->links() !!}
+                @endif
+                @if($nummaxindex == 3)
+                    {!! $search_workshop_data->links() !!}
+                @endif
                 {{--{!! $search_key !!}--}}
             </div>
         </div>
