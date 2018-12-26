@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class DatabaseController extends Controller
 {
@@ -40,8 +41,15 @@ class DatabaseController extends Controller
         if(is_null($user)){
             return Redirect::to('/');
         }
-    	$articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
-	    return view('scholartable', ['articles' =>$articles]);
+        $search = $request->input('search_query');
+        if($search){
+            $articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')->where('hocbong.TenHocBong', 'like', '%'.$search.'%')->paginate(10);
+        }else{
+            $articles = DB::table('hocbong')->leftjoin('trangthai', 'hocbong.id_TrangThaiHb', '=', 'trangthai.id_TrangThai')->leftjoin('truonghoc','hocbong.id_TruongHoc','=','truonghoc.id_TruongHoc')->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);    
+           // return view('scholartable', ['articles' =>$articles]);
+        }
+        return view('scholartable', ['articles' =>$articles->appends(Input::except('page')), 'search'=>$search]);
+        
     }
     public function delScholar(Request $request, $id){
     	$currentname = $request->session()->get('currentname');
@@ -155,8 +163,13 @@ class DatabaseController extends Controller
             if($user->kt_Quyen != 5)
                 return Redirect::to('');
         }
-    	$listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10);
-    	return view('accounttable', ['accounts'=> $listUsers]);
+        $search = $request->input('search_query');
+        if($search){
+            $listUsers = DB::table('taikhoan')->where('username', 'like', '%'.$search.'%')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10);
+        }else{
+    	   $listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10); 
+        }
+    	return view('accounttable', ['accounts'=> $listUsers->appends(Input::except('page')), 'search'=>$search]);
     }
 
     public function changeAccount(Request $request){
@@ -229,10 +242,13 @@ class DatabaseController extends Controller
             if($user->kt_Quyen == 1)
                 return Redirect::to('');
         }
-        $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
-            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
-
-        return view('posttable', ['posts'=> $posts]);
+        $search = $request->input('search_query');
+        if($search){
+            $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->where('TenSuKien', 'like', '%'.$search.'%')->paginate(10);
+        }else{
+            $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
+        }
+        return view('posttable', ['posts'=> $posts->appends(Input::except('page')), 'search'=>$search]);
     }
 
     public function getAllPostConf(Request $request){

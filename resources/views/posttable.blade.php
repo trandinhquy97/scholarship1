@@ -63,6 +63,7 @@
 <div class="widget-header bordered no-actions d-flex align-items-center">
     <h2><b>Quản lý bài đăng tin tức học bổng</b></h2>
 </div>
+@include('searchbox')
 <div id="alert-return" class="alert alert-success alert-dismissible hidden">
     <a class="close" data-dismiss="alert" aria-label="close"></a>
     <strong>Success!</strong> This alert box could indicate a successful or positive action.

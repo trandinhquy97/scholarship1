@@ -63,6 +63,7 @@
         <div class="widget-header bordered no-actions d-flex align-items-center">
             <h2><b>Quản lý bài đăng tin tức học bổng</b></h2>
         </div>
+        @include('searchbox')
         <div id="alert-return" class="alert alert-success alert-dismissible hidden">
                 <a class="close" data-dismiss="alert" aria-label="close"></a>
             <strong>Success!</strong> This alert box could indicate a successful or positive action.
@@ -86,7 +87,7 @@
                         <tr>
                             <td><span class="text-primary">{{$value->id_HocBong}}</span></td>
                             <td><a target="_blank" href="/scholarship/{{$value->id_HocBong}}"> {{str_limit($value->TenHocBong, 32)}}</a></td>
-                            <td>US</td>
+                            <td>{{$value->TenQuocGia}}</td>
                             <td>{{$value->NgayTao}}</td>
                             @switch($value->id_TrangThaiHb)
                                 @case(1)

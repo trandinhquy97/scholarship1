@@ -82,7 +82,8 @@ Author: SAEROX
                             </li>
                             @endif
                             @if($type != 1)
-                            <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la la-font"></i><span>Quản lí bài đăng</span></a>
+                            <li><a href="#dropdown-icons" aria-expanded="false" data-toggle="collapse"><i class="la ion-document-text
+"></i><span>Quản lí bài đăng</span></a>
                                 <ul id="dropdown-icons" class="collapse list-unstyled pt-0">
                                     @if($type != 4 && $type != 6)
                                     <li><a href="/manage/post" target="mainside">Danh sách bài đăng</a></li>

@@ -26,14 +26,17 @@
         
         <!-- Stylesheet -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/detail.css">
         <link rel="stylesheet" href="assets/vendors/css/base/elisyam-1.5.min.css">
         <link rel="stylesheet" href="assets/css/datatables/datatables.min.css">
     </head>
     <body>
-    
+        
         <div class="widget-header bordered no-actions d-flex align-items-center">
             <h2><b>Quản lý tài khoản hệ thống</b></h2>
+            
         </div>
+        @include('searchbox')
             <div id="alert-return" class="alert alert-success alert-dismissible hidden">
                 <a class="close" data-dismiss="alert" aria-label="close"></a>
             <strong>Success!</strong> This alert box could indicate a successful or positive action.
