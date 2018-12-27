@@ -111,6 +111,7 @@
                                 <a id="btn-edit" href="manage/scholarship/edit/{{$value->id_HB}}"><i class="la la-edit edit"></i></a>
                                 @endif
                                 <a class="btn-del-sl" id="{{$value->id_HB}}"><i class="la la-close delete"></i></a>
+                                <a id="btn-watch" href="manage/scholarship/watchregist/{{$value->id_HB}}"><i class="la la-edit edit"></i></a>
                             </td>
                         </tr>
                         @endforeach
