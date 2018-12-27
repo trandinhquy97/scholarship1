@@ -64,6 +64,8 @@ Route::get('/dashboard', 'DatabaseController@routeDashBoard');
 
 Route::get('/dashpage', 'DatabaseController@routeBoardSide');
 
+Route::get('/try', 'DatabaseController@try');
+
 Route::group(['prefix'=>'manage'], function(){
 
 	Route::group(['prefix'=>'scholarship'], function(){

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-
+use Carbon\Carbon;
 class DatabaseController extends Controller
 {
 
@@ -383,6 +383,11 @@ class DatabaseController extends Controller
     public function upFile(Request $req){
         $file = $req->file;
         $file->move(public_path('/upload'), end($file));
+        return "aaa";
+    }
+
+    public function try(Request $req){
+        DB::table('hocbong')->where('deadline','>',date("Y-m-d", time()))->update(['id_TrangThaiHb' => 4]);
         return "aaa";
     }
 }
