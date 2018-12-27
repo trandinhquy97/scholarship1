@@ -14,21 +14,15 @@
 </head>
 <body >
 <div class="box">
-    <h2 class="head">Khôi phục mật khẩu</h2>
+    <h2 class="head">Đổi mật khẩu</h2>
     <form action="{{url('/reset')}}" class="form" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="inputBox">
             <input type="text" name="email" required="">
             <label class="label">Email</label>
         </div>
-        @if (session('message'))
-            <div class="alert alert-success">
-                <p>{{ session('message') }}</p>
-            </div>
-        @endif
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Gửi</button>
     </form>
-    <a href="./login" name="signup">Đăng nhập</a>
 </div>
 
 </body>

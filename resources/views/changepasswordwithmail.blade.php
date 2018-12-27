@@ -15,8 +15,9 @@
 <body >
 <div class="box">
     <h2 class="head">Đổi mật khẩu</h2>
-    <form action="{{url('/login')}}" class="form" method="post">
+    <form action="{{url('/resetpassword')}}" class="form" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="email" required="" value="{!! $email !!}">
         <div class="inputBox">
             <input type="password" name="password" required="">
             <label class="label">Password</label>

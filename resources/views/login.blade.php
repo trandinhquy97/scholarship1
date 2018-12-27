@@ -28,7 +28,7 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <a href="./forget" name="forget">Quên mật khẩu</a>
+    <a href="./reset" name="forget">Quên mật khẩu</a>
     <a href="./signup" name="signup">Đăng ký</a>
 </div>
 

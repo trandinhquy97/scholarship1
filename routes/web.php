@@ -42,9 +42,13 @@ Route::post('/personal_info_edit', ['as'=>'postInfoEdit','uses'=>'GetDataToViewC
 Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@getPasswordEdit']);
 Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
+Route::get('/resetpassword/{email}/{token}', ['as'=>'getResetPassword','uses'=>'CustomResetPasswordController@validateToken']);
+Route::post('/resetpassword', ['as'=>'postResetPassword','uses'=>'CustomResetPasswordController@resetPassword']);
+Route::get('/reset', ['as'=>'getReset','uses'=>'CustomResetPasswordController@getView']);
+Route::post('/reset', ['as'=>'postReset','uses'=>'CustomResetPasswordController@sendToken']);
+
 Route::get('/postworkshop', ['as'=>'getworkshop','uses'=>'GetDataToViewController@getPostsk']);
 Route::post('/postworkshop', ['as'=>'postworkshop','uses'=>'GetDataToViewController@postPostsk']);
-
 
 Route::get('/scholarship/{id}', ['as'=>'getScholarshipDetail','uses'=>'GetDataToViewController@getScholarshipDetail']);
 Route::get('/scholarship/{idHocBong}/dangky', ['as'=>'getScholarshipDetail','uses'=>'RegistScholarshipController@registScholarship']);
