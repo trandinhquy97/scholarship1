@@ -71,8 +71,12 @@ Route::group(['prefix'=>'manage'], function(){
         Route::post('/new', 'GetDataToViewController@postPosthb');
 		Route::get('approval', 'DatabaseController@getAllSchlConf');
         Route::post('approval', 'DatabaseController@confirmArticle');
+        Route::get('/watchregist/{id}', 'DatabaseController@getAllRegist');
         Route::put('approval', 'DatabaseController@ignoreArticle');
 		Route::delete('approval', 'DatabaseController@deleteScholar');
+
+
+        Route::get('/personal/{id}', 'GetDataToViewController@getAAccount');
 	});
 	Route::group(['prefix'=>'account'], function(){
 		Route::post('', 'DatabaseController@createAccount');

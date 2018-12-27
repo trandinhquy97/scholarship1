@@ -80,11 +80,12 @@ class GetDataToViewController extends Controller
         if(is_null($user)){
             if($thisScholarship[0]->id_TrangThaiHb != 1)
                 return Redirect::to('/');
-        }else{
-            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
-                return Redirect::to('/');
-            }
         }
+//        else{
+////            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+//                return Redirect::to('/');
+////            }
+//        }
 
 //        LeftBar
         $scholarships = DB::table('hocbong')->where("id_TrangThaiHb","=",1)
@@ -118,11 +119,12 @@ class GetDataToViewController extends Controller
         if(is_null($user)){
             if($workshopDetail->id_TrangThaiTopic != 1)
                 return Redirect::to('/');
-        }else{
-            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
-                return Redirect::to('/');
-            }
         }
+//        else{
+////            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+//                return Redirect::to('/');
+////            }
+//        }
         $workshops = DB::table('sukien')->where("id_LoaiSuKien","1")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
@@ -142,11 +144,12 @@ class GetDataToViewController extends Controller
         if(is_null($user)){
             if($contestDetail->id_TrangThaiTopic != 1)
                 return Redirect::to('/');
-        }else{
-            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
-                return Redirect::to('/');
-            }
         }
+        //else{
+//            if($user->kt_Quyen != 3 && $user->kt_Quyen != 5 && $user->kt_Quyen != 6){
+//                return Redirect::to('/');
+//            }
+//        }
         $contest = DB::table('sukien')->where("id_LoaiSuKien","2")
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
@@ -177,6 +180,13 @@ class GetDataToViewController extends Controller
         else{
             return null;
         }
+    }
+    function getAAccount(Request $request, $id){
+        $user = $this->getCurrentUser($request);
+        $id = $user->id;
+        $email = DB::table('taikhoan')->where('id','=',$id)->first()->email;
+        $profile = DB::table('thongtintaikhoan')->where('id_TaiKhoan','=',$id)->first();
+        return view("personal_info", ['profile' => $profile],['email' => $email]);
     }
     function getPersonal(Request $request){
         $user = $this->getCurrentUser($request);

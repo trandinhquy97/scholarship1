@@ -97,7 +97,7 @@
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Ngày sinh</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" id="date" placeholder="Select value" name="NgaySinh" value={{$profile->NgaySinh}}>
+                                        <input type="date" class="form-control" id="date" placeholder="Select value" name="NgaySinh" value={{$profile->NgaySinh}}>
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">
@@ -122,7 +122,7 @@
                                 <div class="form-group row d-flex align-items-center mb-5">
                                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Email</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control"  name="Email" value={{$email}} placeholder={{$email}}>
+                                        <input type="text" class="form-control"  name="Email" value={{$email}} placeholder={{$email}} disabled>
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex align-items-center mb-5">

@@ -25,7 +25,16 @@ class SearchController extends Controller
             ->leftjoin('thanhpho','sukien.id_ThanhPho','=','thanhpho.id_ThanhPho')
             ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
             ->paginate(6);
-        return view('searchinfo', ['search_scholarship_data' => $search_scholarship_data, 'search_contest_data' => $search_contest_data, 'search_workshop_data' => $search_workshop_data]);
+        $nummaxindex =1;
+        if ($search_scholarship_data->total() < $search_contest_data->total())
+        {
+            $nummaxindex = 2;
+        }
+        if ($search_contest_data->total() < $search_workshop_data->total())
+        {
+            $nummaxindex = 3;
+        }
+        return view('searchinfo', ['search_scholarship_data' => $search_scholarship_data, 'search_contest_data' => $search_contest_data, 'search_workshop_data' => $search_workshop_data, 'nummaxindex' => $nummaxindex]);
     }
     function getSearch(Request $request)
     {
@@ -45,14 +54,14 @@ class SearchController extends Controller
             ->leftjoin('quocgia', 'thanhpho.id_QuocGia', '=', 'quocgia.id_QuocGia')
             ->paginate(6);
         $nummaxindex =1;
-//        if ($search_scholarship_data->total() < $search_contest_data->total())
-//        {
-//            $nummaxindex = 2;
-//        }
-//        if ($search_contest_data->total() < $search_workshop_data->total())
-//        {
-//            $nummaxindex = 3;
-//        }
+        if ($search_scholarship_data->total() < $search_contest_data->total())
+        {
+            $nummaxindex = 2;
+        }
+        if ($search_contest_data->total() < $search_workshop_data->total())
+        {
+            $nummaxindex = 3;
+        }
         return view('searchinfo', ['search_scholarship_data' => $search_scholarship_data, 'search_contest_data' => $search_contest_data, 'search_workshop_data' => $search_workshop_data, 'nummaxindex' => $nummaxindex]);
     }
 }

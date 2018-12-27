@@ -63,7 +63,6 @@
         <div class="widget-header bordered no-actions d-flex align-items-center">
             <h2><b>Quản lý bài đăng tin tức học bổng</b></h2>
         </div>
-        @include('searchbox')
         <div id="alert-return" class="alert alert-success alert-dismissible hidden">
                 <a class="close" data-dismiss="alert" aria-label="close"></a>
             <strong>Success!</strong> This alert box could indicate a successful or positive action.
@@ -78,15 +77,15 @@
                             <th>Quốc gia</th>
                             <th>Ngày đăng</th>
                             <th><span style="width:100px;">Trạng thái</span></th>
-                            <th>Hạn chót</th>
+                            <th>Số lượng đã đăng ký</th>
                             <th>Hoạt động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($articles as $value)
                         <tr>
-                            <td><span class="text-primary">{{$value->id_HocBong}}</span></td>
-                            <td><a target="_blank" href="/scholarship/{{$value->id_HocBong}}"> {{str_limit($value->TenHocBong, 32)}}</a></td>
+                            <td><span class="text-primary">{{$value->id_HB}}</span></td>
+                            <td><a target="_blank" href="/scholarship/{{$value->id_HB}}"> {{str_limit($value->TenHocBong, 32)}}</a></td>
                             <td>{{$value->TenQuocGia}}</td>
                             <td>{{$value->NgayTao}}</td>
                             @switch($value->id_TrangThaiHb)
@@ -106,12 +105,12 @@
                                     @break;
                             @endswitch
                             <td><span style="width:100px;"><span class="badge-text badge-text-small {{$status}}">{{$value->TenTrangThai}}</span></span></td>
-                            <td>{{$value->deadline}}</td>
+                            <td>{{$value->people_count}}</td>
                             <td class="td-actions">
                                 @if($value->id_TrangThaiHb == 1)
-                                <a id="btn-edit" href="manage/scholarship/edit/{{$value->id_HocBong}}"><i class="la la-edit edit"></i></a>
+                                <a id="btn-edit" href="manage/scholarship/edit/{{$value->id_HB}}"><i class="la la-edit edit"></i></a>
                                 @endif
-                                <a class="btn-del-sl" id="{{$value->id_HocBong}}"><i class="la la-close delete"></i></a>
+                                <a class="btn-del-sl" id="{{$value->id_HB}}"><i class="la la-close delete"></i></a>
                             </td>
                         </tr>
                         @endforeach
