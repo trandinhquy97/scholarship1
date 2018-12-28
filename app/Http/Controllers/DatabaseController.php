@@ -51,6 +51,7 @@ class DatabaseController extends Controller
                 ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
                 ->leftjoin('dangkyhocbong', 'hocbong.id_HocBong','=','dangkyhocbong.id_HocBong')
                 ->where('hocbong.TenHocBong', 'like', '%'.$search.'%')
+                ->groupBy('hocbong.id_HocBong')
                 ->paginate(10);
         }else{
             $articles = DB::table('hocbong')
