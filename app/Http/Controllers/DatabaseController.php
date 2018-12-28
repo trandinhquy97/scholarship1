@@ -50,9 +50,7 @@ class DatabaseController extends Controller
                 ->leftjoin('thanhpho','truonghoc.id_ThanhPho','=','thanhpho.id_ThanhPho')
                 ->leftjoin('quocgia','thanhpho.id_QuocGia','=','quocgia.id_QuocGia')
                 ->leftjoin('dangkyhocbong', 'hocbong.id_HocBong','=','dangkyhocbong.id_HocBong')
-                ->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)
-                ->groupBy('hocbong.id_HocBong')
-                ->where('hocbong.TenHocBong', 'like', '%'.$search.'%')->paginate(10)
+                ->where('hocbong.TenHocBong', 'like', '%'.$search.'%')
                 ->paginate(10);
         }else{
             $articles = DB::table('hocbong')
@@ -68,7 +66,7 @@ class DatabaseController extends Controller
             // return view('scholartable', ['articles' =>$articles]);
         }
 
-	    return view('scholartable', ['articles' =>$articles]);
+	    return view('scholartable', ['articles' =>$articles->appends(Input::except('page')), 'search'=>$search]);
     }
 
     public function getAllRegist(Request $request, $id){
@@ -180,20 +178,25 @@ class DatabaseController extends Controller
                     'id_TrangThai'=>1
                 ]);
 
-        DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam',"id_TrangThai"=>0]);
+        DB::table("thongtintaikhoan")->insert(["id_TaiKhoan"=>$user->id,"HoVaTen"=>'',"NgaySinh"=>'0001-01-01',"SDT"=>'',"GioiTinh"=>1,"QueQuan"=>'VietNam',"DiaChi"=>'VietNam',"id_TrangThai"=>0, "LinkCV"=>'']);
         return view('newemployee', ['status'=>1, 'mes'=>'Đã tạo thành công tài khoản '.$username,'roles'=>$listRole]);
     }
 
     public function getAllAccount(Request $request){
-    	$user = $this->getCurrentUser($request);
+        $user = $this->getCurrentUser($request);
         if(is_null($user))
             return Redirect::to('/');
         else{
             if($user->kt_Quyen != 5)
                 return Redirect::to('');
         }
-    	$listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10);
-    	return view('accounttable', ['accounts'=> $listUsers]);
+        $search = $request->input('search_query');
+        if($search){
+            $listUsers = DB::table('taikhoan')->where('username', 'like', '%'.$search.'%')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10);
+        }else{
+           $listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10); 
+        }
+        return view('accounttable', ['accounts'=> $listUsers->appends(Input::except('page')), 'search'=>$search]);
     }
 
     public function changeAccount(Request $request){
@@ -266,10 +269,13 @@ class DatabaseController extends Controller
             if($user->kt_Quyen == 1)
                 return Redirect::to('');
         }
-        $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')
-            ->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
-
-        return view('posttable', ['posts'=> $posts]);
+        $search = $request->input('search_query');
+        if($search){
+            $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->where('TenSuKien', 'like', '%'.$search.'%')->paginate(10);
+        }else{
+            $posts = DB::table('sukien')->leftJoin('trangthai','id_TrangThaiTopic','=','id_TrangThai')->leftJoin('loaisukien','sukien.id_LoaiSuKien','=','loaisukien.id_LoaiSuKien')->whereRaw($user->kt_Quyen.'<>2')->orWhere('id_NguoiDang','=',$user->id)->paginate(10);
+        }
+        return view('posttable', ['posts'=> $posts->appends(Input::except('page')), 'search'=>$search]);
     }
 
     public function getAllPostConf(Request $request){
