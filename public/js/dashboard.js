@@ -5,9 +5,10 @@ $(document).ready(function() {
       console.log("upgrade");
       showAlert("Thay đổi loại tài khoản");
       $(".modal-center").html("<select class=\"form-control\" id=\"sel1\"><option r=\"1\">Sinh viên</option><option r=\"2\">Tổ chức</option><option>Nhân viên</option><option>Người đăng tin</option><option>Quản trị viên</option><option>Kiểm duyệt viên</option></select>");
-      $(".form-control").val($("#rl"+$(this).attr("id")).html());
+      //$(".form-control").val($("#rl"+$(this).attr("id")).html());
       $("#modal-btn-yes").attr("meth", "PUT");
       $("#modal-btn-yes").attr("op", "1");
+
       $("#modal-btn-yes").attr("idi", $(this).attr("id"));
     });
 
@@ -68,7 +69,7 @@ $(document).ready(function() {
         op = parseInt($("#modal-btn-yes").attr("op"));
         switch (op) {
           case 1:
-            $("#modal-btn-yes").attr("dt", $(".form-control").prop('selectedIndex'));
+            $("#modal-btn-yes").attr("dt", $("#sel1").prop('selectedIndex'));
             break;
           case 2:
             $("#modal-btn-yes").attr("dt", $("#repass").val());
@@ -115,14 +116,18 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           method: $("#modal-btn-yes").attr("meth"), // method is any HTTP method
-          data: {'idi': $("#modal-btn-yes").attr("idi"), 'op': $("#modal-btn-yes").attr("op"), 'data': $("#modal-btn-yes").attr("dt")}, // data as js object
+          data: 
+          {
+            'idi': $("#modal-btn-yes").attr("idi"), 
+            'op': $("#modal-btn-yes").attr("op"), 
+            'data': $("#modal-btn-yes").attr("dt")}, // data as js object
           success: function(result) {
             $("#alert-return").html(result[1]);
             switch (result[0]) {
               case 999:
                 $("#alert-return").attr("class", "alert alert-success alert-dismissible");
                 if($("#modal-btn-yes").attr("meth")==='DELETE' || 
-                  (window.location.href.indexOf('approval') != 1 )){
+                  (window.location.href.indexOf('approval') != -1 )){
                   location.reload();
                 }
                 break;

@@ -193,9 +193,18 @@ class DatabaseController extends Controller
         }
         $search = $request->input('search_query');
         if($search){
-            $listUsers = DB::table('taikhoan')->where('username', 'like', '%'.$search.'%')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10);
+            $listUsers = DB::table('taikhoan')
+            ->where('username', 'like', '%'.$search.'%')
+            ->whereRaw('\''.$user->kt_Quyen.'\' = 5')
+            ->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')
+            ->orderBy('id')
+            ->paginate(10);
         }else{
-           $listUsers = DB::table('taikhoan')->whereRaw('\''.$user->kt_Quyen.'\' = 5')->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')->paginate(10); 
+           $listUsers = DB::table('taikhoan')
+           ->whereRaw('\''.$user->kt_Quyen.'\' = 5')
+           ->leftjoin('quyentaikhoan', 'kt_Quyen', '=', 'id_QuyenTaiKhoan')
+           ->orderBy('id')
+           ->paginate(10); 
         }
         return view('accounttable', ['accounts'=> $listUsers->appends(Input::except('page')), 'search'=>$search]);
     }
