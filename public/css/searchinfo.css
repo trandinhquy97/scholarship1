@@ -45,15 +45,15 @@ li.btnlogin{
 }
 .searchbar{
 	position: absolute;
-    top: 23px;
-    right: 295px;
-    border-radius: 15px;
-    border: solid 1px #e94e38;
-    transition: 0.3s;
-    opacity: 0;
-    height: 30px;
-    padding-left: 10px;
-    outline: none;
+	top: 23px;
+	right: 295px;
+	border-radius: 15px;
+	border: solid 1px #e94e38;
+	transition: 0.3s;
+	opacity: 100%;
+	height: 30px;
+	padding-left: 10px;
+	outline: none;
 }
 li.btnsearch{
 	height: 100%;
@@ -263,7 +263,7 @@ li.nav-item button{
 }
 .scholarshipbox .card .bg{
 	height: 120px;
-	display:hidden;
+	/*display:hidden;*/
 }
 .scholarshipbox .card .blur{
     width: 100%;

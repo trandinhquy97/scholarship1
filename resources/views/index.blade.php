@@ -59,7 +59,7 @@
                             <h4 class="card-title">{{$scholarship->TenHocBong}}</h4>
                         </div>
                         <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                            {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                         </div>
                         <a href="{{'/scholarship/'.$scholarship->id_HocBong}}" class="">Xem thêm</a>
                     </div>
@@ -90,7 +90,7 @@
                             <h4 class="card-title">{{$contest->TieuDeBaiDang}}</h4>
                         </div>
                         <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                            {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                         </div>
                         <a href="{{'/contest/'.$contest->id_SuKien}}" class="">Xem thêm</a>
                     </div>
@@ -120,7 +120,7 @@
                             <h4 class="card-title">{{$workshop->TieuDeBaiDang}}</h4>
                         </div>
                         <div class="textboxp">
-                            <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                            {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                         </div>
                         <a href="{{'/workshop/'.$workshop->id_SuKien}}" class="">Xem thêm</a>
                     </div>

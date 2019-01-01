@@ -112,7 +112,7 @@
                                 <h4 class="card-title">{{$search_datum->TenHocBong}}</h4>
                             </div>
                             <div class="textboxp">
-                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                                {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                             </div>
                             <a href="{{'/scholarship/'.$search_datum->id_HocBong}}" class="">Xem thêm</a>
                         </div>
@@ -151,7 +151,7 @@
                                 <h4 class="card-title">{{$contest->TieuDeBaiDang}}</h4>
                             </div>
                             <div class="textboxp">
-                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                                {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                             </div>
                             <a href="{{'/contests/'.$contest->id_SuKien}}" class="">Xem thêm</a>
                         </div>
@@ -189,7 +189,7 @@
                                 <h4 class="card-title">{{$contest->TieuDeBaiDang}}</h4>
                             </div>
                             <div class="textboxp">
-                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                                {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                             </div>
                             <a href="{{'/contests/'.$contest->id_SuKien}}" class="">Xem thêm</a>
                         </div>

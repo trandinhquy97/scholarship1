@@ -35,7 +35,7 @@
 	@include('header')
 <!-- Hết menu -->
 
-    @include('mainhead')
+    {{--@include('mainhead')--}}
 
 <!-- Hết phần head -->
 
@@ -60,7 +60,7 @@
                                 <h4 class="card-title">{{$scholarship->TenHocBong}}</h4>
                             </div>
                             <div class="textboxp">
-                                <p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>
+                                {{--<p class="card-text">Aliquam quis pulvinar purus. Etiam cursus ipsum quis enim faucibus, quis posuere orci ornare. Duis mattis sagittis fringilla.</p>--}}
                             </div>
                             <a href="{{'/scholarship/'.$scholarship->id_HocBong}}" class="">Xem thêm</a>
                         </div>

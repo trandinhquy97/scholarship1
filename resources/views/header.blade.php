@@ -21,10 +21,21 @@
     </ul>
 
     <ul class="nav navbar-nav ml-auto leftitemsinnav">
-        <input type="text" class="searchbar">
+        {{--<input type="text" class="searchbar">--}}
         {{--<li class="nav-item btnsearch">--}}
             {{--<button><i class="fas fa-search white"></i></button>--}}
         {{--</li>--}}
+
+
+        <form action="{{url('/searchinfo')}}" class="form1" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="text" class="searchbar">
+            <li class="nav-item btnsearch">
+                <button type="submit" class=""><i class="fas fa-search white"></i></button>
+            </li>
+        </form>
+
+
         <li class="nav-item btnlogin">
             <i class="fas fa-user-alt white"></i>
             @if(Session::has('currentname'))
