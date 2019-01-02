@@ -39,17 +39,12 @@
     </script>
 </head>
 <body >
-</nav>
-<!-- Hết menu -->
-
-
-<!-- Hết phần head -->
 
 <div class="post">
 
         <div class="row">
-            <div  class="col-sm-6 tilte">
-                <p>Đăng thông tin học bổng</p>
+            <div class="widget-header bordered no-actions d-flex align-items-center">
+                <h2><b>Đăng thông tin học bổng</b></h2>
             </div>
         </div>
         <div class="row">

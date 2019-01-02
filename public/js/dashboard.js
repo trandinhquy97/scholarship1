@@ -90,6 +90,10 @@ $(document).ready(function() {
           $("#mi-modal").modal('show');
     }
 
+    $("#back").on("click", function(){
+      window.history.back();
+    });
+
 
     
   };

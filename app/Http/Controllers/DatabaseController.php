@@ -108,6 +108,16 @@ class DatabaseController extends Controller
         return view('scholarapproval', ['articles' =>$articles]);
     }
 
+    public function newPost(Request $request){
+        $levelscholar = DB::table('bachoc')->get();
+        $typescholar = DB::table('loaihocbong')->get();
+        $majorscholar = DB::table('nganhhoc')->get();
+        $school = DB::table('truonghoc')->get();
+        $quocgia = DB::table('quocgia')->get();
+        $unit = DB::table('donvitien')->get();
+        return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit]);
+    }
+
     public function confirmArticle(Request $request){
         $user = $this->getCurrentUser($request);
         if(is_null($user)){
@@ -301,6 +311,13 @@ class DatabaseController extends Controller
 
         return view('postapproval', ['posts'=> $posts]);
     }
+
+    public function createNewEvent(Request $request){
+        $typeevent = DB::table('loaisukien')->get();
+        $cities = DB::table('thanhpho')->where('id_QuocGia', '=', 238)->get();
+        return view('newevent', ['typeevent'=>$typeevent, 'cities'=>$cities]);
+    }
+
 
     public function deletePost(Request $request){
         $user = $this->getCurrentUser($request);

@@ -76,7 +76,7 @@ Author: SAEROX
                                     <li><a href="/manage/scholarship/approval" target="mainside">Duyệt học bổng</a></li>
                                     @endif
                                     @if($type != 6)
-                                    <li><a href="/manage/scholarship/new" target="mainside">Thêm mới</a></li>
+                                    <li><a href="/manage/scholarship/neww" target="mainside">Thêm mới</a></li>
                                     @endif
                                 </ul>
                             </li>

@@ -80,7 +80,7 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('/watchregist/{id}', 'DatabaseController@getAllRegist');
         Route::put('approval', 'DatabaseController@ignoreArticle');
 		Route::delete('approval', 'DatabaseController@deleteScholar');
-
+        Route::get('neww', 'DatabaseController@newPost');
 
         Route::get('/personal/{id}', 'GetDataToViewController@getAAccount');
 	});
@@ -95,7 +95,8 @@ Route::group(['prefix'=>'manage'], function(){
     Route::group(['prefix'=>'post'], function(){
         Route::get('/', 'DatabaseController@getAllPost');
         Route::get('{id}', 'DatabaseController@editPost')->where('id', '[0-9]+');;
-        Route::get('new', 'DatabaseController@createNewPost');
+        Route::get('new', 'DatabaseController@createNewEvent');
+
         Route::delete('/', 'DatabaseController@deletePost');
         Route::get('approval', 'DatabaseController@getAllPostConf');
         Route::post('approval', 'DatabaseController@confirmPost');
