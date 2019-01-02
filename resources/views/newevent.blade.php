@@ -63,19 +63,19 @@
         @if(!empty($status))
         @endif
         <div class="widget-body">
-            <form>
+            <form action="manage/post/new" class="form" method="post" enctype="multipart/form-data">
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-quote-right
 "></i>Tên sự kiện</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Tên sự kiện" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Tên sự kiện" name="nameevent">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-paper-plane
 "></i>Tiêu đề bài đăng</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Tiêu đề bài đăng" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Tiêu đề bài đăng" name="namepost">
                     </div>
                 </div>
                 <div class="row">
@@ -84,7 +84,7 @@
                             <label class="col-lg-5 form-control-label d-flex justify-content-lg-end"><i class="la la-tag
 "></i>Loại sự kiện</label>
                             <div class="col-lg-5 select mb-3">
-                                <select required="true" name="typescholar" class="custom-select form-control">
+                                <select required="true" name="typeevent" class="custom-select form-control">
                                     @foreach($typeevent as $type){
                                         <option value="{{$type->id_LoaiSuKien}}">{{$type->TenLoaiSuKien}}</option>
                                     @endforeach
@@ -97,7 +97,7 @@
                             <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-industry
 "></i>Thành phố</label>
                             <div class="col-lg-9 select mb-3">
-                                <select required="true" name="majorscholar" class="custom-select form-control">
+                                <select required="true" name="city" class="custom-select form-control">
                                     @foreach($cities as $city){
                                         <option value="{{$city->id_ThanhPho}}">{{$city->TenThanhPho}}</option>
                                     @endforeach
@@ -117,7 +117,7 @@
                     <div class="col-lg-9">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="daterange" placeholder="Select value">
+                                <input type="text" class="form-control" id="daterange" placeholder="Select value" name="daterange">
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                     <div class="col-lg-9">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="datetime" placeholder="Select value">
+                                <input type="text" class="form-control" id="datetime" placeholder="Select value" name="datetime">
                             </div>
                         </div>
                     </div>
@@ -136,13 +136,13 @@
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-map-marker
 "></i>Địa điểm</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Địa điểm diễn ra" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Địa điểm diễn ra" name="address">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-certificate"></i>Giải thưởng</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Giải thưởng" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Giải thưởng" name="award">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
@@ -157,27 +157,29 @@
                     <div class="request">
                         <div class="form-group green-border-focus">
                             <label><i class="la la-paste"></i>Nội dung sự kiện</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea5" required="true" rows="5" name="pro"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea5" required="true" rows="5" name="content"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-envelope"></i>Link đăng ký</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Link đăng ký" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Link đăng ký" name="link">
                     </div>
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-info-circle
 "></i>Nguồn thông tin</label>
                     <div class="col-lg-6">
-                        <input type="text" required="true" class="form-control" placeholder="Nguồn thông tin" name="">
+                        <input type="text" required="true" class="form-control" placeholder="Nguồn thông tin" name="source">
                     </div>
                 </div>
                 <div class="text-right">
                     <input  name="_token" type="hiden" value="{{ csrf_token() }}" style="visibility:hidden;">
                     <button class="btn btn-shadow mr-1 mb-2" type="reset">Reset</button>
                     <button class="btn btn-gradient-01" type="submit">Tạo</button>
+                </div>
+                    </div>
                 </div>
             </form>
         </div>

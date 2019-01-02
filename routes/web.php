@@ -98,6 +98,7 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('/', 'DatabaseController@getAllPost');
         Route::get('{id}', 'DatabaseController@editPost')->where('id', '[0-9]+');
         Route::get('new', 'DatabaseController@createNewEvent');
+        Route::post('new', 'DatabaseController@createPostNewEvent');
 
         Route::delete('/', 'DatabaseController@deletePost');
         Route::get('approval', 'DatabaseController@getAllPostConf');

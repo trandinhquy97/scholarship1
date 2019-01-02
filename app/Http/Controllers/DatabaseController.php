@@ -372,6 +372,64 @@ class DatabaseController extends Controller
         return view('newevent', ['typeevent'=>$typeevent, 'cities'=>$cities]);
     }
 
+    public function createPostNewEvent(Request $request){
+        if ($request->hasFile('Fichier1')) {
+            $file = $request->file('Fichier1');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $file->move('upload', $fileName);
+            $filePath = 'upload/'.$fileName;
+
+            $user = $this->getCurrentUser($request);
+            $name = $request->input('nameevent');
+            $namePost = $request->input('nameevent');
+            $typeEvent = $request->input('typeevent');
+            $city = $request->input('city');
+            $daterange = $request->input('daterange');
+            $date = explode(" - ", $daterange);
+            $startdate=$date[0]; // piece1
+            $stopdate = $date[1];
+
+            $datetimerange = $request->input('datetime');
+            $datetime = explode(" - ", $datetimerange);;
+            $startdatetime=$datetime[0]; // piece1
+            $stopdatetime = $datetime[1];
+
+            $address = $request->input('address');
+            $award = $request->input('award');
+
+            $content = $request->input('content');
+            $link = $request->input('link');
+            $source = $request->input('source');
+
+
+            DB::table('sukien')->insert([
+                'id_NguoiDang'=>$user->id,
+                'NgayTao'=>Carbon::now(),
+                'AnhBia'=>$filePath,
+                'TenSuKien'=>$name,
+                'TieuDeBaiDang'=>$namePost,
+                'id_LoaiSuKien'=>$typeEvent,
+                'id_ThanhPho'=>$city,
+                'ThoiGianBatDauDangKy'=>date("Y-m-d", strtotime($startdate)),
+                'ThoiGianKetThucDangKy'=>date("Y-m-d", strtotime($stopdate)),
+                'ThoiGianBatDauSuKien'=>date("Y-m-d H-i-s", strtotime($startdatetime)),
+                'ThoiGianKetThucSuKien'=>date("Y-m-d H-i-s", strtotime($stopdatetime)),
+                'DiaDiem'=>$address,
+                'GiaiThuong'=>$award,
+                'NoiDung'=>$content,
+                'LinkDangKy'=>$link,
+                'NguonThongTin'=>$source,
+                'id_MucBinhLuan'=>2,
+                'SoLuotQuanTam'=>0,
+                'id_TrangThaiTopic'=>2
+            ]);
+
+//            return $nameScholar.$pro.$mytime;
+        }else{
+            return 'null file';
+        }
+    }
+
 
     public function deletePost(Request $request){
         $user = $this->getCurrentUser($request);
