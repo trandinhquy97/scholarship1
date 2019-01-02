@@ -73,15 +73,17 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
 		Route::delete('/', 'DatabaseController@deleteScholar');
 		Route::get('delete/{id}', 'DatabaseController@delScholar');
-        Route::get('/new', 'GetDataToViewController@getPosthb');
-        Route::post('/new', 'GetDataToViewController@postPosthb');
+        // Route::get('/new', 'GetDataToViewController@getPosthb');
+        // Route::post('/new', 'GetDataToViewController@postPosthb');
 		Route::get('approval', 'DatabaseController@getAllSchlConf');
         Route::post('approval', 'DatabaseController@confirmArticle');
         Route::get('/watchregist/{id}', 'DatabaseController@getAllRegist');
         Route::put('approval', 'DatabaseController@ignoreArticle');
 		Route::delete('approval', 'DatabaseController@deleteScholar');
-        Route::get('neww', 'DatabaseController@newPost');
-
+        Route::get('new', 'DatabaseController@newScholar');
+        Route::post('new', 'DatabaseController@createScholar');
+        Route::get('edit/{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
+        Route::post('edit/{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
         Route::get('/personal/{id}', 'GetDataToViewController@getAAccount');
 	});
 	Route::group(['prefix'=>'account'], function(){
@@ -94,7 +96,7 @@ Route::group(['prefix'=>'manage'], function(){
 	});
     Route::group(['prefix'=>'post'], function(){
         Route::get('/', 'DatabaseController@getAllPost');
-        Route::get('{id}', 'DatabaseController@editPost')->where('id', '[0-9]+');;
+        Route::get('{id}', 'DatabaseController@editPost')->where('id', '[0-9]+');
         Route::get('new', 'DatabaseController@createNewEvent');
 
         Route::delete('/', 'DatabaseController@deletePost');

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Http\UploadedFile;
 use Carbon\Carbon;
 class DatabaseController extends Controller
 {
@@ -108,7 +109,7 @@ class DatabaseController extends Controller
         return view('scholarapproval', ['articles' =>$articles]);
     }
 
-    public function newPost(Request $request){
+    public function newScholar(Request $request){
         $levelscholar = DB::table('bachoc')->get();
         $typescholar = DB::table('loaihocbong')->get();
         $majorscholar = DB::table('nganhhoc')->get();
@@ -116,6 +117,59 @@ class DatabaseController extends Controller
         $quocgia = DB::table('quocgia')->get();
         $unit = DB::table('donvitien')->get();
         return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit]);
+    }
+
+    public function createScholar(Request $request){
+        if ($request->hasFile('Fichier1')) {
+            $file = $request->file('Fichier1');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $file->move('upload', $fileName);
+            $filePath = 'upload/'.$fileName;
+            $nameScholar = $request->input('namescholar');
+            $typescholar = $request->input('typescholar');
+            $majorscholar = $request->input('majorscholar');
+            $levelscholar = $request->input('levelscholar');
+            $schoolID = $request->input('school');
+            $minval = $request->input('minval');
+            $maxval = $request->input('maxval');
+            $unit = $request->input('unit');
+            $numscholar = $request->input('numscholar');
+            $deadline = $request->input('deadline');
+            $split = explode('/', $deadline);
+            $deadline = $split[2].'-'.$split[1].'-'.$split[0];
+            $require = $request->input('require');
+            $pro = $request->input('pro');
+            $user = $this->getCurrentUser($request);
+            $linkreg = $request->input('linkreg');
+            $linkvia = $request->input('linkvia');
+            $mytime = Carbon::now();
+            $mytime->toDateTimeString();
+            DB::table('giatrihocbong')->insert(['PhanTramHb'=>0, 'SoTienMin'=>$minval, 'SoTienMax'=>$maxval, 'id_DonViTien'=>$unit, 'MoTa'=>'']);
+            $idGiaTri = DB::table('giatrihocbong')->orderBy('id_GiaTriHb', 'desc')->first();
+            DB::table('hocbong')->insert([
+                'id_NguoiDang'=>$user->id, 
+                'NgayTao'=>$mytime, 
+                'AnhBia'=>$filePath,
+                'TenHocBong'=>$nameScholar,
+                'id_LoaiHb'=>$typescholar,
+                'deadline'=>$deadline,
+                'id_TruongHoc'=>$schoolID,
+                'id_BacHoc'=>$levelscholar,
+                'id_NganhHoc'=>$majorscholar,
+                'id_GiaTriHb'=>$idGiaTri->id_GiaTriHb,
+                'SoLuong'=>$numscholar,
+                'YeuCau'=>$require,
+                'ThuTucNop'=>$pro,
+                'LinkDangKy'=>$linkreg,
+                'NguonThongTin'=>$linkvia,
+                'SoLuotQuanTam'=>0,
+                'id_TrangThaiHb'=>2
+            ]);
+
+            return $nameScholar.$pro.$mytime;
+        }else{
+            return 'null file';
+        }
     }
 
     public function confirmArticle(Request $request){

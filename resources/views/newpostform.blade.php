@@ -1,5 +1,5 @@
 <div class="widget-body">
-            <form action="manage/scholar/new" class="form" method="post" >
+            <form action="manage/scholarship/new" class="form" method="post" enctype="multipart/form-data">
                 <div class="form-group row d-flex align-items-center mb-5">
                     <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-quote-right
 "></i>Tên học bổng</label>
@@ -65,6 +65,10 @@
                 </div>
                 <div class="form-group row d-flex align-items-center mb-5">
                     <div class="col-md-3">
+                        <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Số lượng suất</label>
+                        <input type="text" required="true" class="form-control" placeholder="Số lượng suất học bổng" name="numscholar">
+                    </div>
+                    <div class="col-md-3">
                         <label class="col-lg-2 form-control-label d-flex justify-content-lg-end">Thấp nhất</label>
                         <input type="text" required="true" class="form-control" placeholder="Giá trị" name="minval">
                     </div>
@@ -104,7 +108,7 @@
                     <div class="col-lg-9">
                         <div class="form-group">
                     <div class="input-group input-file" name="Fichier1">
-                        <input type="text" required="true" name="photo" class="form-control" placeholder='Choose a file...' />
+                        <input type="text" required="true" id="photo" name="photo" class="form-control" placeholder='Choose a file...' />
                     </div>
                 </div>
             </div>
@@ -124,6 +128,19 @@
                             <label><i class="la la-paste"></i>Thủ tục nộp đơn</label>
                             <textarea class="form-control" id="exampleFormControlTextarea5" required="true" rows="5" name="pro"></textarea>
                         </div>
+                    </div>
+                </div>
+                <div class="form-group row d-flex align-items-center mb-5">
+                    <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-envelope"></i>Link đăng ký</label>
+                    <div class="col-lg-6">
+                        <input type="text" required="true" class="form-control" placeholder="Link đăng ký" name="linkreg">
+                    </div>
+                </div>
+                <div class="form-group row d-flex align-items-center mb-5">
+                    <label class="col-lg-2 form-control-label d-flex justify-content-lg-end"><i class="la la-info-circle
+"></i>Nguồn thông tin</label>
+                    <div class="col-lg-6">
+                        <input type="text" required="true" class="form-control" placeholder="Nguồn thông tin" name="linkvia">
                     </div>
                 </div>
                 <div class="text-right">
