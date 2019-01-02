@@ -44,7 +44,7 @@ class CustomResetPasswordController
         }
     }
     function validateToken(Request $request){
-        $dbget = DB::table('taikhoan')->where('email','=',$request->email)->where('password','=',$request->token);
+        $dbget = DB::table('taikhoan')->where('email','=',$request->email)->where('password','like',$request->token."%");
         if($dbget->count()>0) {
             return view('changepasswordwithmail')->with('email', $request->email);
         }

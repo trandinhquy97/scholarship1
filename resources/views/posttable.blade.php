@@ -119,7 +119,7 @@
                         @php ($status = 'danger')
                         @break;
                     @endswitch
-                    <td><span style="width:100px;"><span class="badge-text badge-text-small {{$status}}">{{$value->TenTrangThai}}</span></span></td>
+                    <td><span style="width:100px;"><span class="badge-text badge-text-small {{$status}}">{{$value->TenTrangThai==""?"Khóa":$value->TenTrangThai}}</span></span></td>
                     <td>{{$value->ThoiGianBatDauSuKien}}</td>
                     <td class="td-actions">
                         <a id="btn-edit" href="manage/{{$direct}}/edit/{{$value->id_SuKien}}"><i class="la la-edit edit"></i></a>

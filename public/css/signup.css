@@ -76,6 +76,10 @@ body{
 	padding: 10px 0px;
 	font-size: 12px;
 }
+
+.box .inputBox option {
+	color: black;
+}
 .box .btn{
 	text-align: center;
 	width: 100%;

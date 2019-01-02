@@ -43,7 +43,7 @@ Route::get('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewControlle
 Route::post('/changepw', ['as'=>'getPersonalEdit','uses'=>'GetDataToViewController@postPasswordEdit']);
 
 Route::get('/resetpassword/{email}/{token}', ['as'=>'getResetPassword','uses'=>'CustomResetPasswordController@validateToken']);
-Route::post('/resetpassword', ['as'=>'postResetPassword','uses'=>'CustomResetPasswordController@resetPassword']);
+Route::get('/resetpassword/{email}/{token}/{params?}', ['as'=>'getResetPassword','uses'=>'CustomResetPasswordController@validateToken']);Route::post('/resetpassword', ['as'=>'postResetPassword','uses'=>'CustomResetPasswordController@resetPassword']);
 Route::get('/reset', ['as'=>'getReset','uses'=>'CustomResetPasswordController@getView']);
 Route::post('/reset', ['as'=>'postReset','uses'=>'CustomResetPasswordController@sendToken']);
 
@@ -85,6 +85,8 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('edit/{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
         Route::post('edit/{id}', 'DatabaseController@saveEditScholar')->where('id', '[0-9]+');
         Route::get('/personal/{id}', 'GetDataToViewController@getAAccount');
+
+
 	});
 	Route::group(['prefix'=>'account'], function(){
 		Route::post('', 'DatabaseController@createAccount');
@@ -114,4 +116,8 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('/', 'DatabaseController@getAllCommentsEvent');
         Route::get('deletecomment/{id}', 'DatabaseController@delComment');
     });
+
+    Route::get('/workshop/edit/{id}', ['as'=>'editWorkShop', 'uses'=>'DatabaseController@editEvent']);
+    Route::get('/contest/edit/{id}', ['as'=>'editContest', 'uses'=>'DatabaseController@editEvent']);
+    Route::post('/post/edit/{id}', ['as'=>'editContest', 'uses'=>'DatabaseController@editPostEvent']);
 });
