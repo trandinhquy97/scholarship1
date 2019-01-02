@@ -94,7 +94,7 @@
     </head>
     <body>
         <div class="widget-header bordered no-actions d-flex align-items-center">
-            <h2><b>Đăng bài viết học bổng mới</b></h2>
+            <h2><b>Chỉnh sửa bài đăng học bổng</b></h2>
         </div>
         @if(!empty($status))
             @if($status==1)

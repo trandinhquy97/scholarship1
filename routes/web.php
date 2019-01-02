@@ -83,7 +83,7 @@ Route::group(['prefix'=>'manage'], function(){
         Route::get('new', 'DatabaseController@newScholar');
         Route::post('new', 'DatabaseController@createScholar');
         Route::get('edit/{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
-        Route::post('edit/{id}', 'DatabaseController@editScholar')->where('id', '[0-9]+');
+        Route::post('edit/{id}', 'DatabaseController@saveEditScholar')->where('id', '[0-9]+');
         Route::get('/personal/{id}', 'GetDataToViewController@getAAccount');
 	});
 	Route::group(['prefix'=>'account'], function(){

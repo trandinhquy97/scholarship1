@@ -116,7 +116,8 @@ class DatabaseController extends Controller
         $school = DB::table('truonghoc')->get();
         $quocgia = DB::table('quocgia')->get();
         $unit = DB::table('donvitien')->get();
-        return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit]);
+        $certificate = DB::table('chungchingoaingu')->get();
+        return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit, 'certificate'=>$certificate]);
     }
 
     public function createScholar(Request $request){
@@ -166,10 +167,113 @@ class DatabaseController extends Controller
                 'id_TrangThaiHb'=>2
             ]);
 
-            return $nameScholar.$pro.$mytime;
+            $idHb = DB::table('hocbong')->orderBy('id_HocBong', 'desc')->first();
+
+
+            $numCer = (int)$request->input('numCerti');
+            for($i = 1; $i <= $numCer; $i++){
+                $idCer = $request->input('certificate'.$i);
+                $num = $request->input('langpoint'.$i);
+                DB::table('dieukienngoaingu')->insert(['id_HocBong'=>$idHb->id_HocBong, 'id_ChungChi'=>$idCer, 'Diem'=>$num]);
+            }
+            $levelscholar = DB::table('bachoc')->get();
+            $typescholar = DB::table('loaihocbong')->get();
+            $majorscholar = DB::table('nganhhoc')->get();
+            $school = DB::table('truonghoc')->get();
+            $quocgia = DB::table('quocgia')->get();
+            $unit = DB::table('donvitien')->get();
+            $certificate = DB::table('chungchingoaingu')->get();
+            return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit, 'certificate'=>$certificate,'status'=>1, 'mes'=>'Đã tạo thành công bài đăng '.$idHb->id_HocBong]);
         }else{
             return 'null file';
         }
+    }
+
+    public function editScholar(Request $request, $id){
+        $levelscholar = DB::table('bachoc')->get();
+        $typescholar = DB::table('loaihocbong')->get();
+        $majorscholar = DB::table('nganhhoc')->get();
+        $school = DB::table('truonghoc')->get();
+        $quocgia = DB::table('quocgia')->get();
+        $unit = DB::table('donvitien')->get();
+        $certificate = DB::table('chungchingoaingu')->get();
+        $scholar = DB::table('hocbong')->where('id_HocBong', '=', $id)->first();
+        $split = explode('-', $scholar->deadline);
+        $deadline = $split[2].'/'.$split[1].'/'.$split[0];
+        $value = DB::table('giatrihocbong')->where('id_GiaTriHb', '=', $scholar->id_GiaTriHb)->first();
+        $cer = DB::table('dieukienngoaingu')->where('id_HocBong', '=', $scholar->id_HocBong)->get();
+        return view('editScholar', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit, 'certificate'=>$certificate, 'scholar'=>$scholar, 'deadline'=>$deadline, 'value'=>$value, 'cert'=>$cer]);
+    }
+
+    public function saveEditScholar(Request $request, $id){
+        if ($request->hasFile('Fichier1')) {
+            $file = $request->file('Fichier1');
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $file->move('upload', $fileName);
+            $filePath = 'upload/'.$fileName;
+            DB::table('hocbong')->where('id_HocBong', '=', $id)->update(['AnhBia'=>$filePath]);
+        }   
+        $scholarship = DB::table('hocbong')->where('id_HocBong', '=', $id)->first();
+        $nameScholar = $request->input('namescholar');
+        $typescholar = $request->input('typescholar');
+        $majorscholar = $request->input('majorscholar');
+        $levelscholar = $request->input('levelscholar');
+        $schoolID = $request->input('school');
+        $minval = $request->input('minval');
+        $maxval = $request->input('maxval');
+        $unit = $request->input('unit');
+        $numscholar = $request->input('numscholar');
+        $deadline = $request->input('deadline');
+        $split = explode('/', $deadline);
+        $deadline = $split[2].'-'.$split[1].'-'.$split[0];
+        $require = $request->input('require');
+        $pro = $request->input('pro');
+        $user = $this->getCurrentUser($request);
+        $linkreg = $request->input('linkreg');
+        $linkvia = $request->input('linkvia');
+        $mytime = Carbon::now();
+        $mytime->toDateTimeString();
+        DB::table('giatrihocbong')->where('id_GiaTriHb', '=', $scholarship->id_GiaTriHb)->delete();
+        DB::table('giatrihocbong')->insert(['PhanTramHb'=>0, 'SoTienMin'=>$minval, 'SoTienMax'=>$maxval, 'id_DonViTien'=>$unit, 'MoTa'=>'']);
+        $idGiaTri = DB::table('giatrihocbong')->orderBy('id_GiaTriHb', 'desc')->first();
+        DB::table('hocbong')->where('id_HocBong', '=', $id)->update([
+            'TenHocBong'=>$nameScholar,
+            'id_LoaiHb'=>$typescholar,
+            'deadline'=>$deadline,
+            'id_TruongHoc'=>$schoolID,
+            'id_BacHoc'=>$levelscholar,
+            'id_NganhHoc'=>$majorscholar,
+            'id_GiaTriHb'=>$idGiaTri->id_GiaTriHb,
+            'SoLuong'=>$numscholar,
+            'YeuCau'=>$require,
+            'ThuTucNop'=>$pro,
+            'LinkDangKy'=>$linkreg,
+            'NguonThongTin'=>$linkvia,
+        ]);
+
+        // $idHb = DB::table('hocbong')->orderBy('id_HocBong', 'desc')->first();
+
+        DB::table('dieukienngoaingu')->where('id_HocBong', '=', $scholarship->id_HocBong)->delete();
+        $numCer = (int)$request->input('numCerti');
+        for($i = 1; $i <= $numCer; $i++){
+            $idCer = $request->input('certificate'.$i);
+            $num = $request->input('langpoint'.$i);
+            DB::table('dieukienngoaingu')->insert(['id_HocBong'=>$scholarship->id_HocBong, 'id_ChungChi'=>$idCer, 'Diem'=>$num]);
+        }
+        // return view('newpost', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit, 'certificate'=>$certificate,'status'=>1, 'mes'=>'Chỉnh sửa thành công bài đăng '.$scholarship->id_HocBong]);
+        $levelscholar = DB::table('bachoc')->get();
+        $typescholar = DB::table('loaihocbong')->get();
+        $majorscholar = DB::table('nganhhoc')->get();
+        $school = DB::table('truonghoc')->get();
+        $quocgia = DB::table('quocgia')->get();
+        $unit = DB::table('donvitien')->get();
+        $certificate = DB::table('chungchingoaingu')->get();
+        $scholar = DB::table('hocbong')->where('id_HocBong', '=', $id)->first();
+        $split = explode('-', $scholar->deadline);
+        $deadline = $split[2].'/'.$split[1].'/'.$split[0];
+        $value = DB::table('giatrihocbong')->where('id_GiaTriHb', '=', $scholar->id_GiaTriHb)->first();
+        $cer = DB::table('dieukienngoaingu')->where('id_HocBong', '=', $scholar->id_HocBong)->get();
+        return view('editScholar', ['typescholar'=>$typescholar, 'majorscholar'=>$majorscholar, 'levelscholar'=>$levelscholar, 'school'=>$school, 'unit'=>$unit, 'certificate'=>$certificate, 'scholar'=>$scholar, 'deadline'=>$deadline, 'value'=>$value, 'cert'=>$cer,'status'=>1, 'mes'=>'Chỉnh sửa thành công bài đăng '.$scholarship->id_HocBong]);
     }
 
     public function confirmArticle(Request $request){
